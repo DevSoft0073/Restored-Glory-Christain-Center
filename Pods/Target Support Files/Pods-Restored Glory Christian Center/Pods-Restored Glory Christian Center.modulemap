@@ -1,0 +1,6 @@
+framework module Pods_Restored_Glory_Christian_Center {
+  umbrella header "Pods-Restored Glory Christian Center-umbrella.h"
+
+  export *
+  module * { export * }
+}
