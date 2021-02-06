@@ -32,6 +32,7 @@
 		18CBC06225CE750100264243 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC06125CE750100264243 /* ForgotPasswordVC.swift */; };
 		18E9780B25CE7DEF000D1F8D /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9780A25CE7DEF000D1F8D /* SideMenuController.swift */; };
 		18E9781025CE7E6C000D1F8D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9780F25CE7E6C000D1F8D /* HomeVC.swift */; };
+		18E9781825CE8522000D1F8D /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9781725CE8522000D1F8D /* SideMenuVC.swift */; };
 		58A4554EE0D39E337EAE6C02 /* Pods_Restored_Glory_Christian_CenterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6E1F6ECC36C25C63FAAED4 /* Pods_Restored_Glory_Christian_CenterTests.framework */; };
 		8CCFF29A63ECA0314F87267A /* Pods_Restored_Glory_Christian_Center.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76297625A537C9D5E8B0B7AB /* Pods_Restored_Glory_Christian_Center.framework */; };
 		F6F55311757424FCC979000A /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C4EA74E5E62CA3E4824A2B /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework */; };
@@ -86,6 +87,7 @@
 		18CBC06125CE750100264243 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		18E9780A25CE7DEF000D1F8D /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		18E9780F25CE7E6C000D1F8D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		18E9781725CE8522000D1F8D /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		1D6E1F6ECC36C25C63FAAED4 /* Pods_Restored_Glory_Christian_CenterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restored_Glory_Christian_CenterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27BA2699F42BF596E7600F40 /* Pods-Restored Glory Christian CenterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restored Glory Christian CenterTests.debug.xcconfig"; path = "Target Support Files/Pods-Restored Glory Christian CenterTests/Pods-Restored Glory Christian CenterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		40C4EA74E5E62CA3E4824A2B /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 				18E9780A25CE7DEF000D1F8D /* SideMenuController.swift */,
 				188C9AA925CE5D3B009AC9C8 /* Profiles */,
 				18E9780F25CE7E6C000D1F8D /* HomeVC.swift */,
+				18E9781725CE8522000D1F8D /* SideMenuVC.swift */,
 			);
 			path = SideMEnu;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				188C9AB525CE5E0F009AC9C8 /* ImagePicker.swift in Sources */,
 				188C9AB425CE5E0F009AC9C8 /* AppExtensions.swift in Sources */,
 				18E9780B25CE7DEF000D1F8D /* SideMenuController.swift in Sources */,
+				18E9781825CE8522000D1F8D /* SideMenuVC.swift in Sources */,
 				188C9AB225CE5E0F009AC9C8 /* AppFunctions.swift in Sources */,
 				188C9AD025CE5E3D009AC9C8 /* Reachability.swift in Sources */,
 				188C9ACE25CE5E3D009AC9C8 /* AFWrapperClass.swift in Sources */,
