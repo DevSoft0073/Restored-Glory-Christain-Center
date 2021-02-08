@@ -33,9 +33,15 @@ class SignInVC: UIViewController , UITextFieldDelegate{
     }
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
+        let vc = ForgotPasswordVC.instantiate(fromAppStoryboard: .Auth)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func logInButton(_ sender: Any) {
+        let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func gotoSignUpVC(_ sender: Any) {
+        let vc = SignUpVC.instantiate(fromAppStoryboard: .Auth)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

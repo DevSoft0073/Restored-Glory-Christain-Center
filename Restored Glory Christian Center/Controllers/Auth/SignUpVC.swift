@@ -43,6 +43,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
+        let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func checkUncheckButton(_ sender: Any) {
@@ -52,6 +54,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func gotoSignInButoon(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

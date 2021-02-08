@@ -90,7 +90,7 @@
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.73013919589999998" green="0.63707560299999999" blue="0.40484714510000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="5"/>
@@ -162,7 +162,7 @@
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.66720539329999995" green="0.59738832710000001" blue="0.4399542212" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -348,7 +348,7 @@
                                                                         <real key="value" value="2"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="5"/>
@@ -412,7 +412,7 @@
                                                                         <real key="value" value="2"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -470,7 +470,7 @@
                                                                         <real key="value" value="2"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="5"/>
@@ -695,7 +695,7 @@
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="5"/>
@@ -714,8 +714,8 @@
                                     <constraint firstItem="XYe-G0-cRO" firstAttribute="leading" secondItem="s8a-HO-uH2" secondAttribute="leading" id="wGF-6f-rif"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jaY-Nb-13d">
-                                <rect key="frame" x="33" y="34" width="28" height="28"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back-white" translatesAutoresizingMaskIntoConstraints="NO" id="jaY-Nb-13d">
+                                <rect key="frame" x="23.5" y="39.5" width="17" height="17"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teJ-qi-A2P">
                                 <rect key="frame" x="19" y="327" width="337.5" height="42"/>
@@ -752,7 +752,7 @@
                             <constraint firstItem="teJ-qi-A2P" firstAttribute="top" secondItem="s8a-HO-uH2" secondAttribute="bottom" constant="20" id="8d3-fZ-iM0"/>
                             <constraint firstItem="s8a-HO-uH2" firstAttribute="centerX" secondItem="4ro-8M-X7E" secondAttribute="centerX" id="AUZ-zu-eVv"/>
                             <constraint firstItem="WtB-jI-7Vl" firstAttribute="top" secondItem="4ro-8M-X7E" secondAttribute="top" id="Cc0-A1-eTZ"/>
-                            <constraint firstItem="jaY-Nb-13d" firstAttribute="height" secondItem="5aV-9t-nNT" secondAttribute="height" multiplier="0.5" id="E8c-nL-P3a"/>
+                            <constraint firstItem="jaY-Nb-13d" firstAttribute="height" secondItem="5aV-9t-nNT" secondAttribute="height" multiplier="0.3" id="E8c-nL-P3a"/>
                             <constraint firstItem="NVD-06-axS" firstAttribute="centerX" secondItem="4ro-8M-X7E" secondAttribute="centerX" id="EHA-Yi-Mb3"/>
                             <constraint firstItem="teJ-qi-A2P" firstAttribute="centerX" secondItem="4ro-8M-X7E" secondAttribute="centerX" id="ERh-8e-Xbh"/>
                             <constraint firstItem="5aV-9t-nNT" firstAttribute="leading" secondItem="s8a-HO-uH2" secondAttribute="leading" id="FlZ-Kh-xM5"/>
@@ -762,10 +762,10 @@
                             <constraint firstItem="teJ-qi-A2P" firstAttribute="width" secondItem="fJs-lh-IZj" secondAttribute="width" multiplier="0.9" id="W9e-c2-xBA"/>
                             <constraint firstItem="s8a-HO-uH2" firstAttribute="top" secondItem="NVD-06-axS" secondAttribute="bottom" constant="25" id="Y6P-AE-d6t"/>
                             <constraint firstItem="WtB-jI-7Vl" firstAttribute="leading" secondItem="4ro-8M-X7E" secondAttribute="leading" id="fZi-kS-5dT"/>
-                            <constraint firstItem="jaY-Nb-13d" firstAttribute="centerX" secondItem="5aV-9t-nNT" secondAttribute="centerX" id="icD-X8-96b"/>
+                            <constraint firstItem="jaY-Nb-13d" firstAttribute="centerX" secondItem="5aV-9t-nNT" secondAttribute="centerX" constant="-15" id="icD-X8-96b"/>
                             <constraint firstItem="WtB-jI-7Vl" firstAttribute="height" secondItem="fJs-lh-IZj" secondAttribute="height" multiplier="0.2" id="m66-C5-ogc"/>
                             <constraint firstItem="s8a-HO-uH2" firstAttribute="width" secondItem="fJs-lh-IZj" secondAttribute="width" multiplier="0.9" id="oJt-e2-V5a"/>
-                            <constraint firstItem="jaY-Nb-13d" firstAttribute="width" secondItem="5aV-9t-nNT" secondAttribute="width" multiplier="0.5" id="sfw-O9-EYt"/>
+                            <constraint firstItem="jaY-Nb-13d" firstAttribute="width" secondItem="5aV-9t-nNT" secondAttribute="width" multiplier="0.3" id="sfw-O9-EYt"/>
                             <constraint firstItem="NVD-06-axS" firstAttribute="top" secondItem="Ntb-vk-86L" secondAttribute="bottom" constant="10" id="vsn-Xp-vp7"/>
                         </constraints>
                     </view>
@@ -797,6 +797,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back-white" width="16" height="27"/>
         <image name="email" width="30" height="22"/>
         <image name="logo-sign" width="495" height="515"/>
         <image name="password" width="31" height="31"/>

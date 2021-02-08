@@ -25,6 +25,10 @@
 		184E4CB525D108E100330A10 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 184E4CA325D108E000330A10 /* Roboto-Black.ttf */; };
 		184E4CB625D108E100330A10 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 184E4CA425D108E100330A10 /* Roboto-Light.ttf */; };
 		184E4CB725D108E100330A10 /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 184E4CA525D108E100330A10 /* RobotoCondensed-BoldItalic.ttf */; };
+		184E4CBC25D154E100330A10 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CBB25D154E100330A10 /* ProfileVC.swift */; };
+		184E4CC125D154F900330A10 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CC025D154F900330A10 /* EditProfileVC.swift */; };
+		184E4CC625D1553200330A10 /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CC525D1553200330A10 /* AdminVC.swift */; };
+		184E4CCB25D1555900330A10 /* PushMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CCA25D1555900330A10 /* PushMessageVC.swift */; };
 		188C9A6E25CE5BD2009AC9C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9A6D25CE5BD2009AC9C8 /* AppDelegate.swift */; };
 		188C9A7025CE5BD2009AC9C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9A6F25CE5BD2009AC9C8 /* SceneDelegate.swift */; };
 		188C9A7525CE5BD2009AC9C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188C9A7325CE5BD2009AC9C8 /* Main.storyboard */; };
@@ -92,6 +96,10 @@
 		184E4CA325D108E000330A10 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		184E4CA425D108E100330A10 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		184E4CA525D108E100330A10 /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; };
+		184E4CBB25D154E100330A10 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		184E4CC025D154F900330A10 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		184E4CC525D1553200330A10 /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
+		184E4CCA25D1555900330A10 /* PushMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushMessageVC.swift; sourceTree = "<group>"; };
 		188C9A6A25CE5BD2009AC9C8 /* Restored Glory Christian Center.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restored Glory Christian Center.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188C9A6D25CE5BD2009AC9C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188C9A6F25CE5BD2009AC9C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -308,10 +316,12 @@
 		188C9AA825CE5D28009AC9C8 /* SideMEnu */ = {
 			isa = PBXGroup;
 			children = (
-				18E9780A25CE7DEF000D1F8D /* SideMenuController.swift */,
 				188C9AA925CE5D3B009AC9C8 /* Profiles */,
 				18E9780F25CE7E6C000D1F8D /* HomeVC.swift */,
+				184E4CC525D1553200330A10 /* AdminVC.swift */,
 				18E9781725CE8522000D1F8D /* SideMenuVC.swift */,
+				184E4CCA25D1555900330A10 /* PushMessageVC.swift */,
+				18E9780A25CE7DEF000D1F8D /* SideMenuController.swift */,
 			);
 			path = SideMEnu;
 			sourceTree = "<group>";
@@ -319,6 +329,8 @@
 		188C9AA925CE5D3B009AC9C8 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				184E4CBB25D154E100330A10 /* ProfileVC.swift */,
+				184E4CC025D154F900330A10 /* EditProfileVC.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -654,7 +666,11 @@
 				18CBC06225CE750100264243 /* ForgotPasswordVC.swift in Sources */,
 				188C9AC525CE5E29009AC9C8 /* HelperMethods.swift in Sources */,
 				188C9ABE25CE5E1D009AC9C8 /* DisplayAlertManager.swift in Sources */,
+				184E4CBC25D154E100330A10 /* ProfileVC.swift in Sources */,
+				184E4CC125D154F900330A10 /* EditProfileVC.swift in Sources */,
 				18CBC05D25CE74EA00264243 /* SignUpVC.swift in Sources */,
+				184E4CCB25D1555900330A10 /* PushMessageVC.swift in Sources */,
+				184E4CC625D1553200330A10 /* AdminVC.swift in Sources */,
 				188C9AC625CE5E29009AC9C8 /* Activityloader.swift in Sources */,
 				188C9AB525CE5E0F009AC9C8 /* ImagePicker.swift in Sources */,
 				188C9AB425CE5E0F009AC9C8 /* AppExtensions.swift in Sources */,

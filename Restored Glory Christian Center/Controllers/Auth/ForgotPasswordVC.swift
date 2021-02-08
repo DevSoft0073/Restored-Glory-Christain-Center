@@ -26,10 +26,11 @@ class ForgotPasswordVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func backBUttonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func submitButtonAction(_ sender: Any) {
+        
     }
-    
     
 }

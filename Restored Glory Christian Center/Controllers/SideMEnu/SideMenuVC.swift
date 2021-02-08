@@ -22,8 +22,9 @@ class SideMenuVC: UIViewController {
     }
     
     @IBAction func adminButton(_ sender: Any) {
+        let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 
 }
 
@@ -48,6 +49,39 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        sideMenuController?.hideLeftViewAnimated()
+        
+        if(indexPath.row == 0) {
+            let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+            (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+        }
+            
+        else if(indexPath.row == 1) {
+            guard let url = URL(string: "https://stackoverflow.com") else { return }
+            UIApplication.shared.open(url)
+            
+        }
+            
+        else if(indexPath.row == 2) {
+            let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+            (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+            
+        }
+            
+        else if(indexPath.row == 3) {
+            let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+            (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+        }
+            
+        else if(indexPath.row == 4) {
+            
+            let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+            (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+        }
     }
     
 }
