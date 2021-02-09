@@ -26,7 +26,12 @@ class SideMenuVC: UIViewController {
         let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
+    @IBAction func openProfile(_ sender: Any) {
+        let vc = ProfileVC.instantiate(fromAppStoryboard: .Main)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 class SideMenuTbViewCell: UITableViewCell {
@@ -62,27 +67,25 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
         }
             
         else if(indexPath.row == 1) {
-            guard let url = URL(string: "https://stackoverflow.com") else { return }
-            UIApplication.shared.open(url)
-            
+            let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
+            (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }
             
         else if(indexPath.row == 2) {
-            let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+            let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             
         }
             
         else if(indexPath.row == 3) {
-            let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+            let vc = Women_sMinistryVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }
             
         else if(indexPath.row == 4) {
             
-            let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+            let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }
     }
-    
 }
