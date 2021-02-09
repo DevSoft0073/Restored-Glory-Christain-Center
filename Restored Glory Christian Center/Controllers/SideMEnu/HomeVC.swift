@@ -9,12 +9,12 @@ import UIKit
 import LGSideMenuController
 
 class HomeVC: UIViewController {
-
+    
     @IBOutlet weak var showAllDataTbView: UITableView!
     var allDataArray = [AllData]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         allDataArray.append(AllData(title: "Live Sirmon", image: "youth"))
         allDataArray.append(AllData(title: "Live Sirmon", image: "youth"))
         allDataArray.append(AllData(title: "Live Sirmon", image: "youth"))
@@ -24,10 +24,14 @@ class HomeVC: UIViewController {
         showAllDataTbView.separatorStyle = .none
         // Do any additional setup after loading the view.
     }
-    
-    @IBAction func openMenu(_ sender: UIButton) {
-        sideMenuController?.showLeftViewAnimated()
+    @IBAction func addLinkButton(_ sender: Any) {
+        let vc = AddLinkVC.instantiate(fromAppStoryboard: .Main)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func openMenu(_ sender: Any) {
+        sideMenuController?.showLeftViewAnimated()
+    }    
 }
 
 class ShowAllDataTbViewCell: UITableViewCell {
@@ -54,7 +58,7 @@ extension HomeVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 190
     }
     
 }

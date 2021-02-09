@@ -18,6 +18,7 @@ class SideMenuVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        sideMenuTbView.separatorStyle = .none
         // Do any additional setup after loading the view.
     }
     
@@ -48,7 +49,7 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 65
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

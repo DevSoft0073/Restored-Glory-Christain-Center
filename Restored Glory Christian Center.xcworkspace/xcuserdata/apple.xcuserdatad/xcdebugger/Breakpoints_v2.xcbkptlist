@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2722B2A5-275B-4279-9677-384BBF5DE244"
-            shouldBeEnabled = "No"
+            uuid = "63A6650B-B1AF-45F5-A647-3B91B459C9FF"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Restored Glory Christian Center/Controllers/SideMEnu/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "openMenu(_:)"
             landmarkType = "7">
          </BreakpointContent>
