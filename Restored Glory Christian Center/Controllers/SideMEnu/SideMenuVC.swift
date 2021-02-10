@@ -72,7 +72,7 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
         }
             
         else if(indexPath.row == 2) {
-            let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
+            let vc = ChoirRehearsal.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             
         }

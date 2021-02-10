@@ -21,8 +21,7 @@ class Women_sMinistryVC: UIViewController {
         womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
         womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
         womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
-
-
+        
         
         // Do any additional setup after loading the view.
     }
@@ -56,6 +55,12 @@ extension Women_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
         cell.showImage.image = UIImage(named: womenDataArray[indexPath.row].image)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
