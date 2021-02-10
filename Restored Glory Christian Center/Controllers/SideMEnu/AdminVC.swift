@@ -10,10 +10,11 @@ import UIKit
 class AdminVC: UIViewController {
 
     @IBOutlet weak var adminTBView: UITableView!
-    var iconImgArray = ["",""]
-    var titleArray = ["",""]
+    var iconImgArray = ["send-push","links"]
+    var titleArray = ["Send Puah","Links"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        adminTBView.separatorStyle = .none
 
         // Do any additional setup after loading the view.
     }
@@ -37,8 +38,12 @@ extension AdminVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdminTBViewCell", for: indexPath) as! AdminTBViewCell
+        cell.iconImg.image = UIImage(named: iconImgArray[indexPath.row])
+        cell.titleLbl.text = titleArray[indexPath.row]
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
 }
