@@ -13,6 +13,7 @@ class SignInVC: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var passwordTxtFld: UITextField!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var emailTxtFld: UITextField!
+    var messgae = String()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,9 +39,21 @@ class SignInVC: UIViewController , UITextFieldDelegate{
     }
     @IBAction func logInButton(_ sender: Any) {
         
-        let story = UIStoryboard(name: "Main", bundle: nil)
-        let rootViewController:UIViewController = story.instantiateViewController(withIdentifier: "SideMenuControllerID")
-        self.navigationController?.pushViewController(rootViewController, animated: true)
+        if (emailTxtFld.text?.isEmpty)!{
+            
+            ValidateData(strMessage: " Please enter email")
+            
+        } else if (passwordTxtFld.text?.isEmpty)!{
+            
+            ValidateData(strMessage: " Please enter password")
+            
+        }else{
+            
+            self.signIn()
+            
+        }
+        
+        
 //        let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
 //        self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -48,4 +61,44 @@ class SignInVC: UIViewController , UITextFieldDelegate{
         let vc = SignUpVC.instantiate(fromAppStoryboard: .Auth)
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
+    func signIn()  {
+        
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            IJProgressView.shared.showProgressView()
+            let url = Constant.shared.baseUrl + Constant.shared.SignIn
+            let params = ["email":emailTxtFld.text ?? "","password":passwordTxtFld.text ?? "" , "device_token" : "" ,"device_type" : ""] as [String : Any]
+            AFWrapperClass.requestPOSTURL(url, params: params, success: { (response) in
+                IJProgressView.shared.hideProgressView()
+                self.messgae = response["message"] as? String ?? ""
+                let status = response["status"] as? String
+                if status == "1"{
+                    let allData = response as? [String:Any] ?? [:]
+                    print(allData)
+                    if let data = allData["data"] as? [String:Any]  {
+                        UserDefaults.standard.set(1, forKey: "tokenFString")
+                        UserDefaults.standard.set(data["userID"], forKey: "id")
+                        print(data)
+                    }
+                    let story = UIStoryboard(name: "Main", bundle: nil)
+                    let rootViewController:UIViewController = story.instantiateViewController(withIdentifier: "SideMenuControllerID")
+                    self.navigationController?.pushViewController(rootViewController, animated: true)
+                }else{
+                    IJProgressView.shared.hideProgressView()
+                    alert(Constant.shared.appTitle, message: self.messgae, view: self)
+                }
+            }) { (error) in
+                IJProgressView.shared.hideProgressView()
+                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
+                print(error)
+            }
+            
+        } else {
+            print("Internet connection FAILED")
+            alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
+        }
+    }
+    
 }

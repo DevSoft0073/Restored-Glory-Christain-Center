@@ -19,7 +19,7 @@ class ForgotPasswordVC: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == emailTxtFld{
             
-            emailView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
+            emailView.borderColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
             
         }
         

@@ -15,6 +15,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTxtFld: UITextField!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var nameTxtFld: UITextField!
+    var unchecked = Bool()
+    var messgae = String()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,11 +45,53 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
-        let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+        if (nameTxtFld.text?.isEmpty)!{
+                  
+                  ValidateData(strMessage: " Please enter name")
+              }
+              else if (emailTxtFld.text?.isEmpty)!{
+                  
+                  ValidateData(strMessage: " Please enter email address")
+              }
+              else if isValidEmail(testStr: (emailTxtFld.text)!) == false{
+                  
+                  ValidateData(strMessage: "Enter valid email")
+              }
+              else if (passwordTxtFld.text?.isEmpty)!{
+                  
+                  ValidateData(strMessage: " Please enter password")
+              }else if (passwordTxtFld!.text!.count) < 4 || (passwordTxtFld!.text!.count) > 15{
+                  
+                  ValidateData(strMessage: "Please enter minimum 4 digit password")
+                  UserDefaults.standard.string(forKey: "password")
+                  
+              }
+//            else if unchecked == false{
+//
+//                  ValidateData(strMessage: "Please agree terms and conditions")
+//              }
+              else{
+                  signUp()
+              }
+
+        
+//        let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func checkUncheckButton(_ sender: Any) {
+//        if (unchecked == false)
+//        {
+//            checkuncheckButton.setBackgroundImage(UIImage(named: "checkbox"), for: UIControl.State.normal)
+//            unchecked = true
+//        }
+//        else
+//        {
+//            checkuncheckButton.setBackgroundImage(UIImage(named: "uncheck"), for: UIControl.State.normal)
+//            unchecked = false
+//        }
     }
     
     @IBAction func termsAndConditionBUtton(_ sender: Any) {
@@ -56,5 +100,46 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBAction func gotoSignInButoon(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func signUp()  {
+                
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            IJProgressView.shared.showProgressView()
+            let url = Constant.shared.baseUrl + Constant.shared.SignUp
+            let params = ["name":nameTxtFld.text ?? "","email":emailTxtFld.text ?? "", "password":passwordTxtFld.text ?? "" , "device_type" : "", "device_token" : ""] as [String : Any]
+            AFWrapperClass.requestPOSTURL(url, params: params, success: { (response) in
+                IJProgressView.shared.hideProgressView()
+                self.messgae = response["message"] as? String ?? ""
+                let status = response["status"] as? String
+                if status == "1"{
+//                        UserDefaults.standard.set(true, forKey: "tokenFString")
+                    UserDefaults.standard.set(1, forKey: "tokenFString")
+                    let allData = response as? [String:Any] ?? [:]
+                    print(allData)
+                    if let data = allData["data"] as? [String:Any]  {
+                        UserDefaults.standard.set(data["userID"], forKey: "id")
+                        print(data)
+                    }
+                    
+                    let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }else{
+                    IJProgressView.shared.hideProgressView()
+                    alert(Constant.shared.appTitle, message: self.messgae, view: self)
+                }
+            }) { (error) in
+                IJProgressView.shared.hideProgressView()
+                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
+                print(error)
+            }
+            
+        } else {
+            print("Internet connection FAILED")
+            alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
+        }
+        
+    }
+    
 
 }
