@@ -9,6 +9,8 @@ import UIKit
 
 class SignUpVC: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var lastNameView: UIView!
+    @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var passwordTxtFld: UITextField!
     @IBOutlet weak var emailView: UIView!
@@ -26,18 +28,28 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         if textField == nameTxtFld{
             
             nameView.borderColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+            lastNameView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
             emailView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
             passwordView.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            
+        }else if textField == lastName {
+            
+            nameView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
+            lastNameView.borderColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+            emailView.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            passwordView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
             
         }else if textField == emailTxtFld {
             
             nameView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
+            lastNameView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
             emailView.borderColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
             passwordView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
             
         } else if textField == passwordTxtFld {
             
             nameView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
+            lastNameView.borderColor = #colorLiteral(red: 0.9212896228, green: 0.9369686842, blue: 0.9718735814, alpha: 1)
             emailView.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             passwordView.borderColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
             
@@ -107,7 +119,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
             let url = Constant.shared.baseUrl + Constant.shared.SignUp
-            let params = ["name":nameTxtFld.text ?? "","email":emailTxtFld.text ?? "", "password":passwordTxtFld.text ?? "" , "device_type" : "", "device_token" : ""] as [String : Any]
+            let params = ["first_name":nameTxtFld.text ?? "","last_name" : lastName.text ?? "" ,"email":emailTxtFld.text ?? "", "password":passwordTxtFld.text ?? "" , "device_type" : "", "device_token" : ""] as [String : Any]
             AFWrapperClass.requestPOSTURL(url, params: params, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.messgae = response["message"] as? String ?? ""
@@ -118,7 +130,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                     let allData = response as? [String:Any] ?? [:]
                     print(allData)
                     if let data = allData["data"] as? [String:Any]  {
-                        UserDefaults.standard.set(data["userID"], forKey: "id")
+                        UserDefaults.standard.set(data["user_id"], forKey: "id")
                         print(data)
                     }
                     

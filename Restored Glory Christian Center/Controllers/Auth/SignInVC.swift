@@ -34,7 +34,7 @@ class SignInVC: UIViewController , UITextFieldDelegate{
     }
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
-        let vc = ForgotPasswordVC.instantiate(fromAppStoryboard: .Auth)
+        let vc = ChangePasswordVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func logInButton(_ sender: Any) {
@@ -53,9 +53,6 @@ class SignInVC: UIViewController , UITextFieldDelegate{
             
         }
         
-        
-//        let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func gotoSignUpVC(_ sender: Any) {
         let vc = SignUpVC.instantiate(fromAppStoryboard: .Auth)
@@ -69,7 +66,7 @@ class SignInVC: UIViewController , UITextFieldDelegate{
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
             let url = Constant.shared.baseUrl + Constant.shared.SignIn
-            let params = ["email":emailTxtFld.text ?? "","password":passwordTxtFld.text ?? "" , "device_token" : "" ,"device_type" : ""] as [String : Any]
+            let params = ["email":emailTxtFld.text ?? "","password":passwordTxtFld.text ?? "" , "device_token" : "" ,"device_type" : "1"] as [String : Any]
             AFWrapperClass.requestPOSTURL(url, params: params, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.messgae = response["message"] as? String ?? ""

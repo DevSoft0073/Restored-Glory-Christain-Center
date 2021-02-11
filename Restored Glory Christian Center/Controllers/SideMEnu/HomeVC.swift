@@ -12,6 +12,7 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var showAllDataTbView: UITableView!
     var allDataArray = [AllData]()
+    var search = false
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +28,10 @@ class HomeVC: UIViewController {
     @IBAction func addLinkButton(_ sender: Any) {
         let vc = AddLinkVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    @IBAction func searchButtonAction(_ sender: Any) {
     }
     
     @IBAction func openMenu(_ sender: Any) {

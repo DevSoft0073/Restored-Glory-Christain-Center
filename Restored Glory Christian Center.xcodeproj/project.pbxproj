@@ -49,6 +49,7 @@
 		188C9ACF25CE5E3D009AC9C8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9ACC25CE5E3D009AC9C8 /* Constant.swift */; };
 		188C9AD025CE5E3D009AC9C8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9ACD25CE5E3D009AC9C8 /* Reachability.swift */; };
 		188C9AD525CE5E74009AC9C8 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188C9AD425CE5E74009AC9C8 /* Auth.storyboard */; };
+		189B361625D5673000ABAA31 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B361525D5673000ABAA31 /* ChangePasswordVC.swift */; };
 		18C5BD1725D26AA100F77E80 /* AddLinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BD1625D26AA100F77E80 /* AddLinkVC.swift */; };
 		18C5BD1C25D282A400F77E80 /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BD1B25D282A400F77E80 /* AnnouncementsVC.swift */; };
 		18C5BD2125D2830600F77E80 /* Men'sMinistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BD2025D2830600F77E80 /* Men'sMinistryVC.swift */; };
@@ -132,6 +133,7 @@
 		188C9ACC25CE5E3D009AC9C8 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		188C9ACD25CE5E3D009AC9C8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		188C9AD425CE5E74009AC9C8 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		189B361525D5673000ABAA31 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		18C5BD1625D26AA100F77E80 /* AddLinkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkVC.swift; sourceTree = "<group>"; };
 		18C5BD1B25D282A400F77E80 /* AnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsVC.swift; sourceTree = "<group>"; };
 		18C5BD2025D2830600F77E80 /* Men'sMinistryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Men'sMinistryVC.swift"; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				18C5BD2525D2831B00F77E80 /* Women'sMinistryVC.swift */,
 				18D936A425D3EE610013E166 /* ChoirRehearsal.swift */,
 				18F49E6D25D407B600604C69 /* DetailsVC.swift */,
+				189B361525D5673000ABAA31 /* ChangePasswordVC.swift */,
 			);
 			path = SideMEnu;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				18C5BD2125D2830600F77E80 /* Men'sMinistryVC.swift in Sources */,
 				18C5BD2625D2831B00F77E80 /* Women'sMinistryVC.swift in Sources */,
 				188C9ABD25CE5E1D009AC9C8 /* AppConstants.swift in Sources */,
+				189B361625D5673000ABAA31 /* ChangePasswordVC.swift in Sources */,
 				188C9ACF25CE5E3D009AC9C8 /* Constant.swift in Sources */,
 				188C9AC725CE5E29009AC9C8 /* ChangeBottamColor.swift in Sources */,
 				188C9A6E25CE5BD2009AC9C8 /* AppDelegate.swift in Sources */,
