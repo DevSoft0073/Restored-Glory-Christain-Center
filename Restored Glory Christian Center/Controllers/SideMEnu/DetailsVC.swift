@@ -6,20 +6,19 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class DetailsVC: UIViewController {
     
     var detailsDataArray = [DetailsData]()
-
+    var catId = String()
+    var message = String()
+    
     @IBOutlet weak var detailsTbView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        detailsDataArray.append(DetailsData(image: "choir-rehersal", details: "aghgasdfggasgfhgsdhsd", name: "Men's ministry", date: "21Dec"))
-        detailsDataArray.append(DetailsData(image: "choir-rehersal", details: "aghgasdfggasgfhgsdhsd", name: "Men's ministry", date: "21Dec"))
-        detailsDataArray.append(DetailsData(image: "choir-rehersal", details: "aghgasdfggasgfhgsdhsd", name: "Men's ministry", date: "21Dec"))
-        detailsDataArray.append(DetailsData(image: "choir-rehersal", details: "aghgasdfggasgfhgsdhsd", name: "Men's ministry", date: "21Dec"))
-        detailsDataArray.append(DetailsData(image: "choir-rehersal", details: "aghgasdfggasgfhgsdhsd", name: "Men's ministry", date: "21Dec"))
+        categoryDetails()
         detailsTbView.separatorStyle = .none
         // Do any additional setup after loading the view.
     }
@@ -31,7 +30,46 @@ class DetailsVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
+    func categoryDetails() {
+
+        let id = UserDefaults.standard.value(forKey: "id") ?? ""
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            IJProgressView.shared.showProgressView()
+            let signInUrl = Constant.shared.baseUrl + Constant.shared.DetailsByCat
+            print(signInUrl)
+            let parms : [String:Any] = ["c_id" : "1" , "search" : "Announcements"]
+            print(parms)
+            AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
+                IJProgressView.shared.hideProgressView()
+                self.detailsDataArray.removeAll()
+                self.message = response["message"] as? String ?? ""
+                let status = response["status"] as? Int
+                if status == 1{
+                    if let allData = response["category_details"] as? [[String:Any]]{
+                        for obj in allData{
+//                            self.detailsDataArray.append(DetailsData(image: obj["image"], details: obj["description"], name: "title", date: "21Dec"))
+                            self.detailsDataArray.append(DetailsData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: "21Dec", link: obj["link"] as? String ?? ""))
+                        }
+                    }
+                    self.detailsTbView.reloadData()
+                }else{
+                    IJProgressView.shared.hideProgressView()
+                    alert(Constant.shared.appTitle, message: self.message, view: self)
+                }
+            }) { (error) in
+                IJProgressView.shared.hideProgressView()
+                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
+                print(error)
+            }
+
+        } else {
+            print("Internet connection FAILED")
+            alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
+        }
+
+    }
+
     
 }
 
@@ -54,11 +92,10 @@ extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsTbViewCell", for: indexPath) as! DetailsTbViewCell
-        cell.showImage.image = UIImage(named: detailsDataArray[indexPath.row].image)
         cell.nameLbl.text = detailsDataArray[indexPath.row].name
         cell.detailsLbl.text = detailsDataArray[indexPath.row].details
         cell.dateLbl.text = detailsDataArray[indexPath.row].date
-        
+        cell.showImage.sd_setImage(with: URL(string:detailsDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
         return cell
     }
     
@@ -86,11 +123,13 @@ struct DetailsData {
     var details : String
     var name : String
     var date : String
+    var link : String
     
-    init(image : String , details : String , name : String , date : String) {
+    init(image : String , details : String , name : String , date : String , link : String) {
         self.image = image
         self.details = details
         self.name = name
         self.date = date
+        self.link = link
     }
 }

@@ -22,6 +22,7 @@ class Constant: NSObject {
     let CategoryType = "GetAllCategory.php"
     let EditProfile = "EditUserProfile.php"
     let ChangePassword = "ChangePassword.php"
+    let DetailsByCat = "GetAllDetailsBycategoryid.php"
     
 }
 

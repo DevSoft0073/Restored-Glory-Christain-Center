@@ -24,12 +24,13 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
     var listingArray = [CategoryList]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        categoryListing()
         picker = UIPickerView.init()
         picker.delegate = self
         pickerToolBar.sizeToFit()
         let doneBtn = UIBarButtonItem(title: "Done", style:.plain, target: self, action: #selector(onDoneButtonTapped))
         doneBtn.tintColor = #colorLiteral(red: 0.08110561222, green: 0.2923257351, blue: 0.6798375845, alpha: 1)
+//        doneBtn.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 20)
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         pickerToolBar.setItems([spaceButton,doneBtn], animated: false)
         pickerToolBar.isUserInteractionEnabled = true
@@ -48,7 +49,7 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
     }
     
     @IBAction func openPickerView(_ sender: Any) {
-        categoryListing()
+//        categoryListing()
     }
     @IBAction func submitButtonAction(_ sender: Any) {
         
@@ -64,6 +65,10 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
             
             ValidateData(strMessage: "Add link text field should not be empty")
             
+        }else if isValidUrl(url: (addlinkTxtFld.text)!) == false{
+            
+            ValidateData(strMessage: "Enter valid url")
+            
         }else{
             
             addLink()
@@ -71,17 +76,22 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
         }
     }
     
+    func isValidUrl(url: String) -> Bool {
+        let urlRegEx = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$"
+        let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+        let result = urlTest.evaluate(with: url)
+        return result
+    }
     
     @objc func onDoneButtonTapped(sender:UIButton) {
         self.view.endEditing(true)
     }
     
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        if textField == selectTypeTxtFld {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == selectTypeTxtFld {
 //            categoryListing()
-//        }
-//    }
-    
+        }
+    }
     
     
     //    MARK:->    Picker View Methods
@@ -97,8 +107,8 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        selectedValue = listingArray[row].title as String
-        selectTypeTxtFld.text = selectedValue
+        selectedValue = listingArray[row].catId as String
+        selectTypeTxtFld.text = listingArray[row].title
         selectedValue = listingArray[row].title
         print(selectedValue)
     }
@@ -106,7 +116,7 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
         let label = (view as? UILabel) ?? UILabel()
         label.textColor = .black
         label.textAlignment = .center
-        label.font = UIFont(name: "Poppins-Medium", size: 20)
+        label.font = UIFont(name: "Roboto-Medium", size: 20)
         label.text = listingArray[row].title
         return label
     }
@@ -129,12 +139,11 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
             print(parms)
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
-                
+                self.listingArray.removeAll()
                 self.message = response["message"] as? String ?? ""
                 let status = response["status"] as? Int
                 if status == 1{
-                    self.listingArray.removeAll()
-                    if let allData = response["envelope_details"] as? [[String:Any]]{
+                    if let allData = response["category_details"] as? [[String:Any]]{
                         for obj in allData{
                             self.listingArray.append(CategoryList(title: obj["name"] as? String ?? "", catId: obj["c_id"] as? String ?? ""))
                             
@@ -290,5 +299,20 @@ struct CategoryList {
     init(title : String ,catId : String) {
         self.title = title
         self.catId = catId
+    }
+}
+
+
+extension String {
+    var verifyUrl: Bool {
+        get {
+            let url = URL(string: self)
+
+            if url == nil || NSData(contentsOf: url!) == nil {
+                return false
+            } else {
+                return true
+            }
+        }
     }
 }
