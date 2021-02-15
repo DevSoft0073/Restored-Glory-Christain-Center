@@ -15,11 +15,22 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var sideMenuTbView: UITableView!
     var titleArray = ["Home","Announcements","Choir Rehearsal","Women's Ministry","Men's Ministry"]
+    var message = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        getData()
         sideMenuTbView.separatorStyle = .none
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        profileImage.layer.masksToBounds = true
+        profileImage.layer.cornerRadius = profileImage.frame.height/2
     }
     
     @IBAction func adminButton(_ sender: Any) {
@@ -30,6 +41,56 @@ class SideMenuVC: UIViewController {
     @IBAction func openProfile(_ sender: Any) {
         let vc = ProfileVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func getData() {
+        let id = UserDefaults.standard.value(forKey: "id") ?? ""
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+//            IJProgressView.shared.showProgressView()
+            let signInUrl = Constant.shared.baseUrl + Constant.shared.Profile
+            print(signInUrl)
+            let parms : [String:Any] = ["user_id" : id]
+            print(parms)
+            AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
+//                IJProgressView.shared.hideProgressView()
+                print(response)
+                self.message = response["message"] as? String ?? ""
+                let status = response["status"] as? Int
+                if status == 1{
+                    if let allData = response["data"] as? [String:Any]{
+                        self.nameLbl.text = "\(allData["first_name"] as? String ?? "")" + "\(allData["last_name"] as? String ?? "")"
+                        self.emailLbl.text = allData["email"] as? String
+                        self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "img"))
+                        let url = URL(string:allData["photo"] as? String ?? "")
+                        if url != nil{
+                            if let data = try? Data(contentsOf: url!)
+                            {
+                                if let image: UIImage = (UIImage(data: data)){
+                                    self.profileImage.image = image
+                                    self.profileImage.contentMode = .scaleToFill
+                                    IJProgressView.shared.hideProgressView()
+                                }
+                            }
+                        }
+                        else{
+                            self.profileImage.image = UIImage(named: "placehlder")
+                        }
+                    }
+                }else{
+//                    IJProgressView.shared.hideProgressView()
+                    alert(Constant.shared.appTitle, message: self.message, view: self)
+                }
+            }) { (error) in
+//                IJProgressView.shared.hideProgressView()
+                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
+                print(error)
+            }
+            
+        } else {
+            print("Internet connection FAILED")
+            alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
+        }
     }
     
 }

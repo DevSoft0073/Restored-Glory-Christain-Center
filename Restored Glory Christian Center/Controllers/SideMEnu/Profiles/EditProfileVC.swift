@@ -26,6 +26,8 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
     var imagePickers = UIImagePickerController()
     var base64String = String()
     var flagBase64 = String()
+    var message = String()
+    var countryName = String()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,9 +44,83 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = profileImage.frame.height/2
     }
+    override func viewDidAppear(_ animated: Bool) {
+        getData()
+    }
     
+    func getData() {
+        let id = UserDefaults.standard.value(forKey: "id") ?? ""
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            IJProgressView.shared.showProgressView()
+            let signInUrl = Constant.shared.baseUrl + Constant.shared.Profile
+            print(signInUrl)
+            let parms : [String:Any] = ["user_id" : id]
+            print(parms)
+            AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
+                IJProgressView.shared.hideProgressView()
+                print(response)
+                self.message = response["message"] as? String ?? ""
+                let status = response["status"] as? Int
+                if status == 1{
+                    if let allData = response["data"] as? [String:Any]{
+                        self.nameLbl.text = "\(allData["first_name"] as? String ?? "")" + "\(allData["last_name"] as? String ?? "")"
+                        self.emailTxtFld.text = allData["email"] as? String ?? ""
+                        self.addressTxtFld.text = allData["address"] as? String ?? ""
+                        self.bioTxtView.text = allData["biography"] as? String ?? ""
+                        self.nameLbl.text = allData["name"] as? String ?? ""
+                        self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "img"))
+                        self.flagImage.sd_setImage(with: URL(string:allData["country_image"] as? String ?? ""), placeholderImage: UIImage(named: "img"))
+                        let url = URL(string:allData["photo"] as? String ?? "")
+                        if url != nil{
+                            if let data = try? Data(contentsOf: url!)
+                            {
+                                if let image: UIImage = (UIImage(data: data)){
+                                    self.profileImage.image = image
+                                    self.profileImage.contentMode = .scaleToFill
+                                    IJProgressView.shared.hideProgressView()
+                                }
+                            }
+                        }
+                        else{
+                            self.profileImage.image = UIImage(named: "placehlder")
+                        }
+                        let urls = URL(string:allData["country_image"] as? String ?? "")
+                        if urls != nil{
+                            if let data = try? Data(contentsOf: urls!)
+                            {
+                                if let image: UIImage = (UIImage(data: data)){
+                                    self.flagImage.image = image
+                                    self.flagImage.contentMode = .scaleToFill
+                                    IJProgressView.shared.hideProgressView()
+                                }
+                            }
+                        }
+                        else{
+                            self.flagImage.image = UIImage(named: "flag")
+                        }
+                    }
+                }else{
+                    IJProgressView.shared.hideProgressView()
+                    alert(Constant.shared.appTitle, message: self.message, view: self)
+                }
+            }) { (error) in
+                IJProgressView.shared.hideProgressView()
+                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
+                print(error)
+            }
+            
+        } else {
+            print("Internet connection FAILED")
+            alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
+        }
+    }
     
     @IBAction func uploadImage(_ sender: Any) {
+        showActionSheet()
+    }
+    @IBAction func submitButton(_ sender: Any) {
+        editProfile()
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -66,6 +142,47 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
          // can customize the countryPicker here e.g font and color
          countryController.detailColor = UIColor.red
     }
+    
+    func editProfile() {
+        let id = UserDefaults.standard.value(forKey: "id") ?? ""
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            IJProgressView.shared.showProgressView()
+            let url = Constant.shared.baseUrl + Constant.shared.EditProfile
+            print(url)
+//            flagImage.image?.toString() // it will convert UIImage to string
+            let countryName = UserDefaults.standard.value(forKey: "name")
+            let parms : [String:Any] = ["user_id": id,"email" : emailTxtFld.text ?? "","address" : addressTxtFld.text ?? "" ,"image" : self.base64String,"description" : bioTxtView.text ?? "" ,"country_image" : flagImage.image?.toString() ?? "" ,"country_name" : countryName ?? ""]
+            print(parms)
+            
+            AFWrapperClass.requestPOSTURL(url, params: parms, success: { (response) in
+                IJProgressView.shared.hideProgressView()
+                self.message = response["message"] as? String ?? ""
+                let status = response["status"] as? Int
+                if status == 1{
+                    if let allData = response["userDetails"] as? [String:Any] {
+                        print(allData)
+                        IJProgressView.shared.hideProgressView()
+                    }
+                    showAlertMessage(title: Constant.shared.appTitle, message: self.message, okButton: "Ok", controller: self) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }else{
+                    IJProgressView.shared.hideProgressView()
+                    alert(Constant.shared.appTitle, message: self.message, view: self)
+                }
+            }) { (error) in
+                IJProgressView.shared.hideProgressView()
+                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
+                print(error)
+            }
+
+        } else {
+            print("Internet connection FAILED")
+            alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
+        }
+    }
+    
     
     //MARK:-->    Upload Images
     

@@ -20,6 +20,7 @@ class AdminVC: UIViewController {
     }
     
     @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 class AdminTBViewCell: UITableViewCell {
@@ -41,6 +42,20 @@ extension AdminVC : UITableViewDelegate , UITableViewDataSource {
         cell.iconImg.image = UIImage(named: iconImgArray[indexPath.row])
         cell.titleLbl.text = titleArray[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0{
+            
+            let vc = PushMessageVC.instantiate(fromAppStoryboard: .Main)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }else if indexPath.row == 1{
+            
+            let vc = AddLinkVC.instantiate(fromAppStoryboard: .Main)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

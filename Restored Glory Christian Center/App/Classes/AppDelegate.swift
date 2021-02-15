@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
+        getLoggedUser()
         return true
     }
 
@@ -42,6 +43,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func Logout1(){
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Auth", bundle: nil)
+        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+        let nav = UINavigationController(rootViewController: homeViewController)
+        nav.setNavigationBarHidden(true, animated: true)
+        appdelegate.window?.rootViewController = nav
+    }
+    
+    func getLoggedUser(){
+        let credentials = UserDefaults.standard.value(forKey: "tokenFString") as? Int
+        if credentials == 1{
+            
+            let navigationController: UINavigationController? = (self.window?.rootViewController as? UINavigationController)
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let rootVc = storyBoard.instantiateViewController(withIdentifier: "SideMenuControllerID") as! SideMenuController
+            navigationController?.pushViewController(rootVc, animated: false)
+            
+        }else if credentials == 0{
+            
+            let navigationController: UINavigationController? = (self.window?.rootViewController as? UINavigationController)
+            let storyBoard = UIStoryboard.init(name: "Auth", bundle: nil)
+            let rootVc = storyBoard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+            navigationController?.pushViewController(rootVc, animated: false)
+        }
+    }
+    
 
 }
 

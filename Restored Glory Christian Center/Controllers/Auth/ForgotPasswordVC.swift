@@ -57,10 +57,9 @@ class ForgotPasswordVC: UIViewController, UITextFieldDelegate {
                 IJProgressView.shared.hideProgressView()
                 print(response)
                 self.message = response["message"] as? String ?? ""
-                let status = response["status"] as? String ?? ""
-                if status == "1"{
-                    //                        print(response)
-                    UserDefaults.standard.set(true, forKey: "tokenFString")
+                let status = response["status"] as? Int
+                if status == 1{
+//                    UserDefaults.standard.set(true, forKey: "tokenFString")
                     showAlertMessage(title: Constant.shared.appTitle, message: self.message, okButton: "OK", controller: self) {
                         self.navigationController?.popViewController(animated: true)
                     }

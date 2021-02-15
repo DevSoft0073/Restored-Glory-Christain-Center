@@ -18,6 +18,7 @@ class PushMessageVC: UIViewController {
     }
     
     @IBAction func backButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func sendButtonAction(_ sender: Any) {

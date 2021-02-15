@@ -34,7 +34,8 @@ class SignInVC: UIViewController , UITextFieldDelegate{
     }
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
-        let vc = ChangePasswordVC.instantiate(fromAppStoryboard: .Main)
+
+        let vc = ForgotPasswordVC.instantiate(fromAppStoryboard: .Auth)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func logInButton(_ sender: Any) {
@@ -70,14 +71,12 @@ class SignInVC: UIViewController , UITextFieldDelegate{
             AFWrapperClass.requestPOSTURL(url, params: params, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.messgae = response["message"] as? String ?? ""
-                let status = response["status"] as? String
-                if status == "1"{
+                let status = response["status"] as? Int
+                if status == 1{
                     let allData = response as? [String:Any] ?? [:]
-                    print(allData)
                     if let data = allData["data"] as? [String:Any]  {
                         UserDefaults.standard.set(1, forKey: "tokenFString")
-                        UserDefaults.standard.set(data["userID"], forKey: "id")
-                        print(data)
+                        UserDefaults.standard.set(data["user_id"], forKey: "id")
                     }
                     let story = UIStoryboard(name: "Main", bundle: nil)
                     let rootViewController:UIViewController = story.instantiateViewController(withIdentifier: "SideMenuControllerID")
