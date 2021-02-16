@@ -23,15 +23,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5D41A67F-31AF-4A9A-99E8-E7B779544084"
+            uuid = "D7DD4D10-8CF4-4216-9C68-8764173B79ED"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Restored Glory Christian Center/Controllers/Auth/SignInVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "signIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "193CE292-9DF8-41EB-95EF-A93C3542A0DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Restored Glory Christian Center/Controllers/Auth/SignInVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "signIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "610E61FA-008D-4649-91BE-CEDC4C0F2304"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Restored Glory Christian Center/Controllers/Auth/SignInVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "signIn()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F63E34C5-4540-4598-B4C9-B4D8A8AFB3AC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Restored Glory Christian Center/Controllers/SideMEnu/Profiles/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "getData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -39,15 +87,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DA564A10-1AD2-47CF-8435-1266ACA24F56"
+            uuid = "FE1C13EE-DFE4-41E6-9D6E-384D73F2DCB7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Restored Glory Christian Center/Controllers/SideMEnu/Profiles/ProfileVC.swift"
+            filePath = "Restored Glory Christian Center/Controllers/SideMEnu/Profiles/EditProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "getData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -55,96 +103,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9C9767E8-D959-45CB-8D01-84241D539291"
+            uuid = "9B99433F-F5E7-47E0-BF6A-9780FFCBBD92"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Restored Glory Christian Center/Controllers/SideMEnu/DetailsVC.swift"
+            filePath = "Restored Glory Christian Center/Controllers/SideMEnu/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "categoryDetails()"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "searchData(word:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "21F3D130-8E6E-40CB-951C-329F4C68CF13"
+            uuid = "9A2B3DDF-713B-41D0-828B-74113D79F0C0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Restored Glory Christian Center/Controllers/SideMEnu/DetailsVC.swift"
+            filePath = "Restored Glory Christian Center/Controllers/SideMEnu/HomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "categoryDetails()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "21F3D130-8E6E-40CB-951C-329F4C68CF13 - 83f87531a59cf4c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Restored_Glory_Christian_Center.DetailsVC.categoryDetails() -&gt; ()"
-                  moduleName = "Restored Glory Christian Center"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/Happy%20Guleria/Restored%20Glory%20Christian%20Center/Restored%20Glory%20Christian%20Center/Controllers/SideMEnu/DetailsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "1732">
-               </Location>
-               <Location
-                  uuid = "21F3D130-8E6E-40CB-951C-329F4C68CF13 - 98b4b379b9b7f58d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.NSDictionary) -&gt; () in Restored_Glory_Christian_Center.DetailsVC.categoryDetails() -&gt; ()"
-                  moduleName = "Restored Glory Christian Center"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/Happy%20Guleria/Restored%20Glory%20Christian%20Center/Restored%20Glory%20Christian%20Center/Controllers/SideMEnu/DetailsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "99">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2787124F-76C8-4A92-9431-DBD4E0433C63"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Restored Glory Christian Center/Controllers/SideMEnu/AddLinkVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "categoryListing()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B728E675-5314-41F0-967B-EC9484FD97A8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Restored Glory Christian Center/Controllers/SideMEnu/DetailsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "categoryDetails()"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "searchData(word:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

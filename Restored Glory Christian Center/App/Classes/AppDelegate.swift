@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
-        getLoggedUser()
+//        getLoggedUser()
         return true
     }
 
@@ -67,6 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyBoard = UIStoryboard.init(name: "Auth", bundle: nil)
             let rootVc = storyBoard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
             navigationController?.pushViewController(rootVc, animated: false)
+            
         }
     }
     

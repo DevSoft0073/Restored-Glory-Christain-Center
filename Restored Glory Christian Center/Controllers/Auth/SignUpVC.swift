@@ -8,7 +8,7 @@
 import UIKit
 
 class SignUpVC: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var checkUncheckButton: UIButton!
     @IBOutlet weak var lastNameView: UIView!
     @IBOutlet weak var lastName: UITextField!
@@ -22,7 +22,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     var messgae = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -61,37 +61,33 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         
         if (nameTxtFld.text?.isEmpty)!{
-                  
-                  ValidateData(strMessage: " Please enter name")
-              }
-              else if (emailTxtFld.text?.isEmpty)!{
-                  
-                  ValidateData(strMessage: " Please enter email address")
-              }
-              else if isValidEmail(testStr: (emailTxtFld.text)!) == false{
-                  
-                  ValidateData(strMessage: "Enter valid email")
-              }
-              else if (passwordTxtFld.text?.isEmpty)!{
-                  
-                  ValidateData(strMessage: " Please enter password")
-              }else if (passwordTxtFld!.text!.count) < 4 || (passwordTxtFld!.text!.count) > 15{
-                  
-                  ValidateData(strMessage: "Please enter minimum 4 digit password")
-                  UserDefaults.standard.string(forKey: "password")
-                  
-              }
-            else if unchecked == false{
-
-                  ValidateData(strMessage: "Please agree terms and conditions")
-              }
-              else{
-                  signUp()
-              }
-
-        
-//        let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-//        self.navigationController?.pushViewController(vc, animated: true)
+            
+            ValidateData(strMessage: " Please enter name")
+        }
+        else if (emailTxtFld.text?.isEmpty)!{
+            
+            ValidateData(strMessage: " Please enter email address")
+        }
+        else if isValidEmail(testStr: (emailTxtFld.text)!) == false{
+            
+            ValidateData(strMessage: "Enter valid email")
+        }
+        else if (passwordTxtFld.text?.isEmpty)!{
+            
+            ValidateData(strMessage: " Please enter password")
+        }else if (passwordTxtFld!.text!.count) < 4 || (passwordTxtFld!.text!.count) > 15{
+            
+            ValidateData(strMessage: "Please enter minimum 4 digit password")
+            UserDefaults.standard.string(forKey: "password")
+            
+        }
+        else if unchecked == false{
+            
+            ValidateData(strMessage: "Please agree terms and conditions")
+        }
+        else{
+            signUp()
+        }
     }
     
     @IBAction func checkUncheckButton(_ sender: Any) {
@@ -115,7 +111,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func signUp()  {
-                
+        
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
@@ -126,7 +122,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                 self.messgae = response["message"] as? String ?? ""
                 let status = response["status"] as? String
                 if status == "1"{
-//                        UserDefaults.standard.set(true, forKey: "tokenFString")
                     UserDefaults.standard.set(1, forKey: "tokenFString")
                     let allData = response as? [String:Any] ?? [:]
                     print(allData)
@@ -134,9 +129,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                         UserDefaults.standard.set(data["user_id"], forKey: "id")
                         print(data)
                     }
-                    
-                    let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.navigationController?.popViewController(animated: true)
+                    //                    let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
+                    //                    self.navigationController?.pushViewController(vc, animated: true)
                 }else{
                     IJProgressView.shared.hideProgressView()
                     alert(Constant.shared.appTitle, message: self.messgae, view: self)
@@ -154,5 +149,5 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     
-
+    
 }

@@ -77,6 +77,9 @@ class SignInVC: UIViewController , UITextFieldDelegate{
                     if let data = allData["data"] as? [String:Any]  {
                         UserDefaults.standard.set(1, forKey: "tokenFString")
                         UserDefaults.standard.set(data["user_id"], forKey: "id")
+                        UserDefaults.standard.setValue(data["role"], forKey: "checkRole")
+//                        UserDefaults.standard.set(data["role"], forKey: "checkRole")
+//                        print(data)
                     }
                     let story = UIStoryboard(name: "Main", bundle: nil)
                     let rootViewController:UIViewController = story.instantiateViewController(withIdentifier: "SideMenuControllerID")

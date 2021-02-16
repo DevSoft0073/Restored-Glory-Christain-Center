@@ -32,13 +32,13 @@ class DetailsVC: UIViewController {
     
     func categoryDetails() {
 
-        let id = UserDefaults.standard.value(forKey: "id") ?? ""
+//        let id = UserDefaults.standard.value(forKey: "id") ?? ""
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
             let signInUrl = Constant.shared.baseUrl + Constant.shared.DetailsByCat
             print(signInUrl)
-            let parms : [String:Any] = ["c_id" : "1" , "search" : "Announcements"]
+            let parms : [String:Any] = ["c_id" : catId , "search" : ""]
             print(parms)
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
@@ -46,9 +46,8 @@ class DetailsVC: UIViewController {
                 self.message = response["message"] as? String ?? ""
                 let status = response["status"] as? Int
                 if status == 1{
-                    if let allData = response["category_details"] as? [[String:Any]]{
+                    if let allData = response["data"] as? [[String:Any]]{
                         for obj in allData{
-//                            self.detailsDataArray.append(DetailsData(image: obj["image"], details: obj["description"], name: "title", date: "21Dec"))
                             self.detailsDataArray.append(DetailsData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: "21Dec", link: obj["link"] as? String ?? ""))
                         }
                     }
@@ -96,12 +95,22 @@ extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
         cell.detailsLbl.text = detailsDataArray[indexPath.row].details
         cell.dateLbl.text = detailsDataArray[indexPath.row].date
         cell.showImage.sd_setImage(with: URL(string:detailsDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+        
+        cell.dataView.layer.cornerRadius = 10
+        cell.dataView.layer.masksToBounds = false
+        cell.dataView?.layer.shadowColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+        cell.dataView?.layer.shadowOffset =  CGSize.zero
+        cell.dataView?.layer.shadowOpacity = 0.5
+        cell.dataView?.layer.shadowRadius = 5
+        
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let url = NSURL(string: "http://www.google.com"){
+            UIApplication.shared.canOpenURL(url as URL)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -109,11 +118,11 @@ extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func applyShadowOnView(_ view: UIView) {
-        view.layer.cornerRadius = 12
+        view.layer.cornerRadius = 10
         view.layer.shadowColor = #colorLiteral(red: 0.9044200033, green: 0.9075989889, blue: 0.9171359454, alpha: 1)
-        view.layer.shadowOpacity = 1
+        view.layer.shadowOpacity = 0.3
         view.layer.shadowOffset = .zero
-        view.layer.shadowRadius = 5
+        view.layer.shadowRadius = 3
     }
     
 }
