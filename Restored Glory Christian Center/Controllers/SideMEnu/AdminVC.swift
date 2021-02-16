@@ -53,6 +53,7 @@ extension AdminVC : UITableViewDelegate , UITableViewDataSource {
         }else if indexPath.row == 1{
             
             let vc = AddLinkVC.instantiate(fromAppStoryboard: .Main)
+            UserDefaults.standard.set(true, forKey: "comesFromAdminLinks")
             self.navigationController?.pushViewController(vc, animated: true)
             
         }

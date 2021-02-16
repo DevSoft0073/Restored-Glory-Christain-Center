@@ -67,16 +67,16 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
                         self.nameLbl.text = "\(allData["first_name"] as? String ?? "")" + "\(allData["last_name"] as? String ?? "")"
                         self.emailTxtFld.text = allData["email"] as? String ?? ""
                         self.addressTxtFld.text = allData["address"] as? String ?? ""
-                        self.bioTxtView.text = allData["biography"] as? String ?? ""
-                        self.nameLbl.text = allData["name"] as? String ?? ""
-                        self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "img"))
-                        self.flagImage.sd_setImage(with: URL(string:allData["country_image"] as? String ?? ""), placeholderImage: UIImage(named: "img"))
+                        self.bioTxtView.text = allData["description"] as? String ?? ""
+                        self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "placehlder"))
+                        self.flagImage.sd_setImage(with: URL(string:allData["flag_photo"] as? String ?? ""), placeholderImage: UIImage(named: "flag"))
                         let url = URL(string:allData["photo"] as? String ?? "")
                         if url != nil{
                             if let data = try? Data(contentsOf: url!)
                             {
                                 if let image: UIImage = (UIImage(data: data)){
                                     self.profileImage.image = image
+                                    self.base64String = self.profileImage.image?.toString() ?? ""
                                     self.profileImage.contentMode = .scaleToFill
                                     IJProgressView.shared.hideProgressView()
                                 }
@@ -85,7 +85,7 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
                         else{
                             self.profileImage.image = UIImage(named: "placehlder")
                         }
-                        let urls = URL(string:allData["country_image"] as? String ?? "")
+                        let urls = URL(string:allData["flag_photo"] as? String ?? "")
                         if urls != nil{
                             if let data = try? Data(contentsOf: urls!)
                             {
@@ -152,9 +152,7 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
             print(url)
 //            flagImage.image?.toString() // it will convert UIImage to string
             let countryName = UserDefaults.standard.value(forKey: "name")
-            let parms : [String:Any] = ["user_id": id,"email" : emailTxtFld.text ?? "","address" : addressTxtFld.text ?? "" ,"image" : self.base64String,"description" : bioTxtView.text ?? "" ,"country_image" : flagImage.image?.toString() ?? "" ,"country_name" : countryName ?? ""]
-            print(parms)
-            
+            let parms : [String:Any] = ["user_id": id,"email" : emailTxtFld.text ?? "","address" : addressTxtFld.text ?? "" ,"photo" : self.base64String,"description" : bioTxtView.text ?? "" ,"flag_photo" : flagImage.image?.toString() ?? "" ,"countryName" : countryName ?? ""]
             AFWrapperClass.requestPOSTURL(url, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.message = response["message"] as? String ?? ""

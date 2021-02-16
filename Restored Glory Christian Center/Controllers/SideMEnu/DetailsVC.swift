@@ -11,6 +11,8 @@ import SDWebImage
 
 class DetailsVC: UIViewController {
     
+    @IBOutlet weak var searchDataView: UIView!
+    @IBOutlet weak var searchTxtFld: UITextField!
     var detailsDataArray = [DetailsData]()
     var catId = String()
     var message = String()
@@ -20,6 +22,7 @@ class DetailsVC: UIViewController {
         super.viewDidLoad()
         categoryDetails()
         detailsTbView.separatorStyle = .none
+        searchDataView.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -30,9 +33,12 @@ class DetailsVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    @IBAction func searchTxtFldAction(_ sender: UITextField) {
+        
+    }
+    
     func categoryDetails() {
-
-//        let id = UserDefaults.standard.value(forKey: "id") ?? ""
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()

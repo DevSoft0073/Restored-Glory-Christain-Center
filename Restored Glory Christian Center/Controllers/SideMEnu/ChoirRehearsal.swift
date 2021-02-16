@@ -10,10 +10,16 @@ import LGSideMenuController
 
 class ChoirRehearsal: UIViewController {
     
+    @IBOutlet weak var searchDataView: UIView!
+    @IBOutlet weak var searchTxtFld: UITextField!
     var ChoirRehearsalDataArray = [ChoirRehearsalData]()
+    var searchDataArray = [ChoirRehearsalData]()
+    var isSearch = false
+
     @IBOutlet weak var dataTbView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchDataView.isHidden = true
 
         ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
         ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
@@ -32,8 +38,44 @@ class ChoirRehearsal: UIViewController {
     }
     
     @IBAction func searchButton(_ sender: Any) {
+        isSearch = true
+        if isSearch == false {
+            searchDataView.isHidden = true
+            
+        }else{
+            searchDataView.isHidden = false
+            isSearch = false
+        }
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        self.searchDataView.isHidden = true
+        isSearch = false
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.searchDataView.isHidden = true
+        isSearch = false
+    }
+    
+    
+    
+    @IBAction func searchTxtFldAction(_ sender: UITextField) {
+        
+        if searchTxtFld.text != ""{
+            self.searchDataArray = self.ChoirRehearsalDataArray.filter{
+                ($0.title).range(of: self.searchTxtFld.text!, options: [.diacriticInsensitive, .caseInsensitive]) != nil
+            }
+            dataTbView.reloadData()
+        }else{
+            searchDataArray = ChoirRehearsalDataArray
+            dataTbView.reloadData()
+        }
+        dataTbView.reloadData()
+    }
 }
 
 

@@ -54,13 +54,12 @@ class ProfileVC: UIViewController {
                 let status = response["status"] as? Int
                 if status == 1{
                     if let allData = response["data"] as? [String:Any]{
-                        self.nameLbl.text = "\(allData["first_name"] as? String ?? "")" + "\(allData["last_name"] as? String ?? "")"
+                        self.nameLbl.text = "\(allData["first_name"] as? String ?? "") " + "\(allData["last_name"] as? String ?? "")"
                         self.emailTxtFld.text = allData["email"] as? String ?? ""
-                        self.bioTxtView.text = allData["biography"] as? String ?? ""
-                        self.nameLbl.text = allData["name"] as? String ?? ""
-                        self.addressTxtFld.text = allData["email"] as? String ?? ""
-                        self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "img"))
-                        self.flagImage.sd_setImage(with: URL(string:allData["country_image"] as? String ?? ""), placeholderImage: UIImage(named: "img"))
+                        self.bioTxtView.text = allData["description"] as? String ?? ""
+                        self.addressTxtFld.text = allData["address"] as? String ?? ""
+                        self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "placehlder"))
+                        self.flagImage.sd_setImage(with: URL(string:allData["flag_photo"] as? String ?? ""), placeholderImage: UIImage(named: "flag"))
 
                         let url = URL(string:allData["photo"] as? String ?? "")
                         if url != nil{
@@ -76,7 +75,7 @@ class ProfileVC: UIViewController {
                         else{
                             self.profileImage.image = UIImage(named: "placehlder")
                         }
-                        let urls = URL(string:allData["country_image"] as? String ?? "")
+                        let urls = URL(string:allData["flag_photo"] as? String ?? "")
                         if urls != nil{
                             if let data = try? Data(contentsOf: urls!)
                             {

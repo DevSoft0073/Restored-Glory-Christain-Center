@@ -14,7 +14,7 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var sideMenuTbView: UITableView!
-    var titleArray = ["Home","Announcements","Choir Rehearsal","Women's Ministry","Men's Ministry"]
+    var titleArray = ["Home","Announcements","Choir Rehearsal","Women's Ministry","Men's Ministry","Logout"]
     var message = String()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class SideMenuVC: UIViewController {
                     if let allData = response["data"] as? [String:Any]{
                         self.nameLbl.text = "\(allData["first_name"] as? String ?? "")" + "\(allData["last_name"] as? String ?? "")"
                         self.emailLbl.text = allData["email"] as? String
-                        self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "img"))
+                        self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "placehlder"))
                         let url = URL(string:allData["photo"] as? String ?? "")
                         if url != nil{
                             if let data = try? Data(contentsOf: url!)
@@ -91,6 +91,12 @@ class SideMenuVC: UIViewController {
             print("Internet connection FAILED")
             alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
         }
+    }
+    
+    func logout()  {
+        UserDefaults.standard.removeObject(forKey: "tokenFString")
+        let appDel = UIApplication.shared.delegate as! AppDelegate
+        appDel.Logout1()
     }
     
 }
@@ -147,6 +153,32 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
             
             let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+            
+        }else if(indexPath.row == 5) {
+            
+            let dialogMessage = UIAlertController(title: Constant.shared.appTitle, message: "Are you sure you want to Logout?", preferredStyle: .alert)
+            
+            // Create OK button with action handler
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                print("Ok button click...")
+                UserDefaults.standard.set(false, forKey: "tokenFString")
+                                            self.logout()
+                
+                
+            })
+            
+            // Create Cancel button with action handlder
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+                print("Cancel button click...")
+            }
+            
+            //Add OK and Cancel button to dialog message
+            dialogMessage.addAction(ok)
+            dialogMessage.addAction(cancel)
+            
+            // Present dialog message to user
+            self.present(dialogMessage, animated: true, completion: nil)
+            
         }
     }
 }

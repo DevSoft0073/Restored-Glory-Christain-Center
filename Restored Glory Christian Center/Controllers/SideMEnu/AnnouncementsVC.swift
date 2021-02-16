@@ -12,6 +12,9 @@ class AnnouncementsVC: UIViewController {
 
     @IBOutlet weak var adminTBView: UITableView!
     var adminTBDataArray = [AdminTBData]()
+    var isSearch = false
+
+//    var searchDataArray = [AdminTBData]()
     override func viewDidLoad() {
         super.viewDidLoad()
         

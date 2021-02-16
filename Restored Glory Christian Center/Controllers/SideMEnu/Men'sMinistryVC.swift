@@ -10,9 +10,15 @@ import LGSideMenuController
 
 class Men_sMinistryVC: UIViewController {
 
+    @IBOutlet weak var searchDataView: UIView!
+    @IBOutlet weak var searchTxtFld: UITextField!
     @IBOutlet weak var mensTbView: UITableView!
     var mensMinistryDataArray = [MensMinistryData]()
+    var searchDataArray = [MensMinistryData]()
+    var isSearch = false
+
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         mensTbView.separatorStyle = .none
         mensMinistryDataArray.append(MensMinistryData(image: "choir-rehersal", title: "Live Sirmon"))
@@ -21,6 +27,7 @@ class Men_sMinistryVC: UIViewController {
         mensMinistryDataArray.append(MensMinistryData(image: "choir-rehersal", title: "Live Sirmon"))
         mensMinistryDataArray.append(MensMinistryData(image: "choir-rehersal", title: "Live Sirmon"))
         mensMinistryDataArray.append(MensMinistryData(image: "choir-rehersal", title: "Live Sirmon"))
+        searchDataView.isHidden = true
 
 
     }
@@ -30,7 +37,44 @@ class Men_sMinistryVC: UIViewController {
     }
     
     @IBAction func searchButton(_ sender: Any) {
+        isSearch = true
+        if isSearch == false {
+            searchDataView.isHidden = true
+            
+        }else{
+            searchDataView.isHidden = false
+            isSearch = false
+        }
     }
+    
+    @IBAction func searchTxtFldAction(_ sender: UITextField) {
+        
+        if searchTxtFld.text != ""{
+            self.searchDataArray = self.mensMinistryDataArray.filter{
+                ($0.title).range(of: self.searchTxtFld.text!, options: [.diacriticInsensitive, .caseInsensitive]) != nil
+            }
+            mensTbView.reloadData()
+        }else{
+            searchDataArray = mensMinistryDataArray
+            mensTbView.reloadData()
+        }
+        mensTbView.reloadData()
+    }
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        self.searchDataView.isHidden = true
+        isSearch = false
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.searchDataView.isHidden = true
+        isSearch = false
+    }
+    
     
 }
 
