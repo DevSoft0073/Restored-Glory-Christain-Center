@@ -2637,12 +2637,19 @@
                                                             <color key="textColor" red="0.54897773270000005" green="0.54904413220000003" blue="0.5489472151" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPf-hK-RFY">
+                                                            <rect key="frame" x="0.0" y="0.0" width="356" height="198"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="Ox8-mI-uZB" secondAttribute="bottom" constant="5" id="4wl-IM-PAv"/>
                                                         <constraint firstItem="iV8-uq-oRI" firstAttribute="leading" secondItem="jUe-vG-Nep" secondAttribute="leading" constant="10" id="9Al-t4-UTB"/>
                                                         <constraint firstItem="Ox8-mI-uZB" firstAttribute="top" secondItem="ltn-JG-0hS" secondAttribute="bottom" constant="5" id="M6G-C3-lX3"/>
+                                                        <constraint firstItem="kPf-hK-RFY" firstAttribute="centerY" secondItem="jUe-vG-Nep" secondAttribute="centerY" id="N53-qO-O8L"/>
+                                                        <constraint firstItem="kPf-hK-RFY" firstAttribute="width" secondItem="jUe-vG-Nep" secondAttribute="width" id="TxD-Bc-aix"/>
+                                                        <constraint firstItem="kPf-hK-RFY" firstAttribute="centerX" secondItem="jUe-vG-Nep" secondAttribute="centerX" id="U32-64-9Ll"/>
+                                                        <constraint firstItem="kPf-hK-RFY" firstAttribute="height" secondItem="jUe-vG-Nep" secondAttribute="height" id="VTl-Kp-2wo"/>
                                                         <constraint firstAttribute="trailing" secondItem="JLI-5X-aJ5" secondAttribute="trailing" constant="10" id="aMG-O7-1rC"/>
                                                         <constraint firstItem="ltn-JG-0hS" firstAttribute="top" secondItem="jUe-vG-Nep" secondAttribute="top" id="c00-E7-zl8"/>
                                                         <constraint firstItem="ltn-JG-0hS" firstAttribute="height" secondItem="jUe-vG-Nep" secondAttribute="height" multiplier="0.75" id="dHA-up-9oh"/>
@@ -2679,6 +2686,7 @@
                                             <outlet property="dateLbl" destination="JLI-5X-aJ5" id="pxD-Hh-f7C"/>
                                             <outlet property="detailsLbl" destination="Ox8-mI-uZB" id="V85-bp-Cy1"/>
                                             <outlet property="nameLbl" destination="iV8-uq-oRI" id="87q-Gz-zZg"/>
+                                            <outlet property="openLinkButton" destination="kPf-hK-RFY" id="ZzN-Vn-u19"/>
                                             <outlet property="showImage" destination="ltn-JG-0hS" id="fmQ-gD-SoZ"/>
                                         </connections>
                                     </tableViewCell>

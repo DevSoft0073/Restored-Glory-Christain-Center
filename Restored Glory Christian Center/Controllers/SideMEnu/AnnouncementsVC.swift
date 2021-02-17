@@ -26,7 +26,7 @@ class AnnouncementsVC: UIViewController {
         adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
         adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
         adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
-
+        adminTBView.separatorStyle = .none
     }
     
     @IBAction func backButton(_ sender: Any) {

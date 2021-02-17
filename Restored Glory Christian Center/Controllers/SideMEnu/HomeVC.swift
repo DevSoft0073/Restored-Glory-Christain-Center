@@ -71,7 +71,6 @@ class HomeVC: UIViewController , UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.searchView.isHidden = true
-//        categoryListing()
         isSearch = false
     }
     
@@ -80,6 +79,7 @@ class HomeVC: UIViewController , UITextFieldDelegate{
         isSearch = true
         if isSearch == false {
             searchView.isHidden = true
+            isSearch = false
             
         }else{
             searchView.isHidden = false
@@ -90,7 +90,6 @@ class HomeVC: UIViewController , UITextFieldDelegate{
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        categoryDetails()
         return true
     }
     
@@ -121,48 +120,7 @@ class HomeVC: UIViewController , UITextFieldDelegate{
         }
         showAllDataTbView.reloadData()
     }
-    
-   
-    
-//    func categoryDetails() {
-//        if Reachability.isConnectedToNetwork() == true {
-//            print("Internet connection OK")
-//            IJProgressView.shared.showProgressView()
-//            let id = UserDefaults.standard.value(forKey: "id") ?? ""
-//            let signInUrl = Constant.shared.baseUrl + Constant.shared.CategoryType
-//            print(signInUrl)
-//            let parms : [String:Any] = ["user_id" : id , "search" : searchTxtFld.text ?? ""]
-//            print(parms)
-//            AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
-//                IJProgressView.shared.hideProgressView()
-//                self.searchDataArray.removeAll()
-//                self.message = response["message"] as? String ?? ""
-//                let status = response["status"] as? Int
-//                if status == 1{
-//                    if let allData = response["data"] as? [[String:Any]]{
-//                        for obj in allData{
-//                            self.searchDataArray.append(SearchData(title: obj["image"] as? String ?? "", image: obj["image"] as? String ?? "", catId: obj["image"] as? String ?? ""))
-//                        }
-//                    }
-//                    self.showAllDataTbView.reloadData()
-//                }else{
-//                    IJProgressView.shared.hideProgressView()
-//                    alert(Constant.shared.appTitle, message: self.message, view: self)
-//                }
-//            }) { (error) in
-//                IJProgressView.shared.hideProgressView()
-//                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
-//                print(error)
-//            }
-//
-//        } else {
-//            print("Internet connection FAILED")
-//            alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
-//        }
-//
-//    }
 
-    
     
     @IBAction func openMenu(_ sender: Any) {
         sideMenuController?.showLeftViewAnimated()

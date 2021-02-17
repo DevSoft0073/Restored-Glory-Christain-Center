@@ -14,9 +14,11 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var searchDataView: UIView!
     @IBOutlet weak var searchTxtFld: UITextField!
     var detailsDataArray = [DetailsData]()
+    var searchDataArray = [DetailsData]()
     var catId = String()
     var message = String()
-    
+    var isSearch = false
+
     @IBOutlet weak var detailsTbView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,29 @@ class DetailsVC: UIViewController {
     }
     
     @IBAction func searchButton(_ sender: Any) {
+        isSearch = true
+        if isSearch == false {
+            searchDataView.isHidden = true
+            
+        }else{
+            searchDataView.isHidden = false
+            isSearch = false
+        }
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        self.searchDataView.isHidden = true
+        isSearch = false
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.searchDataView.isHidden = true
+        isSearch = false
+    }
+    
     
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -35,6 +59,17 @@ class DetailsVC: UIViewController {
     
     
     @IBAction func searchTxtFldAction(_ sender: UITextField) {
+        
+        if searchTxtFld.text != ""{
+            self.searchDataArray = self.detailsDataArray.filter{
+                ($0.name).range(of: self.searchTxtFld.text!, options: [.diacriticInsensitive, .caseInsensitive]) != nil
+            }
+            detailsTbView.reloadData()
+        }else{
+            searchDataArray = detailsDataArray
+            detailsTbView.reloadData()
+        }
+        detailsTbView.reloadData()
         
     }
     
@@ -57,6 +92,7 @@ class DetailsVC: UIViewController {
                             self.detailsDataArray.append(DetailsData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: "21Dec", link: obj["link"] as? String ?? ""))
                         }
                     }
+                    self.searchDataArray = self.detailsDataArray
                     self.detailsTbView.reloadData()
                 }else{
                     IJProgressView.shared.hideProgressView()
@@ -80,6 +116,7 @@ class DetailsVC: UIViewController {
 
 class DetailsTbViewCell: UITableViewCell {
     
+    @IBOutlet weak var openLinkButton: UIButton!
     @IBOutlet weak var dataView: UIView!
     @IBOutlet weak var detailsLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
@@ -92,15 +129,18 @@ class DetailsTbViewCell: UITableViewCell {
 
 extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return detailsDataArray.count
+        return searchDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsTbViewCell", for: indexPath) as! DetailsTbViewCell
-        cell.nameLbl.text = detailsDataArray[indexPath.row].name
-        cell.detailsLbl.text = detailsDataArray[indexPath.row].details
-        cell.dateLbl.text = detailsDataArray[indexPath.row].date
-        cell.showImage.sd_setImage(with: URL(string:detailsDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+        cell.nameLbl.text = searchDataArray[indexPath.row].name
+        cell.detailsLbl.text = searchDataArray[indexPath.row].details
+        cell.dateLbl.text = searchDataArray[indexPath.row].date
+        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+                
+        cell.openLinkButton.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
+        cell.openLinkButton.tag = indexPath.row
         
         cell.dataView.layer.cornerRadius = 10
         cell.dataView.layer.masksToBounds = false
@@ -113,11 +153,15 @@ extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = NSURL(string: "http://www.google.com"){
-            UIApplication.shared.canOpenURL(url as URL)
-        }
+    @objc func clicked (_ btn:UIButton) {
+        UIApplication.shared.open(URL(string: detailsDataArray[0].link)!, options: [:], completionHandler: nil)
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if let url = NSURL(string: "http://www.google.com"){
+//            UIApplication.shared.canOpenURL(url as URL)
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 230
