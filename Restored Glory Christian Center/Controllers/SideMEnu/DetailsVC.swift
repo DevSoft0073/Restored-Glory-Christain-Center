@@ -157,12 +157,6 @@ extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
         UIApplication.shared.open(URL(string: detailsDataArray[0].link)!, options: [:], completionHandler: nil)
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let url = NSURL(string: "http://www.google.com"){
-//            UIApplication.shared.canOpenURL(url as URL)
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 230
     }

@@ -135,7 +135,7 @@ class HomeVC: UIViewController , UITextFieldDelegate{
             IJProgressView.shared.showProgressView()
             let signInUrl = Constant.shared.baseUrl + Constant.shared.CategoryType
             print(signInUrl)
-            let parms : [String:Any] = ["userID" : id]
+            let parms : [String:Any] = ["userID" : id , "search" : ""]
             print(parms)
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
@@ -166,9 +166,6 @@ class HomeVC: UIViewController , UITextFieldDelegate{
         }
         
     }
-    
-    
-    
 }
 
 class ShowAllDataTbViewCell: UITableViewCell {

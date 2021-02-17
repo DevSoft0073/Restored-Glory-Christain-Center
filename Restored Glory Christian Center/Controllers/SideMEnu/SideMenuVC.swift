@@ -10,6 +10,8 @@ import LGSideMenuController
 
 class SideMenuVC: UIViewController {
     
+    @IBOutlet weak var adminButtonTopLbl: UILabel!
+    @IBOutlet weak var adminButton: UIButton!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
@@ -27,13 +29,33 @@ class SideMenuVC: UIViewController {
         getData()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+//        if UserDefaults.standard.value(forKey: "checkRole") as? String ?? "" == "0" {
+//            
+//            adminButton.isHidden = true
+//            adminButtonTopLbl.isHidden = true
+//            
+//        }else{
+//            
+//            adminButton.isHidden = false
+//            adminButtonTopLbl.isHidden = false
+//
+//            
+//        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = profileImage.frame.height/2
     }
     
-    @IBAction func adminButton(_ sender: Any) {
+    @IBAction func adminButton(_ sender: UIButton) {
+        
+        sender.isUserInteractionEnabled = false
+        
         let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -182,3 +204,5 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
         }
     }
 }
+
+

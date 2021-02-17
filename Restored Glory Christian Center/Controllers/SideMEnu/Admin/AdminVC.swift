@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AdminVC: UIViewController {
+class AdminVC: UIViewController, CAAnimationDelegate {
 
     @IBOutlet weak var adminTBView: UITableView!
     var iconImgArray = ["send-push","links"]
@@ -20,7 +20,26 @@ class AdminVC: UIViewController {
     }
     
     @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let controller = storyBoard.instantiateViewController(withIdentifier: "SideMenuControllerID") as UIViewController
+        let transition = CATransition.init()
+        transition.duration = 0.45
+        transition.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.default)
+        transition.type = CATransitionType.push //Transition you want like Push, Reveal
+        transition.subtype = CATransitionSubtype.fromLeft // Direction like Left to Right, Right to Left
+        
+        transition.delegate = self
+        view.window!.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+        
+//        let story = UIStoryboard(name: "Main", bundle: nil)
+//        let rootViewController:UIViewController = story.instantiateViewController(withIdentifier: "SideMenuControllerID")
+//        self.navigationController?.pushViewController(rootViewController, animated: true)
+
+//        self.navigationController?.popViewController(animated: true)
     }
 }
 class AdminTBViewCell: UITableViewCell {
@@ -52,7 +71,7 @@ extension AdminVC : UITableViewDelegate , UITableViewDataSource {
             
         }else if indexPath.row == 1{
             
-            let vc = AddLinkVC.instantiate(fromAppStoryboard: .Main)
+            let vc = ShowLinksVC.instantiate(fromAppStoryboard: .Main)
             UserDefaults.standard.set(true, forKey: "comesFromAdminLinks")
             self.navigationController?.pushViewController(vc, animated: true)
             
