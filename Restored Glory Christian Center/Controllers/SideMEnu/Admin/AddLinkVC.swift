@@ -109,7 +109,7 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
         
         selectedValue = listingArray[row].catId as String
         selectTypeTxtFld.text = listingArray[row].title
-        selectedValue = listingArray[row].title
+        selectedValue = listingArray[row].catId
         print(selectedValue)
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -176,7 +176,7 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
             let url = Constant.shared.baseUrl + Constant.shared.Addlink
             print(url)
             let countryName = UserDefaults.standard.value(forKey: "name")
-            let parms : [String:Any] = ["user_id" : id,"title" : titleTxtFld.text ?? "","selectType" : selectTypeTxtFld.text ?? "" ,"link" : addlinkTxtFld.text ?? "", "description" : descriptionTxtView.text ?? "","image" : base64]
+            let parms : [String:Any] = ["user_id" : id,"title" : titleTxtFld.text ?? "","selectType" : selectedValue ?? "" ,"link" : addlinkTxtFld.text ?? "", "description" : descriptionTxtView.text ?? "","image" : base64]
             print(parms)
             AFWrapperClass.requestPOSTURL(url, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()

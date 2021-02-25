@@ -46,7 +46,6 @@ class ShowLinksVC: UIViewController {
     @IBAction func openMenu(_ sender: Any) {
         
         sideMenuController?.showLeftViewAnimated()
-
         
     }
     

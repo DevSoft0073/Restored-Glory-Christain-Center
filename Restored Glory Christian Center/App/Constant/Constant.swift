@@ -23,6 +23,8 @@ class Constant: NSObject {
     let EditProfile = "EditUserProfile.php"
     let ChangePassword = "ChangePassword.php"
     let DetailsByCat = "GetAllDetailsBycategoryid.php"
+    let GetAllLinks = "GetAllLinks.php"
+    let SendPush = "AddMassPush.php"
     
 }
 

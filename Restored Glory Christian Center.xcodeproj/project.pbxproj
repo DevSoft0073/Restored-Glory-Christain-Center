@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184B11AD25E371B1003007A2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B11A825E371B0003007A2 /* ImagePicker.swift */; };
+		184B11AE25E371B1003007A2 /* AppFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B11A925E371B0003007A2 /* AppFunctions.swift */; };
+		184B11AF25E371B1003007A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B11AA25E371B0003007A2 /* SceneDelegate.swift */; };
+		184B11B025E371B1003007A2 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B11AB25E371B0003007A2 /* AppExtensions.swift */; };
+		184B11B125E371B1003007A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B11AC25E371B1003007A2 /* AppDelegate.swift */; };
 		184E4CA625D108E100330A10 /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 184E4C9425D108DD00330A10 /* RobotoCondensed-Italic.ttf */; };
 		184E4CA725D108E100330A10 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 184E4C9525D108DD00330A10 /* Roboto-MediumItalic.ttf */; };
 		184E4CA825D108E100330A10 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 184E4C9625D108DE00330A10 /* Roboto-Regular.ttf */; };
@@ -29,16 +34,11 @@
 		184E4CC125D154F900330A10 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CC025D154F900330A10 /* EditProfileVC.swift */; };
 		184E4CC625D1553200330A10 /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CC525D1553200330A10 /* AdminVC.swift */; };
 		184E4CCB25D1555900330A10 /* PushMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CCA25D1555900330A10 /* PushMessageVC.swift */; };
-		188C9A6E25CE5BD2009AC9C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9A6D25CE5BD2009AC9C8 /* AppDelegate.swift */; };
-		188C9A7025CE5BD2009AC9C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9A6F25CE5BD2009AC9C8 /* SceneDelegate.swift */; };
 		188C9A7525CE5BD2009AC9C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188C9A7325CE5BD2009AC9C8 /* Main.storyboard */; };
 		188C9A7725CE5BD3009AC9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188C9A7625CE5BD3009AC9C8 /* Assets.xcassets */; };
 		188C9A7A25CE5BD3009AC9C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188C9A7825CE5BD3009AC9C8 /* LaunchScreen.storyboard */; };
 		188C9A8525CE5BD3009AC9C8 /* Restored_Glory_Christian_CenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9A8425CE5BD3009AC9C8 /* Restored_Glory_Christian_CenterTests.swift */; };
 		188C9A9025CE5BD3009AC9C8 /* Restored_Glory_Christian_CenterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9A8F25CE5BD3009AC9C8 /* Restored_Glory_Christian_CenterUITests.swift */; };
-		188C9AB225CE5E0F009AC9C8 /* AppFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9AAE25CE5E0F009AC9C8 /* AppFunctions.swift */; };
-		188C9AB425CE5E0F009AC9C8 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9AB025CE5E0F009AC9C8 /* AppExtensions.swift */; };
-		188C9AB525CE5E0F009AC9C8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9AB125CE5E0F009AC9C8 /* ImagePicker.swift */; };
 		188C9ABC25CE5E1D009AC9C8 /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9AB925CE5E1D009AC9C8 /* ValidationManager.swift */; };
 		188C9ABD25CE5E1D009AC9C8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9ABA25CE5E1D009AC9C8 /* AppConstants.swift */; };
 		188C9ABE25CE5E1D009AC9C8 /* DisplayAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9ABB25CE5E1D009AC9C8 /* DisplayAlertManager.swift */; };
@@ -86,6 +86,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		184B11A825E371B0003007A2 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		184B11A925E371B0003007A2 /* AppFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFunctions.swift; sourceTree = "<group>"; };
+		184B11AA25E371B0003007A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		184B11AB25E371B0003007A2 /* AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
+		184B11AC25E371B1003007A2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184E4C9425D108DD00330A10 /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
 		184E4C9525D108DD00330A10 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
 		184E4C9625D108DE00330A10 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -109,8 +114,6 @@
 		184E4CC525D1553200330A10 /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
 		184E4CCA25D1555900330A10 /* PushMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushMessageVC.swift; sourceTree = "<group>"; };
 		188C9A6A25CE5BD2009AC9C8 /* Restored Glory Christian Center.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restored Glory Christian Center.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		188C9A6D25CE5BD2009AC9C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		188C9A6F25CE5BD2009AC9C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		188C9A7425CE5BD2009AC9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		188C9A7625CE5BD3009AC9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188C9A7925CE5BD3009AC9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,9 +124,6 @@
 		188C9A8B25CE5BD3009AC9C8 /* Restored Glory Christian CenterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Restored Glory Christian CenterUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188C9A8F25CE5BD3009AC9C8 /* Restored_Glory_Christian_CenterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restored_Glory_Christian_CenterUITests.swift; sourceTree = "<group>"; };
 		188C9A9125CE5BD3009AC9C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		188C9AAE25CE5E0F009AC9C8 /* AppFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFunctions.swift; sourceTree = "<group>"; };
-		188C9AB025CE5E0F009AC9C8 /* AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
-		188C9AB125CE5E0F009AC9C8 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		188C9AB925CE5E1D009AC9C8 /* ValidationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
 		188C9ABA25CE5E1D009AC9C8 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		188C9ABB25CE5E1D009AC9C8 /* DisplayAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayAlertManager.swift; sourceTree = "<group>"; };
@@ -336,7 +336,6 @@
 				188C9AA925CE5D3B009AC9C8 /* Profiles */,
 				18E9780F25CE7E6C000D1F8D /* HomeVC.swift */,
 				18E9781725CE8522000D1F8D /* SideMenuVC.swift */,
-				184E4CCA25D1555900330A10 /* PushMessageVC.swift */,
 				18E9780A25CE7DEF000D1F8D /* SideMenuController.swift */,
 				18C5BD1B25D282A400F77E80 /* AnnouncementsVC.swift */,
 				18C5BD2025D2830600F77E80 /* Men'sMinistryVC.swift */,
@@ -380,11 +379,11 @@
 		188C9AAC25CE5D67009AC9C8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				188C9A6D25CE5BD2009AC9C8 /* AppDelegate.swift */,
-				188C9AB025CE5E0F009AC9C8 /* AppExtensions.swift */,
-				188C9AAE25CE5E0F009AC9C8 /* AppFunctions.swift */,
-				188C9AB125CE5E0F009AC9C8 /* ImagePicker.swift */,
-				188C9A6F25CE5BD2009AC9C8 /* SceneDelegate.swift */,
+				184B11AC25E371B1003007A2 /* AppDelegate.swift */,
+				184B11AB25E371B0003007A2 /* AppExtensions.swift */,
+				184B11A925E371B0003007A2 /* AppFunctions.swift */,
+				184B11A825E371B0003007A2 /* ImagePicker.swift */,
+				184B11AA25E371B0003007A2 /* SceneDelegate.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -403,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				184E4CC525D1553200330A10 /* AdminVC.swift */,
+				184E4CCA25D1555900330A10 /* PushMessageVC.swift */,
 				18C5BD1625D26AA100F77E80 /* AddLinkVC.swift */,
 				18C58DF525DD402900EC5379 /* ShowLinksVC.swift */,
 			);
@@ -694,11 +694,12 @@
 				18C5BD2625D2831B00F77E80 /* Women'sMinistryVC.swift in Sources */,
 				188C9ABD25CE5E1D009AC9C8 /* AppConstants.swift in Sources */,
 				189B361625D5673000ABAA31 /* ChangePasswordVC.swift in Sources */,
+				184B11AF25E371B1003007A2 /* SceneDelegate.swift in Sources */,
 				188C9ACF25CE5E3D009AC9C8 /* Constant.swift in Sources */,
 				188C9AC725CE5E29009AC9C8 /* ChangeBottamColor.swift in Sources */,
+				184B11B125E371B1003007A2 /* AppDelegate.swift in Sources */,
+				184B11AE25E371B1003007A2 /* AppFunctions.swift in Sources */,
 				18C58DF625DD402900EC5379 /* ShowLinksVC.swift in Sources */,
-				188C9A6E25CE5BD2009AC9C8 /* AppDelegate.swift in Sources */,
-				188C9A7025CE5BD2009AC9C8 /* SceneDelegate.swift in Sources */,
 				18CBC06225CE750100264243 /* ForgotPasswordVC.swift in Sources */,
 				188C9AC525CE5E29009AC9C8 /* HelperMethods.swift in Sources */,
 				188C9ABE25CE5E1D009AC9C8 /* DisplayAlertManager.swift in Sources */,
@@ -708,15 +709,14 @@
 				184E4CCB25D1555900330A10 /* PushMessageVC.swift in Sources */,
 				18C5BD1C25D282A400F77E80 /* AnnouncementsVC.swift in Sources */,
 				184E4CC625D1553200330A10 /* AdminVC.swift in Sources */,
+				184B11AD25E371B1003007A2 /* ImagePicker.swift in Sources */,
 				18D936A525D3EE610013E166 /* ChoirRehearsal.swift in Sources */,
 				188C9AC625CE5E29009AC9C8 /* Activityloader.swift in Sources */,
 				18F49E6E25D407B600604C69 /* DetailsVC.swift in Sources */,
-				188C9AB525CE5E0F009AC9C8 /* ImagePicker.swift in Sources */,
-				188C9AB425CE5E0F009AC9C8 /* AppExtensions.swift in Sources */,
 				18C5BD1725D26AA100F77E80 /* AddLinkVC.swift in Sources */,
 				18E9780B25CE7DEF000D1F8D /* SideMenuController.swift in Sources */,
+				184B11B025E371B1003007A2 /* AppExtensions.swift in Sources */,
 				18E9781825CE8522000D1F8D /* SideMenuVC.swift in Sources */,
-				188C9AB225CE5E0F009AC9C8 /* AppFunctions.swift in Sources */,
 				188C9AD025CE5E3D009AC9C8 /* Reachability.swift in Sources */,
 				188C9ACE25CE5E3D009AC9C8 /* AFWrapperClass.swift in Sources */,
 				18E9781025CE7E6C000D1F8D /* HomeVC.swift in Sources */,
