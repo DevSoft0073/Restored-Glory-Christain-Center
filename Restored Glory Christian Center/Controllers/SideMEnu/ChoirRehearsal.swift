@@ -30,7 +30,8 @@ class ChoirRehearsal: UIViewController {
 
     }
     
-    @IBAction func searchButton(_ sender: Any) {
+    
+    @IBAction func searchButtonAction(_ sender: Any) {
         if isSearch == false {
             searchDataView.isHidden = true
             
@@ -38,6 +39,10 @@ class ChoirRehearsal: UIViewController {
             searchDataView.isHidden = false
             isSearch = false
         }
+    }
+    
+    @IBAction func searchButton(_ sender: Any) {
+        searchDataView.isHidden = false
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -71,7 +76,7 @@ class ChoirRehearsal: UIViewController {
             print(parms)
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
-                self.ChoirRehearsalDataArray.removeAll()
+                self.searchDataArray.removeAll()
                 self.message = response["message"] as? String ?? ""
                 let status = response["status"] as? Int
                 if status == 1{
@@ -104,6 +109,9 @@ class ChoirRehearsal: UIViewController {
 
 class DataTbViewCell: UITableViewCell {
     
+    @IBOutlet weak var dataView: UIView!
+    @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var showImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     override class func awakeFromNib() {
@@ -118,18 +126,31 @@ extension ChoirRehearsal : UITableViewDelegate ,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DataTbViewCell", for: indexPath) as! DataTbViewCell
-        cell.titleLbl.text = searchDataArray[indexPath.row].name
-        cell.showImage.image = UIImage(named: searchDataArray[indexPath.row].image)
+        cell.titleLbl.text = searchDataArray[indexPath.row].details
+        cell.nameLbl.text = searchDataArray[indexPath.row].name
+        cell.dateLbl.text = searchDataArray[indexPath.row].date
+//        cell.showImage.image = UIImage(named: searchDataArray[indexPath.row].image)
+        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+        
+        cell.dataView.layer.cornerRadius = 10
+        cell.dataView.layer.masksToBounds = false
+        cell.dataView?.layer.shadowColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
+        cell.dataView?.layer.shadowOffset =  CGSize.zero
+        cell.dataView?.layer.shadowOpacity = 0.5
+        cell.dataView?.layer.shadowRadius = 5
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(vc, animated: true)
+        searchDataView.isHidden = false
+        UIApplication.shared.open(URL(string: searchDataArray[0].link)!, options: [:], completionHandler: nil)
+
+//        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190
+        return 230
     }
     
 }

@@ -17,12 +17,23 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var sideMenuTbView: UITableView!
     var titleArray = ["Home","Announcements","Choir Rehearsal","Women's Ministry","Men's Ministry","Logout"]
+    var sideMenuArray : [SideMenuData] = []{
+        didSet{
+            sideMenuTbView.reloadData()
+        }
+    }
     var message = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
         sideMenuTbView.separatorStyle = .none
         adminButton.contentHorizontalAlignment = .left
+        
+        sideMenuArray.append(SideMenuData(name: "Home", selected: false))
+        sideMenuArray.append(SideMenuData(name: "Announcements", selected: false))
+        sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
+        sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
+        sideMenuArray.append(SideMenuData(name: "Logout", selected: false))
         // Do any additional setup after loading the view.
     }
     
@@ -32,19 +43,6 @@ class SideMenuVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
-//        if UserDefaults.standard.value(forKey: "checkRole") as? String ?? "" == "0" {
-//            
-//            adminButton.isHidden = true
-//            adminButtonTopLbl.isHidden = true
-//            
-//        }else{
-//            
-//            adminButton.isHidden = false
-//            adminButtonTopLbl.isHidden = false
-//
-//            
-//        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -134,12 +132,19 @@ class SideMenuTbViewCell: UITableViewCell {
 
 extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArray.count
+        return sideMenuArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = tableView.dequeueReusableCell(withIdentifier: "SideMenuTbViewCell", for: indexPath) as! SideMenuTbViewCell
-        cell.titleLbl.text = titleArray[indexPath.row]
+        cell.titleLbl.text = sideMenuArray[indexPath.row].name
+        if sideMenuArray[indexPath.row].selected == true{
+            cell.titleLbl.textColor = #colorLiteral(red: 0, green: 0.06385789067, blue: 0.6515093446, alpha: 1)
+
+        }else{
+            cell.titleLbl.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+
+        }
         return cell
     }
     
@@ -148,9 +153,13 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        sideMenuArray = sideMenuArray.map({ (obj) -> SideMenuData in
+            var mutableObj = obj
+            mutableObj.selected = false
+            return mutableObj
+        })
+        sideMenuArray[indexPath.row].selected = true
         sideMenuController?.hideLeftViewAnimated()
-        
         if(indexPath.row == 0) {
             let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
@@ -207,3 +216,12 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
 }
 
 
+struct SideMenuData {
+    var name : String
+    var selected : Bool
+    
+    init(name : String,selected : Bool) {
+        self.name = name
+        self.selected = selected
+    }
+}
