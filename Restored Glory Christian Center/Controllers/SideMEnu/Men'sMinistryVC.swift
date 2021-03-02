@@ -34,7 +34,11 @@ class Men_sMinistryVC: UIViewController {
     }
     
     @IBAction func searchButton(_ sender: Any) {
-        isSearch = true
+        searchDataView.isHidden = false
+      
+    }
+    
+    @IBAction func searchButtonAction(_ sender: Any) {
         if isSearch == false {
             searchDataView.isHidden = true
             
@@ -43,7 +47,6 @@ class Men_sMinistryVC: UIViewController {
             isSearch = false
         }
     }
-    
     @IBAction func searchTxtFldAction(_ sender: UITextField) {
         
         if searchTxtFld.text != ""{
@@ -59,13 +62,13 @@ class Men_sMinistryVC: UIViewController {
     }
     
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        self.searchDataView.isHidden = true
-        isSearch = false
-        
-    }
-    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//
+//        self.searchDataView.isHidden = true
+//        isSearch = false
+//
+//    }
+//
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.searchDataView.isHidden = true
@@ -138,6 +141,7 @@ extension Men_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
+        searchDataView.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

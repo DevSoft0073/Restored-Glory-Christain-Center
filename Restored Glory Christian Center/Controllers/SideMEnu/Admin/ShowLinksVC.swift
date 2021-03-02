@@ -30,7 +30,10 @@ class ShowLinksVC: UIViewController {
 
     @IBAction func searchButton(_ sender: Any) {
         
-        isSearch = true
+        searchView.isHidden = false
+    }
+    
+    @IBAction func searchButtonAction(_ sender: Any) {
         if isSearch == false {
             searchView.isHidden = true
             isSearch = false
@@ -43,9 +46,10 @@ class ShowLinksVC: UIViewController {
         }
     }
     
+    
     @IBAction func openMenu(_ sender: Any) {
         
-        sideMenuController?.showLeftViewAnimated()
+        self.navigationController?.popViewController(animated: true)
         
     }
     

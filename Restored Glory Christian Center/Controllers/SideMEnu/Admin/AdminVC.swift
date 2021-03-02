@@ -11,7 +11,8 @@ class AdminVC: UIViewController, CAAnimationDelegate {
 
     @IBOutlet weak var adminTBView: UITableView!
     var iconImgArray = ["send-push","links"]
-    var titleArray = ["Send Puah","Links"]
+    var titleArray = ["Send Push","Links"]
+    var currentIndex = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
         adminTBView.separatorStyle = .none
@@ -44,6 +45,7 @@ class AdminVC: UIViewController, CAAnimationDelegate {
 }
 class AdminTBViewCell: UITableViewCell {
     
+    @IBOutlet weak var gotoNextVc: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var iconImg: UIImageView!
     override class func awakeFromNib() {
@@ -60,16 +62,19 @@ extension AdminVC : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdminTBViewCell", for: indexPath) as! AdminTBViewCell
         cell.iconImg.image = UIImage(named: iconImgArray[indexPath.row])
         cell.titleLbl.text = titleArray[indexPath.row]
+        cell.gotoNextVc.tag = indexPath.row
+        cell.gotoNextVc.addTarget(self, action: #selector(gotoNext), for: .touchUpInside)
+        currentIndex = indexPath.row
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
+    @objc func gotoNext(sender : UIButton) {
+        if sender.tag == 0{
             
             let vc = PushMessageVC.instantiate(fromAppStoryboard: .Main)
             self.navigationController?.pushViewController(vc, animated: true)
             
-        }else if indexPath.row == 1{
+        }else{
             
             let vc = ShowLinksVC.instantiate(fromAppStoryboard: .Main)
             UserDefaults.standard.set(true, forKey: "comesFromAdminLinks")
@@ -77,6 +82,22 @@ extension AdminVC : UITableViewDelegate , UITableViewDataSource {
             
         }
     }
+    
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexPath.row == 0{
+//
+//            let vc = PushMessageVC.instantiate(fromAppStoryboard: .Main)
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        }else if indexPath.row == 1{
+//
+//            let vc = ShowLinksVC.instantiate(fromAppStoryboard: .Main)
+//            UserDefaults.standard.set(true, forKey: "comesFromAdminLinks")
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60

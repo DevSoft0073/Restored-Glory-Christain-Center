@@ -22,6 +22,7 @@ class SideMenuVC: UIViewController {
         super.viewDidLoad()
         getData()
         sideMenuTbView.separatorStyle = .none
+        adminButton.contentHorizontalAlignment = .left
         // Do any additional setup after loading the view.
     }
     

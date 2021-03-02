@@ -11,6 +11,7 @@ import SDWebImage
 
 class DetailsVC: UIViewController {
     
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var searchDataView: UIView!
     @IBOutlet weak var searchTxtFld: UITextField!
     var detailsDataArray = [DetailsData]()
@@ -18,18 +19,23 @@ class DetailsVC: UIViewController {
     var catId = String()
     var message = String()
     var isSearch = false
-
+    var catName = String()
     @IBOutlet weak var detailsTbView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryDetails()
         detailsTbView.separatorStyle = .none
         searchDataView.isHidden = true
+        titleLbl.text = catName
         // Do any additional setup after loading the view.
     }
     
     @IBAction func searchButton(_ sender: Any) {
-        isSearch = true
+        searchDataView.isHidden = false
+    }
+    
+    
+    @IBAction func searchButtonAction(_ sender: Any) {
         if isSearch == false {
             searchDataView.isHidden = true
             
@@ -37,13 +43,6 @@ class DetailsVC: UIViewController {
             searchDataView.isHidden = false
             isSearch = false
         }
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        self.searchDataView.isHidden = true
-        isSearch = false
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

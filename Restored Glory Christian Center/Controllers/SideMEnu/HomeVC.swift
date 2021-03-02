@@ -59,14 +59,14 @@ class HomeVC: UIViewController , UITextFieldDelegate{
     }
     
     
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        self.searchView.isHidden = true
-//        categoryListing()
-        isSearch = false
-        
-    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//
+//        self.searchView.isHidden = true
+////        categoryListing()
+//        isSearch = false
+//
+//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -75,8 +75,9 @@ class HomeVC: UIViewController , UITextFieldDelegate{
     }
     
     
-    @IBAction func searchButtonAction(_ sender: Any) {
-        isSearch = true
+    
+    @IBAction func searchButton(_ sender: Any) {
+//        isSearch = true
         if isSearch == false {
             searchView.isHidden = true
             isSearch = false
@@ -85,6 +86,10 @@ class HomeVC: UIViewController , UITextFieldDelegate{
             searchView.isHidden = false
             isSearch = false
         }
+    }
+    
+    @IBAction func searchButtonAction(_ sender: Any) {
+        searchView.isHidden = false
     }
     
     
@@ -195,6 +200,8 @@ extension HomeVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
         vc.catId = searchDataArray[indexPath.row].catId
+        vc.catName = searchDataArray[indexPath.row].title
+        searchView.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

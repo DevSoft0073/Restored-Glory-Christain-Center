@@ -22,15 +22,6 @@ class ChoirRehearsal: UIViewController {
         searchDataView.isHidden = true
         categoryDetails()
         dataTbView.separatorStyle = .none
-
-//        ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
-//        ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
-//        ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
-//        ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
-//        ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
-//        ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
-//        ChoirRehearsalDataArray.append(ChoirRehearsalData(title: "Live Sirmon", image: "choir-rehersal"))
-        
         // Do any additional setup after loading the view.
     }
     
@@ -40,7 +31,6 @@ class ChoirRehearsal: UIViewController {
     }
     
     @IBAction func searchButton(_ sender: Any) {
-        isSearch = true
         if isSearch == false {
             searchDataView.isHidden = true
             
@@ -49,14 +39,6 @@ class ChoirRehearsal: UIViewController {
             isSearch = false
         }
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        self.searchDataView.isHidden = true
-        isSearch = false
-        
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.searchDataView.isHidden = true

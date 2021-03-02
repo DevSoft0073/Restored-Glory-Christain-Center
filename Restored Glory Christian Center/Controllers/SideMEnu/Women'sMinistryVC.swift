@@ -19,16 +19,7 @@ class Women_sMinistryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryDetails()
-        
-//        womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
-//        womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
-//        womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
-//        womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
-//        womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
-//        womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
-//        womenDataArray.append(WomensData(image: "choir-rehersal", title: "Live Sirmon"))
         searchDataView.isHidden = true
-
         womensDataTBVIew.separatorStyle = .none
         // Do any additional setup after loading the view.
     }
@@ -36,22 +27,13 @@ class Women_sMinistryVC: UIViewController {
     @IBAction func openMenu(_ sender: Any) {
         sideMenuController?.showLeftViewAnimated()
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        self.searchDataView.isHidden = true
-        isSearch = false
-        
-    }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.searchDataView.isHidden = true
         isSearch = false
     }
-    
-    @IBAction func searchButton(_ sender: Any) {
-        isSearch = true
+    @IBAction func searchButtonAction(_ sender: Any) {
         if isSearch == false {
             searchDataView.isHidden = true
             
@@ -59,6 +41,10 @@ class Women_sMinistryVC: UIViewController {
             searchDataView.isHidden = false
             isSearch = false
         }
+    }
+    
+    @IBAction func searchButton(_ sender: Any) {
+        searchDataView.isHidden = false
     }
     
     @IBAction func searchtxtFldAction(_ sender: UITextField) {
@@ -138,6 +124,7 @@ extension Women_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
+        searchDataView.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

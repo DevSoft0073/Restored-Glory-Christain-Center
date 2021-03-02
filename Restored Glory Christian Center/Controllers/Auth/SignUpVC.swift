@@ -57,6 +57,38 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+//    func remove() {
+//        if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+//
+//            ValidateData(strMessage: " Please enter name")
+//
+//        }else if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty{
+//
+//            ValidateData(strMessage: " Please enter email address")
+//
+//        }else if isValidEmail(testStr: (emailTxtFld.text)!) == false{
+//
+//            ValidateData(strMessage: "Enter valid email")
+//
+//        }else if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty{
+//
+//            ValidateData(strMessage: " Please enter password")
+//
+//        }else if (passwordTxtFld!.text!.count) < 4 || (passwordTxtFld!.text!.count) > 15{
+//
+//            ValidateData(strMessage: "Please enter minimum 4 digit password")
+//            UserDefaults.standard.string(forKey: "password")
+//
+//        } else if unchecked == false{
+//
+//            ValidateData(strMessage: "Please agree with terms and conditions")
+//        }
+//        else{
+//            signUp()
+//        }
+//    }
+    
     @IBAction func signUpButton(_ sender: Any) {
         
         
@@ -83,7 +115,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         }
         else if unchecked == false{
             
-            ValidateData(strMessage: "Please agree terms and conditions")
+            ValidateData(strMessage: "Please agree with terms and conditions")
         }
         else{
             signUp()
@@ -122,6 +154,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                 self.messgae = response["message"] as? String ?? ""
                 let status = response["status"] as? String
                 if status == "1"{
+                    self.nameTxtFld.text = ""
+                    self.lastName.text = ""
+                    self.emailTxtFld.text = ""
+                    self.passwordTxtFld.text = ""
                     UserDefaults.standard.set(1, forKey: "tokenFString")
                     let allData = response as? [String:Any] ?? [:]
                     print(allData)

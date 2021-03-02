@@ -39,6 +39,29 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
         countryButton.clipsToBounds = true
     }
     
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTxtFld{
+            
+            emailView.borderColor = #colorLiteral(red: 0.08077164739, green: 0.2922407985, blue: 0.6839624047, alpha: 1)
+            adressView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            bioView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            
+        }else if textField == addressTxtFld {
+            
+            emailView.borderColor = #colorLiteral(red: 0.08077164739, green: 0.2922407985, blue: 0.6839624047, alpha: 1)
+            adressView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            bioView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView == bioTxtView {
+            emailView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            adressView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            bioView.borderColor = #colorLiteral(red: 0.08077164739, green: 0.2922407985, blue: 0.6839624047, alpha: 1)
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         profileImage.layer.masksToBounds = true

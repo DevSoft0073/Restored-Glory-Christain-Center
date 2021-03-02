@@ -19,6 +19,9 @@ class ProfileVC: UIViewController {
     var message = String()
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTxtFld.isUserInteractionEnabled = false
+        addressTxtFld.isUserInteractionEnabled = false
+        emailTxtFld.isUserInteractionEnabled = false
 
         // Do any additional setup after loading the view.
     }
