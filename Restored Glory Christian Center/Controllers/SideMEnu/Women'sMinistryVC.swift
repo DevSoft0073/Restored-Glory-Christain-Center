@@ -36,7 +36,9 @@ class Women_sMinistryVC: UIViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         if isSearch == false {
             searchDataView.isHidden = true
-            
+            categoryDetails()
+            searchTxtFld.text = ""
+
         }else{
             searchDataView.isHidden = false
             isSearch = false
@@ -115,7 +117,14 @@ class WomensDataTBVIewCell: UITableViewCell {
 
 extension Women_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchDataArray.count
+        
+        if searchDataArray.count == 0 {
+                self.womensDataTBVIew.setEmptyMessage("No data")
+            } else {
+                self.womensDataTBVIew.restore()
+            }
+            return searchDataArray.count
+                
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

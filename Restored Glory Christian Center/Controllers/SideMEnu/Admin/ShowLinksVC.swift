@@ -27,7 +27,21 @@ class ShowLinksVC: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func searchTxtFld(_ sender: Any) {
+        
+        if searchTxtFld.text != ""{
+            self.searchDataArray = self.showLinksDataArray.filter{
+                ($0.name).range(of: self.searchTxtFld.text!, options: [.diacriticInsensitive, .caseInsensitive]) != nil
+            }
+            showLinksTbView.reloadData()
+        }else{
+            searchDataArray = showLinksDataArray
+            showLinksTbView.reloadData()
+        }
+        showLinksTbView.reloadData()
+        
+    }
+    
     @IBAction func searchButton(_ sender: Any) {
         
         searchView.isHidden = false
@@ -37,12 +51,13 @@ class ShowLinksVC: UIViewController {
         if isSearch == false {
             searchView.isHidden = true
             isSearch = false
-            
+            categoryListing()
+            searchTxtFld.text = ""
+
         }else{
             
             searchView.isHidden = false
             isSearch = false
-            
         }
     }
     
@@ -57,15 +72,6 @@ class ShowLinksVC: UIViewController {
         
         let vc = AddLinkVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
-        
-        
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        self.searchView.isHidden = true
-//        categoryListing()
-        isSearch = false
         
     }
     
@@ -130,7 +136,13 @@ class ShowLinksTbViewCell: UITableViewCell {
 
 extension ShowLinksVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchDataArray.count
+        
+        if searchDataArray.count == 0 {
+                self.showLinksTbView.setEmptyMessage("No data")
+            } else {
+                self.showLinksTbView.restore()
+            }
+            return searchDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

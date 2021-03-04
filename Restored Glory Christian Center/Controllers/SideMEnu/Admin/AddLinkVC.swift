@@ -55,15 +55,15 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
         
         if (selectTypeTxtFld.text?.isEmpty)!{
             
-            ValidateData(strMessage: "Select type text field should not be empty")
+            ValidateData(strMessage: "Select type field should not be empty")
         }
         else if (titleTxtFld.text?.isEmpty)!{
             
-            ValidateData(strMessage: "Title text field should not be empty")
+            ValidateData(strMessage: "Title field should not be empty")
             
         }else if (addlinkTxtFld.text?.isEmpty)!{
             
-            ValidateData(strMessage: "Add link text field should not be empty")
+            ValidateData(strMessage: "Add link field should not be empty")
             
         }else if isValidUrl(url: (addlinkTxtFld.text)!) == false{
             
@@ -272,6 +272,7 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
         //        let imgData3 = image.jpegData(compressionQuality: 0.4)
         self.showUploadImage.contentMode = .scaleToFill
         self.showUploadImage.image = image
+        self.showUploadImage.contentMode = .scaleAspectFill
         guard let imgData3 = image.jpegData(compressionQuality: 0.2) else {return}
         base64 = imgData3.base64EncodedString(options: .lineLength64Characters)
         dismiss(animated: true, completion: nil)

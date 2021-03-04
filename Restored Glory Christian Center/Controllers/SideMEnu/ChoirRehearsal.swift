@@ -34,7 +34,9 @@ class ChoirRehearsal: UIViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         if isSearch == false {
             searchDataView.isHidden = true
-            
+            categoryDetails()
+            searchTxtFld.text = ""
+
         }else{
             searchDataView.isHidden = false
             isSearch = false
@@ -121,7 +123,14 @@ class DataTbViewCell: UITableViewCell {
 
 extension ChoirRehearsal : UITableViewDelegate ,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchDataArray.count
+        
+        if searchDataArray.count == 0 {
+                self.dataTbView.setEmptyMessage("No data")
+            } else {
+                self.dataTbView.restore()
+            }
+            return searchDataArray.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

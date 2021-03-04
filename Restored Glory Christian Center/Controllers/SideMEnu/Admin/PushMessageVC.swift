@@ -7,19 +7,38 @@
 
 import UIKit
 
-class PushMessageVC: UIViewController {
+class PushMessageVC: UIViewController,UITextViewDelegate {
 
     @IBOutlet weak var titlelbl: UITextField!
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageTxtView: UITextView!
+    let placeholderText = "Enter message"
+
     var message = String()
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageTxtView.text = placeholderText
+        messageTxtView.textColor = #colorLiteral(red: 0.6430888772, green: 0.6431655288, blue: 0.6430535913, alpha: 1)
         // Do any additional setup after loading the view.
     }
     
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if textView.text == placeholderText {
+            textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            textView.text = ""
+        }
+        return true
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = placeholderText
+        }
     }
     
     @IBAction func sendButtonAction(_ sender: Any) {

@@ -38,7 +38,8 @@ class DetailsVC: UIViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         if isSearch == false {
             searchDataView.isHidden = true
-            
+            categoryDetails()
+
         }else{
             searchDataView.isHidden = false
             isSearch = false
@@ -128,7 +129,15 @@ class DetailsTbViewCell: UITableViewCell {
 
 extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchDataArray.count
+        
+        
+        if searchDataArray.count == 0 {
+                self.detailsTbView.setEmptyMessage("No data")
+            } else {
+                self.detailsTbView.restore()
+            }
+            return searchDataArray.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -31,14 +31,7 @@ class HomeVC: UIViewController , UITextFieldDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-//        comesFromLinks = (UserDefaults.standard.value(forKey: "comesFromAdminLinks") != nil)
-//
-//        if comesFromLinks == true {
-//
-//        }else{
-//
-//        }
+
         
         if UserDefaults.standard.value(forKey: "checkRole") as? String ?? "" == "0" {
             
@@ -57,16 +50,7 @@ class HomeVC: UIViewController , UITextFieldDelegate{
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
-    
-    
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        self.searchView.isHidden = true
-////        categoryListing()
-//        isSearch = false
-//
-//    }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -81,7 +65,8 @@ class HomeVC: UIViewController , UITextFieldDelegate{
         if isSearch == false {
             searchView.isHidden = true
             isSearch = false
-            
+            categoryListing()
+            searchTxtFld.text = ""
         }else{
             searchView.isHidden = false
             isSearch = false
@@ -185,8 +170,16 @@ class ShowAllDataTbViewCell: UITableViewCell {
 }
 
 extension HomeVC : UITableViewDelegate , UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchDataArray.count == 0 {
+                self.showAllDataTbView.setEmptyMessage("No data")
+            } else {
+                self.showAllDataTbView.restore()
+            }
             return searchDataArray.count
+        
+//            return searchDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -233,5 +226,27 @@ struct SearchData {
         self.title = title
         self.image = image
         self.catId = catId
+    }
+}
+
+
+extension UITableView {
+
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 80, y: 200, width: 290, height: 70))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "Roboto-Medium", size: 20)
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
     }
 }

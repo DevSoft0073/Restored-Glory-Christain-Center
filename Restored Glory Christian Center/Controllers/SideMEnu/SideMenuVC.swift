@@ -33,6 +33,7 @@ class SideMenuVC: UIViewController {
         sideMenuArray.append(SideMenuData(name: "Announcements", selected: false))
         sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
         sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
+        sideMenuArray.append(SideMenuData(name: "Men's Ministry", selected: false))
         sideMenuArray.append(SideMenuData(name: "Logout", selected: false))
         // Do any additional setup after loading the view.
     }
@@ -54,7 +55,12 @@ class SideMenuVC: UIViewController {
     @IBAction func adminButton(_ sender: UIButton) {
         
         sender.isUserInteractionEnabled = false
-        
+        var filterArray = sideMenuArray.filter({$0.selected == true})
+        if filterArray.count == 0{
+            adminButton.setTitleColor(#colorLiteral(red: 0.08110561222, green: 0.2923257351, blue: 0.6798375845, alpha: 1), for: .normal)
+        }else{
+            adminButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        }
         let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
     }

@@ -12,6 +12,7 @@ import SKCountryPicker
 class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
+    @IBOutlet weak var nameTxtFld: UITextField!
     @IBOutlet weak var bioTxtView: UITextView!
     @IBOutlet weak var bioView: UIView!
     @IBOutlet weak var adressView: UIView!
@@ -30,7 +31,7 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
     var countryName = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        emailTxtFld.isUserInteractionEnabled = false
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         guard let country = CountryManager.shared.currentCountry else {
             self.flagImage.isHidden = true
@@ -49,8 +50,8 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
             
         }else if textField == addressTxtFld {
             
-            emailView.borderColor = #colorLiteral(red: 0.08077164739, green: 0.2922407985, blue: 0.6839624047, alpha: 1)
-            adressView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            emailView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            adressView.borderColor = #colorLiteral(red: 0.08077164739, green: 0.2922407985, blue: 0.6839624047, alpha: 1)
             bioView.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
     }
@@ -87,7 +88,7 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
                 let status = response["status"] as? Int
                 if status == 1{
                     if let allData = response["data"] as? [String:Any]{
-                        self.nameLbl.text = "\(allData["first_name"] as? String ?? "")" + "\(allData["last_name"] as? String ?? "")"
+                        self.nameTxtFld.text = "\(allData["first_name"] as? String ?? "") " + "\(allData["last_name"] as? String ?? "")"
                         self.emailTxtFld.text = allData["email"] as? String ?? ""
                         self.addressTxtFld.text = allData["address"] as? String ?? ""
                         self.bioTxtView.text = allData["description"] as? String ?? ""
@@ -142,8 +143,22 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
     @IBAction func uploadImage(_ sender: Any) {
         showActionSheet()
     }
+    
     @IBAction func submitButton(_ sender: Any) {
-        editProfile()
+        
+        if nameTxtFld.text?.isEmpty == true{
+            
+            ValidateData(strMessage: "Name should not be empty")
+            
+        }else if (nameTxtFld.text?.trimmingCharacters(in: .whitespaces).isEmpty)!{
+            
+            ValidateData(strMessage: "Please enter name")
+            
+        }else{
+            
+            editProfile()
+
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {

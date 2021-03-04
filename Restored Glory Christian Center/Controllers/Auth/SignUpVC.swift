@@ -58,63 +58,74 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     
-//    func remove() {
-//        if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty {
-//
-//            ValidateData(strMessage: " Please enter name")
-//
-//        }else if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty{
-//
-//            ValidateData(strMessage: " Please enter email address")
-//
-//        }else if isValidEmail(testStr: (emailTxtFld.text)!) == false{
-//
-//            ValidateData(strMessage: "Enter valid email")
-//
-//        }else if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty{
-//
-//            ValidateData(strMessage: " Please enter password")
-//
-//        }else if (passwordTxtFld!.text!.count) < 4 || (passwordTxtFld!.text!.count) > 15{
-//
-//            ValidateData(strMessage: "Please enter minimum 4 digit password")
-//            UserDefaults.standard.string(forKey: "password")
-//
-//        } else if unchecked == false{
-//
-//            ValidateData(strMessage: "Please agree with terms and conditions")
-//        }
-//        else{
-//            signUp()
-//        }
-//    }
+    func removeSpace() {
+        if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+
+            ValidateData(strMessage: " Please enter name")
+
+        }else if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty{
+
+            ValidateData(strMessage: " Please enter email address")
+
+        }else if isValidEmail(testStr: (emailTxtFld.text)!) == false{
+
+            ValidateData(strMessage: "Enter valid email")
+
+        }else if !nameTxtFld.text!.trimmingCharacters(in: .whitespaces).isEmpty{
+
+            ValidateData(strMessage: " Please enter password")
+
+        }else if (passwordTxtFld!.text!.count) < 4 || (passwordTxtFld!.text!.count) > 15{
+
+            ValidateData(strMessage: "Please enter minimum 4 digit password")
+            UserDefaults.standard.string(forKey: "password")
+
+        } else if unchecked == false{
+
+            ValidateData(strMessage: "Please agree with terms and conditions")
+        }
+        else{
+            signUp()
+        }
+    }
     
     @IBAction func signUpButton(_ sender: Any) {
         
-        
         if (nameTxtFld.text?.isEmpty)!{
-            
+
             ValidateData(strMessage: " Please enter name")
+            
+        }else if (nameTxtFld.text?.trimmingCharacters(in: .whitespaces).isEmpty)!{
+            
+            ValidateData(strMessage: "Please enter name")
+            
+        }else if (lastName.text?.isEmpty)!{
+            
+            ValidateData(strMessage: " Please enter last name")
+            
+        }else if (lastName.text?.trimmingCharacters(in: .whitespaces).isEmpty)! {
+            
+            ValidateData(strMessage: "Please enter last name")
         }
         else if (emailTxtFld.text?.isEmpty)!{
-            
+
             ValidateData(strMessage: " Please enter email address")
         }
         else if isValidEmail(testStr: (emailTxtFld.text)!) == false{
-            
+
             ValidateData(strMessage: "Enter valid email")
         }
         else if (passwordTxtFld.text?.isEmpty)!{
-            
+
             ValidateData(strMessage: " Please enter password")
         }else if (passwordTxtFld!.text!.count) < 4 || (passwordTxtFld!.text!.count) > 15{
-            
+
             ValidateData(strMessage: "Please enter minimum 4 digit password")
             UserDefaults.standard.string(forKey: "password")
-            
+
         }
         else if unchecked == false{
-            
+
             ValidateData(strMessage: "Please agree with terms and conditions")
         }
         else{
@@ -152,8 +163,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             AFWrapperClass.requestPOSTURL(url, params: params, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.messgae = response["message"] as? String ?? ""
-                let status = response["status"] as? String
-                if status == "1"{
+                let status = response["status"] as? Int
+                if status == 1{
                     self.nameTxtFld.text = ""
                     self.lastName.text = ""
                     self.emailTxtFld.text = ""
@@ -164,10 +175,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                     if let data = allData["data"] as? [String:Any]  {
                         UserDefaults.standard.set(data["user_id"], forKey: "id")
                         print(data)
+                        showAlertMessage(title: Constant.shared.appTitle, message: self.messgae, okButton: "Ok", controller: self) {
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     }
-                    self.navigationController?.popViewController(animated: true)
-                    //                    let vc = HomeVC.instantiate(fromAppStoryboard: .Main)
-                    //                    self.navigationController?.pushViewController(vc, animated: true)
+                   
                 }else{
                     IJProgressView.shared.hideProgressView()
                     alert(Constant.shared.appTitle, message: self.messgae, view: self)
