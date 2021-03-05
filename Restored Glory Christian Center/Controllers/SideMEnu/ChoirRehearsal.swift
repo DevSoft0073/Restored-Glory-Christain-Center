@@ -22,6 +22,8 @@ class ChoirRehearsal: UIViewController {
         searchDataView.isHidden = true
         categoryDetails()
         dataTbView.separatorStyle = .none
+        dataTbView.delegate = self
+        dataTbView.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -43,15 +45,20 @@ class ChoirRehearsal: UIViewController {
         }
     }
     
+    
+    
     @IBAction func searchButton(_ sender: Any) {
         searchDataView.isHidden = false
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        self.searchDataView.isHidden = true
-        isSearch = false
-    }
     
+    
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        self.searchDataView.isHidden = true
+//        isSearch = false
+//    }
+//
     
     
     @IBAction func searchTxtFldAction(_ sender: UITextField) {
@@ -78,7 +85,8 @@ class ChoirRehearsal: UIViewController {
             print(parms)
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
-                self.searchDataArray.removeAll()
+//                self.searchDataArray.removeAll()
+                self.ChoirRehearsalDataArray.removeAll()
                 self.message = response["message"] as? String ?? ""
                 let status = response["status"] as? Int
                 if status == 1{
@@ -151,8 +159,8 @@ extension ChoirRehearsal : UITableViewDelegate ,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchDataView.isHidden = false
         UIApplication.shared.open(URL(string: searchDataArray[0].link)!, options: [:], completionHandler: nil)
+        print(searchDataArray[0].link)
 
 //        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
 //        self.navigationController?.pushViewController(vc, animated: true)

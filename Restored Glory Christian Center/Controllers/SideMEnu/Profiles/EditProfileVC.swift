@@ -32,12 +32,14 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTxtFld.isUserInteractionEnabled = false
+        nameTxtFld.isUserInteractionEnabled = false
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         guard let country = CountryManager.shared.currentCountry else {
             self.flagImage.isHidden = true
             return
         }
         countryButton.clipsToBounds = true
+        getData()
     }
     
     
@@ -69,7 +71,7 @@ class EditProfileVC: UIViewController , UITextFieldDelegate ,UITextViewDelegate 
         profileImage.layer.cornerRadius = profileImage.frame.height/2
     }
     override func viewDidAppear(_ animated: Bool) {
-        getData()
+        
     }
     
     func getData() {

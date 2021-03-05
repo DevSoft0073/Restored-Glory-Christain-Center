@@ -25,6 +25,8 @@ class DetailsVC: UIViewController {
         super.viewDidLoad()
         categoryDetails()
         detailsTbView.separatorStyle = .none
+        detailsTbView.delegate = self
+        detailsTbView.dataSource = self
         searchDataView.isHidden = true
         titleLbl.text = catName
         // Do any additional setup after loading the view.

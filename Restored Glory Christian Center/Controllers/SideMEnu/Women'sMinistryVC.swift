@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class Women_sMinistryVC: UIViewController {
 
@@ -20,7 +21,9 @@ class Women_sMinistryVC: UIViewController {
         super.viewDidLoad()
         categoryDetails()
         searchDataView.isHidden = true
-        womensDataTBVIew.separatorStyle = .none
+       // womensDataTBVIew.separatorStyle = .none
+        womensDataTBVIew.delegate = self
+        womensDataTBVIew.dataSource = self
         // Do any additional setup after loading the view.
     }
     
@@ -129,28 +132,22 @@ extension Women_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WomensDataTBVIewCell", for: indexPath) as! WomensDataTBVIewCell
+        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "img1"))
         cell.titleLbl.text = searchDataArray[indexPath.row].details
         cell.nameLbl.text = searchDataArray[indexPath.row].name
         cell.dateLbl.text = searchDataArray[indexPath.row].date
-        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
-        
         cell.dataView.layer.cornerRadius = 10
         cell.dataView.layer.masksToBounds = false
         cell.dataView?.layer.shadowColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 1)
         cell.dataView?.layer.shadowOffset =  CGSize.zero
         cell.dataView?.layer.shadowOpacity = 0.5
         cell.dataView?.layer.shadowRadius = 5
-        cell.showImage.image = UIImage(named: searchDataArray[indexPath.row].image)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         UIApplication.shared.open(URL(string: searchDataArray[0].link)!, options: [:], completionHandler: nil)
-
-//        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
-//        searchDataView.isHidden = true
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

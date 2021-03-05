@@ -16,7 +16,7 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var sideMenuTbView: UITableView!
-    var titleArray = ["Home","Announcements","Choir Rehearsal","Women's Ministry","Men's Ministry","Logout"]
+    var titleArray = ["Home","Announcements","Choir Rehearsal","Women's Ministry","Men's Ministry","Logout","Admin"]
     var sideMenuArray : [SideMenuData] = []{
         didSet{
             sideMenuTbView.reloadData()
@@ -29,12 +29,13 @@ class SideMenuVC: UIViewController {
         sideMenuTbView.separatorStyle = .none
         adminButton.contentHorizontalAlignment = .left
         
-        sideMenuArray.append(SideMenuData(name: "Home", selected: false))
+        sideMenuArray.append(SideMenuData(name: "Home", selected: true))
         sideMenuArray.append(SideMenuData(name: "Announcements", selected: false))
         sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
         sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
         sideMenuArray.append(SideMenuData(name: "Men's Ministry", selected: false))
         sideMenuArray.append(SideMenuData(name: "Logout", selected: false))
+        sideMenuArray.append(SideMenuData(name: "Admin", selected: false))
         // Do any additional setup after loading the view.
     }
     
@@ -53,19 +54,25 @@ class SideMenuVC: UIViewController {
     }
     
     @IBAction func adminButton(_ sender: UIButton) {
-        
-        sender.isUserInteractionEnabled = false
-        var filterArray = sideMenuArray.filter({$0.selected == true})
-        if filterArray.count == 0{
-            adminButton.setTitleColor(#colorLiteral(red: 0.08110561222, green: 0.2923257351, blue: 0.6798375845, alpha: 1), for: .normal)
-        }else{
-            adminButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        }
-        let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(vc, animated: true)
+//        sideMenuController?.hideLeftViewAnimated()
+//        sender.isUserInteractionEnabled = false
+////        var filterArray = sideMenuArray.filter({$0.selected == true})
+////        if filterArray.count == 0{
+////            adminButton.setTitleColor(#colorLiteral(red: 0.08110561222, green: 0.2923257351, blue: 0.6798375845, alpha: 1), for: .normal)
+////        }else{
+////            adminButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+////        }
+////
+//        let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
+//        (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+//
+////        let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
+////        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func openProfile(_ sender: Any) {
+        
+        
         let vc = ProfileVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -218,6 +225,11 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
             self.present(dialogMessage, animated: true, completion: nil)
             
         }
+        else if(indexPath.row == 6) {
+            let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
+            (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+        }
+            
     }
 }
 

@@ -20,13 +20,10 @@ class Men_sMinistryVC: UIViewController {
     override func viewDidLoad() {
         categoryDetails()
         mensTbView.separatorStyle = .none
-
-        super.viewDidLoad()
-        mensTbView.separatorStyle = .none
-//        mensMinistryDataArray.append(MensMinistryData(image: "choir-rehersal", title: "Live Sirmon"))
         searchDataView.isHidden = true
-
-
+        mensTbView.delegate = self
+        mensTbView.dataSource = self
+        super.viewDidLoad()
     }
     
     @IBAction func openMenu(_ sender: Any) {
@@ -159,10 +156,6 @@ extension Men_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         UIApplication.shared.open(URL(string: searchDataArray[0].link)!, options: [:], completionHandler: nil)
-
-//        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
-//        searchDataView.isHidden = true
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

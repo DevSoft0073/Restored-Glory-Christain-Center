@@ -23,6 +23,8 @@ class HomeVC: UIViewController , UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showAllDataTbView.reloadData()
+        showAllDataTbView.delegate = self
+        showAllDataTbView.dataSource = self
         categoryListing()
         searchView.isHidden = true
         showAllDataTbView.separatorStyle = .none

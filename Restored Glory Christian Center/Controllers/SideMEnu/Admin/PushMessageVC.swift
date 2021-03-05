@@ -18,7 +18,8 @@ class PushMessageVC: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         messageTxtView.text = placeholderText
-        messageTxtView.textColor = #colorLiteral(red: 0.6430888772, green: 0.6431655288, blue: 0.6430535913, alpha: 1)
+        messageTxtView.font = UIFont(name: "Roboto-Medium", size: 15)
+        messageTxtView.textColor = #colorLiteral(red: 0.7930875277, green: 0.8009398794, blue: 0.8009398794, alpha: 1)
         // Do any additional setup after loading the view.
     }
     

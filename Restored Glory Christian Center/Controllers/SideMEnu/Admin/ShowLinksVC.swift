@@ -100,7 +100,7 @@ class ShowLinksVC: UIViewController {
                 if status == 1{
                     if let allData = response["category_details"] as? [[String:Any]]{
                         for obj in allData{
-                            self.showLinksDataArray.append(ShowLinksData(image: obj[""] as? String ?? "", name: obj["name"] as? String ?? ""))
+                            self.showLinksDataArray.append(ShowLinksData(image: obj[""] as? String ?? "", name: obj["name"] as? String ?? "", catId: obj["c_id"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.showLinksDataArray
@@ -152,6 +152,14 @@ extension ShowLinksVC : UITableViewDelegate , UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
+        vc.catId = searchDataArray[indexPath.row].catId
+        vc.catName = searchDataArray[indexPath.row].name
+        searchView.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
@@ -162,9 +170,10 @@ extension ShowLinksVC : UITableViewDelegate , UITableViewDataSource {
 struct ShowLinksData {
     var image : String
     var name : String
-    
-    init(image : String , name : String ) {
+    var catId : String
+    init(image : String , name : String,catId : String ) {
         self.image = image
         self.name = name
+        self.catId = catId
     }
 }
