@@ -50,6 +50,8 @@
 		188C9AD025CE5E3D009AC9C8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C9ACD25CE5E3D009AC9C8 /* Reachability.swift */; };
 		188C9AD525CE5E74009AC9C8 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188C9AD425CE5E74009AC9C8 /* Auth.storyboard */; };
 		189B361625D5673000ABAA31 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B361525D5673000ABAA31 /* ChangePasswordVC.swift */; };
+		18C4092025F35504004786D9 /* Spalsh.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C4091F25F35504004786D9 /* Spalsh.storyboard */; };
+		18C4092625F355F0004786D9 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C4092525F355F0004786D9 /* SplashVC.swift */; };
 		18C58DF625DD402900EC5379 /* ShowLinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C58DF525DD402900EC5379 /* ShowLinksVC.swift */; };
 		18C5BD1725D26AA100F77E80 /* AddLinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BD1625D26AA100F77E80 /* AddLinkVC.swift */; };
 		18C5BD1C25D282A400F77E80 /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BD1B25D282A400F77E80 /* AnnouncementsVC.swift */; };
@@ -135,6 +137,8 @@
 		188C9ACD25CE5E3D009AC9C8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		188C9AD425CE5E74009AC9C8 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		189B361525D5673000ABAA31 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		18C4091F25F35504004786D9 /* Spalsh.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Spalsh.storyboard; sourceTree = "<group>"; };
+		18C4092525F355F0004786D9 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		18C58DF525DD402900EC5379 /* ShowLinksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLinksVC.swift; sourceTree = "<group>"; };
 		18C5BD1625D26AA100F77E80 /* AddLinkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkVC.swift; sourceTree = "<group>"; };
 		18C5BD1B25D282A400F77E80 /* AnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsVC.swift; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 				188C9A7325CE5BD2009AC9C8 /* Main.storyboard */,
 				188C9AD425CE5E74009AC9C8 /* Auth.storyboard */,
 				188C9A7825CE5BD3009AC9C8 /* LaunchScreen.storyboard */,
+				18C4091F25F35504004786D9 /* Spalsh.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 		188C9AA725CE5CF3009AC9C8 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				18C4092425F355BC004786D9 /* Splash */,
 				18CBC05725CE74DB00264243 /* SignInVC.swift */,
 				18CBC05C25CE74EA00264243 /* SignUpVC.swift */,
 				18CBC06125CE750100264243 /* ForgotPasswordVC.swift */,
@@ -396,6 +402,14 @@
 				188C9AB925CE5E1D009AC9C8 /* ValidationManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		18C4092425F355BC004786D9 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				18C4092525F355F0004786D9 /* SplashVC.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		18C58DF425DD400F00EC5379 /* Admin */ = {
@@ -558,6 +572,7 @@
 				188C9A7525CE5BD2009AC9C8 /* Main.storyboard in Resources */,
 				184E4CAB25D108E100330A10 /* Roboto-Italic.ttf in Resources */,
 				184E4CA725D108E100330A10 /* Roboto-MediumItalic.ttf in Resources */,
+				18C4092025F35504004786D9 /* Spalsh.storyboard in Resources */,
 				184E4CB725D108E100330A10 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				184E4CAD25D108E100330A10 /* RobotoCondensed-Light.ttf in Resources */,
 				184E4CA625D108E100330A10 /* RobotoCondensed-Italic.ttf in Resources */,
@@ -694,6 +709,7 @@
 				18C5BD2625D2831B00F77E80 /* Women'sMinistryVC.swift in Sources */,
 				188C9ABD25CE5E1D009AC9C8 /* AppConstants.swift in Sources */,
 				189B361625D5673000ABAA31 /* ChangePasswordVC.swift in Sources */,
+				18C4092625F355F0004786D9 /* SplashVC.swift in Sources */,
 				184B11AF25E371B1003007A2 /* SceneDelegate.swift in Sources */,
 				188C9ACF25CE5E3D009AC9C8 /* Constant.swift in Sources */,
 				188C9AC725CE5E29009AC9C8 /* ChangeBottamColor.swift in Sources */,

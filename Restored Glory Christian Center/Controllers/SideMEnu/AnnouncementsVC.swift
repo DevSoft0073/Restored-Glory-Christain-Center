@@ -20,13 +20,7 @@ class AnnouncementsVC: UIViewController {
         super.viewDidLoad()
         categoryListing()
         self.adminTBView.separatorStyle = .none
-//        adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
-//        adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
-//        adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
-//        adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
-//        adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
-//        adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
-//        adminTBDataArray.append(AdminTBData(image: "placehlder", name: "youth", details: "asasdadsaaa"))
+
         adminTBView.separatorStyle = .none
     }
     
@@ -101,11 +95,14 @@ extension AnnouncementsVC : UITableViewDelegate , UITableViewDataSource {
         cell.profileImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "placehlder"))
         cell.nameLbl.text = adminTBDataArray[indexPath.row].name
         cell.detailLbl.text = adminTBDataArray[indexPath.row].details
+//        DispatchQueue.main.async {
+//            self.heightConstraint.constant = CGFloat(self.adminTBView.contentSize.height)
+//        }
         cell.profileImage.setRounded()
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
 }
 

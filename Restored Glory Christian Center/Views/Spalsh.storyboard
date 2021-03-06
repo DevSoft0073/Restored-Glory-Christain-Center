@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="opS-rQ-djV">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SplashVC-->
+        <scene sceneID="h3c-h7-QtV">
+            <objects>
+                <viewController storyboardIdentifier="SplashVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZPy-FW-nM7" customClass="SplashVC" customModule="Restored_Glory_Christian_Center" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ngv-JZ-W9G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-sign" translatesAutoresizingMaskIntoConstraints="NO" id="6hL-g1-uEx">
+                                <rect key="frame" x="83" y="329" width="248" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6hL-g1-uEx" secondAttribute="height" multiplier="1:1" id="bPH-5d-KfJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JfW-wb-Nig"/>
+                        <color key="backgroundColor" red="0.059621185059999998" green="0.2838000953" blue="0.70072108509999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6hL-g1-uEx" firstAttribute="width" secondItem="Ngv-JZ-W9G" secondAttribute="width" multiplier="0.6" id="3kD-sy-VZZ"/>
+                            <constraint firstItem="6hL-g1-uEx" firstAttribute="centerX" secondItem="JfW-wb-Nig" secondAttribute="centerX" id="UCf-lN-gXf"/>
+                            <constraint firstItem="6hL-g1-uEx" firstAttribute="centerY" secondItem="JfW-wb-Nig" secondAttribute="centerY" id="dfO-9X-0XO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hbW-K6-GDu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JFk-0A-V6x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110.144927536232" y="98.4375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="P9d-ZM-QVX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="opS-rQ-djV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zQu-kE-thy">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZPy-FW-nM7" kind="relationship" relationship="rootViewController" id="7SC-Ko-IDP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DxK-t7-GGm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="200.00000000000003" y="98.4375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo-sign" width="495" height="515"/>
+    </resources>
+</document>
