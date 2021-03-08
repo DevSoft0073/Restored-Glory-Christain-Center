@@ -35,7 +35,7 @@ class HomeVC: UIViewController , UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
 
         
-        if UserDefaults.standard.value(forKey: "checkRole") as? String ?? "" == "0" {
+        if (UserDefaults.standard.value(forKey: "checkRole") as? String ?? "") == "0" {
             
             addLinkButton.isHidden = true
             

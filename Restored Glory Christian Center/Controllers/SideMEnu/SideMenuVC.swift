@@ -93,7 +93,7 @@ class SideMenuVC: UIViewController {
                 let status = response["status"] as? Int
                 if status == 1{
                     if let allData = response["data"] as? [String:Any]{
-                        self.nameLbl.text = "\(allData["first_name"] as? String ?? "")" + "\(allData["last_name"] as? String ?? "")"
+                        self.nameLbl.text = "\(allData["first_name"] as? String ?? "") " + "\(allData["last_name"] as? String ?? "")"
                         self.emailLbl.text = allData["email"] as? String
                         self.profileImage.sd_setImage(with: URL(string:allData["photo"] as? String ?? ""), placeholderImage: UIImage(named: "placehlder"))
                         let url = URL(string:allData["photo"] as? String ?? "")
@@ -128,7 +128,6 @@ class SideMenuVC: UIViewController {
     }
     
     func logout()  {
-        UserDefaults.standard.removeObject(forKey: "tokenFString")
         let appDel = UIApplication.shared.delegate as! AppDelegate
         appDel.Logout1()
     }
@@ -206,10 +205,7 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
             // Create OK button with action handler
             let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 print("Ok button click...")
-                UserDefaults.standard.set(false, forKey: "tokenFString")
-                                            self.logout()
-                
-                
+                self.logout()
             })
             
             // Create Cancel button with action handlder

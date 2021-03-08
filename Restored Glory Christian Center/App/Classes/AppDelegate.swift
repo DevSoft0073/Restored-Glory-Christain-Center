@@ -24,7 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
     //    setUpRootScreen()
+        guard #available(iOS 13.0, *) else {
+            setUpInitialScreen()
+            return true
+        }
         return true
+    }
+    
+    func setUpInitialScreen(){
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Spalsh", bundle: nil)
+        let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "SplashVC") as! SplashVC
+        let nav = UINavigationController(rootViewController: homeViewController)
+        nav.setNavigationBarHidden(true, animated: true)
+        appdelegate.window?.rootViewController = nav
     }
 
     // MARK: UISceneSession Lifecycle
@@ -53,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func Logout1(){
+        UserDefaults.standard.removeObject(forKey: "tokenFString")
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Auth", bundle: nil)
         let homeViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
