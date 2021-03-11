@@ -158,8 +158,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
+            var deviceID = UserDefaults.standard.value(forKey: "deviceToken") as? String
+            print(deviceID ?? "")
+            if deviceID == nil  {
+                deviceID = "777"
+            }
             let url = Constant.shared.baseUrl + Constant.shared.SignUp
-            let params = ["first_name":nameTxtFld.text ?? "","last_name" : lastName.text ?? "" ,"email":emailTxtFld.text ?? "", "password":passwordTxtFld.text ?? "" , "device_type" : "", "device_token" : ""] as [String : Any]
+            let params = ["first_name":nameTxtFld.text ?? "","last_name" : lastName.text ?? "" ,"email":emailTxtFld.text ?? "", "password":passwordTxtFld.text ?? "" , "device_type" : "2", "device_token" : deviceID] as [String : Any]
             AFWrapperClass.requestPOSTURL(url, params: params, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.messgae = response["message"] as? String ?? ""

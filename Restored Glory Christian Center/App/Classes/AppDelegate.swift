@@ -7,12 +7,11 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-
+import UserNotifications
 
 func appDelegate() -> AppDelegate {
     return UIApplication.shared.delegate as! AppDelegate
 }
-
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,8 +27,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             setUpInitialScreen()
             return true
         }
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        application.registerForRemoteNotifications()
         return true
     }
+    
     
     func setUpInitialScreen(){
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -48,6 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let deviceTokenString = deviceToken.hexString
+        print(deviceTokenString)
+        UserDefaults.standard.setValue(deviceTokenString, forKey: "deviceToken")
+    }
+
 
     @available(iOS 13.0, *)
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
@@ -94,7 +115,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
     }
-    
+}
 
+@available(iOS 10.0, *)
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
 }
 

@@ -16,7 +16,7 @@ class SideMenuVC: UIViewController {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var sideMenuTbView: UITableView!
-    var titleArray = ["Home","Announcements","Choir Rehearsal","Women's Ministry","Men's Ministry","Logout","Admin"]
+    var titleArray = [String]()
     var sideMenuArray : [SideMenuData] = []{
         didSet{
             sideMenuTbView.reloadData()
@@ -29,13 +29,24 @@ class SideMenuVC: UIViewController {
         sideMenuTbView.separatorStyle = .none
         adminButton.contentHorizontalAlignment = .left
         
-        sideMenuArray.append(SideMenuData(name: "Home", selected: true))
-        sideMenuArray.append(SideMenuData(name: "Announcements", selected: false))
-        sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
-        sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
-        sideMenuArray.append(SideMenuData(name: "Men's Ministry", selected: false))
-        sideMenuArray.append(SideMenuData(name: "Logout", selected: false))
-        sideMenuArray.append(SideMenuData(name: "Admin", selected: false))
+        if (UserDefaults.standard.value(forKey: "checkRole") as? String ?? "") == "0" {
+            sideMenuArray.append(SideMenuData(name: "Home", selected: true))
+            sideMenuArray.append(SideMenuData(name: "Announcements", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Men's Ministry", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Logout", selected: false))
+        }else{
+            sideMenuArray.append(SideMenuData(name: "Home", selected: true))
+            sideMenuArray.append(SideMenuData(name: "Announcements", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Men's Ministry", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Logout", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Admin", selected: false))
+        }
+        
+    
         // Do any additional setup after loading the view.
     }
     
@@ -222,6 +233,7 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
             
         }
         else if(indexPath.row == 6) {
+            
             let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }

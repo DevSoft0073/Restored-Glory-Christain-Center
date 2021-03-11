@@ -67,7 +67,13 @@ class SignInVC: UIViewController , UITextFieldDelegate{
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
             let url = Constant.shared.baseUrl + Constant.shared.SignIn
-            let params = ["email":emailTxtFld.text ?? "","password":passwordTxtFld.text ?? "" , "device_token" : "" ,"device_type" : "1"] as [String : Any]
+            var deviceID = UserDefaults.standard.value(forKey: "deviceToken") as? String ?? ""
+            print(deviceID )
+            if deviceID == nil  {
+                deviceID = "777"
+            }
+            let params = ["email":emailTxtFld.text ?? "","password":passwordTxtFld.text ?? "" , "device_token" : deviceID ,"device_type" : "2"] as [String : Any]
+            print(params)
             AFWrapperClass.requestPOSTURL(url, params: params, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.messgae = response["message"] as? String ?? ""

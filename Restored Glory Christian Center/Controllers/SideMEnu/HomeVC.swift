@@ -41,7 +41,7 @@ class HomeVC: UIViewController , UITextFieldDelegate{
             
         }else{
             
-            addLinkButton.isHidden = false
+            addLinkButton.isHidden = true
             
         }
     }
