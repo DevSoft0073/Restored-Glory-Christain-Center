@@ -65,6 +65,9 @@
 		18E9781025CE7E6C000D1F8D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9780F25CE7E6C000D1F8D /* HomeVC.swift */; };
 		18E9781825CE8522000D1F8D /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9781725CE8522000D1F8D /* SideMenuVC.swift */; };
 		18F49E6E25D407B600604C69 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F49E6D25D407B600604C69 /* DetailsVC.swift */; };
+		18F736582609AFC600C31214 /* AboutUSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F736572609AFC600C31214 /* AboutUSVC.swift */; };
+		18F736602609D23700C31214 /* ContactUSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7365F2609D23700C31214 /* ContactUSVC.swift */; };
+		18F736682609D7CB00C31214 /* AddEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F736672609D7CB00C31214 /* AddEventVC.swift */; };
 		58A4554EE0D39E337EAE6C02 /* Pods_Restored_Glory_Christian_CenterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6E1F6ECC36C25C63FAAED4 /* Pods_Restored_Glory_Christian_CenterTests.framework */; };
 		8CCFF29A63ECA0314F87267A /* Pods_Restored_Glory_Christian_Center.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76297625A537C9D5E8B0B7AB /* Pods_Restored_Glory_Christian_Center.framework */; };
 		F6F55311757424FCC979000A /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C4EA74E5E62CA3E4824A2B /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework */; };
@@ -153,6 +156,9 @@
 		18E9780F25CE7E6C000D1F8D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		18E9781725CE8522000D1F8D /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		18F49E6D25D407B600604C69 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
+		18F736572609AFC600C31214 /* AboutUSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUSVC.swift; sourceTree = "<group>"; };
+		18F7365F2609D23700C31214 /* ContactUSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUSVC.swift; sourceTree = "<group>"; };
+		18F736672609D7CB00C31214 /* AddEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventVC.swift; sourceTree = "<group>"; };
 		1D6E1F6ECC36C25C63FAAED4 /* Pods_Restored_Glory_Christian_CenterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restored_Glory_Christian_CenterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27BA2699F42BF596E7600F40 /* Pods-Restored Glory Christian CenterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restored Glory Christian CenterTests.debug.xcconfig"; path = "Target Support Files/Pods-Restored Glory Christian CenterTests/Pods-Restored Glory Christian CenterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		40C4EA74E5E62CA3E4824A2B /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -351,6 +357,8 @@
 				18D936A425D3EE610013E166 /* ChoirRehearsal.swift */,
 				18F49E6D25D407B600604C69 /* DetailsVC.swift */,
 				189B361525D5673000ABAA31 /* ChangePasswordVC.swift */,
+				18F736572609AFC600C31214 /* AboutUSVC.swift */,
+				18F7365F2609D23700C31214 /* ContactUSVC.swift */,
 			);
 			path = SideMEnu;
 			sourceTree = "<group>";
@@ -421,6 +429,7 @@
 				184E4CCA25D1555900330A10 /* PushMessageVC.swift */,
 				18C5BD1625D26AA100F77E80 /* AddLinkVC.swift */,
 				18C58DF525DD402900EC5379 /* ShowLinksVC.swift */,
+				18F736672609D7CB00C31214 /* AddEventVC.swift */,
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -719,6 +728,7 @@
 				184B11AE25E371B1003007A2 /* AppFunctions.swift in Sources */,
 				18C58DF625DD402900EC5379 /* ShowLinksVC.swift in Sources */,
 				18CBC06225CE750100264243 /* ForgotPasswordVC.swift in Sources */,
+				18F736582609AFC600C31214 /* AboutUSVC.swift in Sources */,
 				188C9AC525CE5E29009AC9C8 /* HelperMethods.swift in Sources */,
 				188C9ABE25CE5E1D009AC9C8 /* DisplayAlertManager.swift in Sources */,
 				184E4CBC25D154E100330A10 /* ProfileVC.swift in Sources */,
@@ -726,7 +736,9 @@
 				18CBC05D25CE74EA00264243 /* SignUpVC.swift in Sources */,
 				184E4CCB25D1555900330A10 /* PushMessageVC.swift in Sources */,
 				18C5BD1C25D282A400F77E80 /* AnnouncementsVC.swift in Sources */,
+				18F736602609D23700C31214 /* ContactUSVC.swift in Sources */,
 				184E4CC625D1553200330A10 /* AdminVC.swift in Sources */,
+				18F736682609D7CB00C31214 /* AddEventVC.swift in Sources */,
 				184B11AD25E371B1003007A2 /* ImagePicker.swift in Sources */,
 				18D936A525D3EE610013E166 /* ChoirRehearsal.swift in Sources */,
 				188C9AC625CE5E29009AC9C8 /* Activityloader.swift in Sources */,
@@ -921,7 +933,7 @@
 				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -946,7 +958,7 @@
 				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

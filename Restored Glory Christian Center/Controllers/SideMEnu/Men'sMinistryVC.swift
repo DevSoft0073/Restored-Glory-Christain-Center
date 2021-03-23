@@ -10,15 +10,19 @@ import LGSideMenuController
 
 class Men_sMinistryVC: UIViewController {
 
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var searchDataView: UIView!
     @IBOutlet weak var searchTxtFld: UITextField!
     @IBOutlet weak var mensTbView: UITableView!
     var mensMinistryDataArray = [MensMinistryData]()
     var searchDataArray = [MensMinistryData]()
+    var titleName = String()
+    var id = String()
     var isSearch = false
     var message = String()
     override func viewDidLoad() {
         categoryDetails()
+        titleLbl.text = titleName
         mensTbView.separatorStyle = .none
         searchDataView.isHidden = true
         mensTbView.delegate = self
@@ -80,7 +84,7 @@ class Men_sMinistryVC: UIViewController {
             IJProgressView.shared.showProgressView()
             let signInUrl = Constant.shared.baseUrl + Constant.shared.DetailsByCat
             print(signInUrl)
-            let parms : [String:Any] = ["c_id" : "4" , "search" : ""]
+            let parms : [String:Any] = ["c_id" : id , "search" : ""]
             print(parms)
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
