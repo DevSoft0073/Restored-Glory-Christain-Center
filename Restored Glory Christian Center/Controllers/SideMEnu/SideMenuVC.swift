@@ -43,6 +43,7 @@ class SideMenuVC: UIViewController {
         }else{
             sideMenuArray.append(SideMenuData(name: "Home", selected: true))
             sideMenuArray.append(SideMenuData(name: "Encouraging Words", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Upcoming Events", selected: false))
             sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
             sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
             sideMenuArray.append(SideMenuData(name: "Men's Ministry", selected: false))
@@ -196,51 +197,55 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
             let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }
-            
         else if(indexPath.row == 2) {
+            let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
+            (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+        }
+            
+        else if(indexPath.row == 3) {
             let vc = ChoirRehearsal.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             
         }
             
-        else if(indexPath.row == 3) {
+        else if(indexPath.row == 4) {
             let vc = Women_sMinistryVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }
             
-        else if(indexPath.row == 4) {
+        else if(indexPath.row == 5) {
             
             let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
             vc.id = "4"
             vc.titleName = "Men's Ministry"
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             
-        }else if(indexPath.row == 5) {
+        }else if(indexPath.row == 6) {
             
             let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
             vc.id = "6"
             vc.titleName = "Glory Kids"
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             
-        }else if(indexPath.row == 6) {
+        }else if(indexPath.row == 7) {
             
             let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
             vc.id = "5"
             vc.titleName = "Teen Ministry"
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             
-        } else if(indexPath.row == 7) {
+        } else if(indexPath.row == 8) {
             
             let vc = AboutUSVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             
-        }else if(indexPath.row == 8) {
+        }else if(indexPath.row == 9) {
             
             let vc = ContactUSVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }
         
-        else if(indexPath.row == 9) {
+        else if(indexPath.row == 10) {
             
             let dialogMessage = UIAlertController(title: Constant.shared.appTitle, message: "Are you sure you want to Logout?", preferredStyle: .alert)
             
@@ -263,7 +268,7 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
             self.present(dialogMessage, animated: true, completion: nil)
             
         }
-        else if(indexPath.row == 10) {
+        else if(indexPath.row == 11) {
             
             let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)

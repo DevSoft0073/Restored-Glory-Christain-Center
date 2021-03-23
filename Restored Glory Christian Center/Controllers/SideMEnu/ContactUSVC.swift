@@ -14,7 +14,7 @@ class ContactUSVC: UIViewController ,WKNavigationDelegate{
     @IBOutlet weak var openUrl: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: "http://restoredglory.org/about-us/")!
+        let url = URL(string: "http://restoredglory.org/contact-us/")!
         let urlRequest = URLRequest(url: url)
         openUrl.load(urlRequest)
         openUrl.autoresizingMask = [.flexibleWidth,.flexibleHeight]
