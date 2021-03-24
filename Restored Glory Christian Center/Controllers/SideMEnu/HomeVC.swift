@@ -125,10 +125,10 @@ class HomeVC: UIViewController , UITextFieldDelegate{
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
-            let signInUrl = Constant.shared.baseUrl + Constant.shared.CategoryType
+            let signInUrl = Constant.shared.baseUrl + Constant.shared.NewHomeCat
             let parms : [String:Any] = ["userID" : id , "search" : ""]
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
-                IJProgressView.shared.hideProgressView()
+            IJProgressView.shared.hideProgressView()
                 self.allDataArray.removeAll()
                 self.message = response["message"] as? String ?? ""
                 let status = response["status"] as? Int
@@ -191,11 +191,18 @@ extension HomeVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
-        vc.catId = searchDataArray[indexPath.row].catId
-        vc.catName = searchDataArray[indexPath.row].title
-        searchView.isHidden = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if searchDataArray[indexPath.row].title == "Encouraging Words"{
+            let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
+            searchView.isHidden = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
+            vc.catId = searchDataArray[indexPath.row].catId
+            vc.catName = searchDataArray[indexPath.row].title
+            searchView.isHidden = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

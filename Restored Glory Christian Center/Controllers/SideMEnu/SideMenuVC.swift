@@ -198,7 +198,8 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }
         else if(indexPath.row == 2) {
-            let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
+            let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
+            vc.catName = "Upcoming Events"
             (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
         }
             

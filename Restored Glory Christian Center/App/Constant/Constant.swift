@@ -26,7 +26,9 @@ class Constant: NSObject {
     let GetAllLinks = "GetAllLinks.php"
     let SendPush = "AddMassPush.php"
     let AddEvent = "UpcomingEvent.php"
-    let GetAllUncomingEvents = "GetEventDetails.php" 
+    let GetAllUncomingEvents = "GetEventDetails.php"
+    let NewHomeCat = "GetHomeCategory.php"
+    
     
 }
 

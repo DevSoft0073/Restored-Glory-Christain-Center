@@ -79,10 +79,17 @@ class DetailsVC: UIViewController {
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
-            let signInUrl = Constant.shared.baseUrl + Constant.shared.DetailsByCat
+            var signInUrl = String()
+            var parms = [String:Any]()
+            let id = UserDefaults.standard.value(forKey: "id") ?? ""
+            if catName == "Upcoming Events"{
+                signInUrl = Constant.shared.baseUrl + Constant.shared.GetAllUncomingEvents
+                parms = ["user_id" : id ]
+            }else{
+                signInUrl = Constant.shared.baseUrl + Constant.shared.DetailsByCat
+                parms = ["c_id" : catId , "search" : ""]
+            }
             print(signInUrl)
-            let parms : [String:Any] = ["c_id" : catId , "search" : ""]
-            print(parms)
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.detailsDataArray.removeAll()
@@ -145,7 +152,11 @@ extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsTbViewCell", for: indexPath) as! DetailsTbViewCell
         cell.nameLbl.text = searchDataArray[indexPath.row].name
-        cell.detailsLbl.text = searchDataArray[indexPath.row].details
+        if catName == "Upcoming Events"{
+            cell.detailsLbl.text = searchDataArray[indexPath.row].link
+        }else{
+            cell.detailsLbl.text = searchDataArray[indexPath.row].details
+        }
         cell.dateLbl.text = searchDataArray[indexPath.row].date
         cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
                 
