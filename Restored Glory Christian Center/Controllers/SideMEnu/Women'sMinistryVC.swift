@@ -81,7 +81,9 @@ class Women_sMinistryVC: UIViewController {
                 if status == 1{
                     if let allData = response["data"] as? [[String:Any]]{
                         for obj in allData{
-                            self.womenDataArray.append(WomensData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: "21Dec", link: obj["link"] as? String ?? ""))
+                            let dateValue = obj["created_at"] as? String ?? ""
+                            let dateVal = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0
+                            self.womenDataArray.append(WomensData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: self.convertTimeStampToDate(dateVal: dateVal), link: obj["link"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.womenDataArray
@@ -102,6 +104,17 @@ class Women_sMinistryVC: UIViewController {
         }
 
     }
+    
+//    func convertTimeStampToDate(dateVal : Double) -> String{
+//        let timeinterval = TimeInterval(dateVal)
+//        let dateFromServer = Date(timeIntervalSince1970:timeinterval)
+//        print(dateFromServer)
+//        let dateFormater = DateFormatter()
+//        dateFormater.timeZone = .current
+//        dateFormater.dateFormat = "dd-MM-YYYY"
+//        return dateFormater.string(from: dateFromServer)
+//    }
+    
     
     
 }
@@ -169,5 +182,18 @@ struct WomensData {
         self.name = name
         self.date = date
         self.link = link
+    }
+}
+
+extension UIViewController {
+    func convertTimeStampToDate(dateVal : Double) -> String{
+        let timeinterval = TimeInterval(dateVal)
+        let dateFromServer = Date(timeIntervalSince1970:timeinterval)
+        print(dateFromServer)
+        let dateFormater = DateFormatter()
+        dateFormater.timeZone = .current
+        dateFormater.dateFormat = "dd MMMM"
+        
+        return dateFormater.string(from: dateFromServer)
     }
 }

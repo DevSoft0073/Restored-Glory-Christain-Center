@@ -7,6 +7,7 @@
 
 import UIKit
 import LGSideMenuController
+import SDWebImage
 
 class HomeVC: UIViewController , UITextFieldDelegate{
     
@@ -135,7 +136,7 @@ class HomeVC: UIViewController , UITextFieldDelegate{
                 if status == 1{
                     if let allData = response["category_details"] as? [[String:Any]]{
                         for obj in allData{
-                            self.allDataArray.append(AllData(title: obj["name"] as? String ?? "", image: obj[""] as? String ?? "", catId: obj["c_id"] as? String ?? ""))
+                            self.allDataArray.append(AllData(title: obj["name"] as? String ?? "", image: obj["image"] as? String ?? "", catId: obj["c_id"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.allDataArray
@@ -186,7 +187,7 @@ extension HomeVC : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShowAllDataTbViewCell", for: indexPath) as! ShowAllDataTbViewCell
         cell.titleLbl.text = searchDataArray[indexPath.row].title
         cell.images.image = UIImage(named: searchDataArray[indexPath.row].image)
-        cell.images.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+        cell.images.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"), options: SDWebImageOptions.continueInBackground, completed: nil)
         return cell
     }
     
