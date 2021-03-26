@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-sign" translatesAutoresizingMaskIntoConstraints="NO" id="6hL-g1-uEx">
-                                <rect key="frame" x="83" y="329" width="248" height="248"/>
+                                <rect key="frame" x="103.5" y="349.5" width="207" height="207"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6hL-g1-uEx" secondAttribute="height" multiplier="1:1" id="bPH-5d-KfJ"/>
                                 </constraints>
@@ -26,7 +26,7 @@
                         <viewLayoutGuide key="safeArea" id="JfW-wb-Nig"/>
                         <color key="backgroundColor" red="0.059621185059999998" green="0.2838000953" blue="0.70072108509999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6hL-g1-uEx" firstAttribute="width" secondItem="Ngv-JZ-W9G" secondAttribute="width" multiplier="0.6" id="3kD-sy-VZZ"/>
+                            <constraint firstItem="6hL-g1-uEx" firstAttribute="width" secondItem="Ngv-JZ-W9G" secondAttribute="width" multiplier="0.5" id="3kD-sy-VZZ"/>
                             <constraint firstItem="6hL-g1-uEx" firstAttribute="centerX" secondItem="JfW-wb-Nig" secondAttribute="centerX" id="UCf-lN-gXf"/>
                             <constraint firstItem="6hL-g1-uEx" firstAttribute="centerY" secondItem="JfW-wb-Nig" secondAttribute="centerY" id="dfO-9X-0XO"/>
                         </constraints>

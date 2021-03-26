@@ -26,7 +26,9 @@ class HomeVC: UIViewController , UITextFieldDelegate{
         self.showAllDataTbView.reloadData()
         showAllDataTbView.delegate = self
         showAllDataTbView.dataSource = self
-        categoryListing()
+        DispatchQueue.main.async {
+            self.categoryListing()
+        }
         searchView.isHidden = true
         showAllDataTbView.separatorStyle = .none
         
@@ -122,10 +124,10 @@ class HomeVC: UIViewController , UITextFieldDelegate{
     
     func categoryListing() {
         
-        let id = UserDefaults.standard.value(forKey: "id") ?? ""
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
             IJProgressView.shared.showProgressView()
+            let id = UserDefaults.standard.value(forKey: "id") ?? ""
             let signInUrl = Constant.shared.baseUrl + Constant.shared.NewHomeCat
             let parms : [String:Any] = ["userID" : id , "search" : ""]
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in

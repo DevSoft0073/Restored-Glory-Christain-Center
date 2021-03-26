@@ -37,8 +37,8 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func openMenu(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-//        sideMenuController?.showLeftViewAnimated()
+//        self.navigationController?.popViewController(animated: true)
+        sideMenuController?.showLeftViewAnimated()
     }
     
     func getData() {

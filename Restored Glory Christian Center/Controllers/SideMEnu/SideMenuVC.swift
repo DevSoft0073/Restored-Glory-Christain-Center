@@ -74,27 +74,12 @@ class SideMenuVC: UIViewController {
     }
     
     @IBAction func adminButton(_ sender: UIButton) {
-//        sideMenuController?.hideLeftViewAnimated()
-//        sender.isUserInteractionEnabled = false
-////        var filterArray = sideMenuArray.filter({$0.selected == true})
-////        if filterArray.count == 0{
-////            adminButton.setTitleColor(#colorLiteral(red: 0.08110561222, green: 0.2923257351, blue: 0.6798375845, alpha: 1), for: .normal)
-////        }else{
-////            adminButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-////        }
-////
-//        let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
-//        (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
-//
-////        let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
-////        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func openProfile(_ sender: Any) {
-        
-        
+        sideMenuController?.hideLeftViewAnimated()
         let vc = ProfileVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(vc, animated: true)
+        (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
     }
     
     func getData() {
