@@ -928,9 +928,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.6;
+				CURRENT_PROJECT_VERSION = 1.91;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -940,7 +940,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.restoredglory.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Restored Glory Dev 11 mar 21";
+				PROVISIONING_PROFILE_SPECIFIER = "Restored Glory Dist 11 mar 21";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -953,9 +953,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.6;
+				CURRENT_PROJECT_VERSION = 1.91;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -965,7 +965,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.restoredglory.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Restored Glory Dev 11 mar 21";
+				PROVISIONING_PROFILE_SPECIFIER = "Restored Glory Dist 11 mar 21";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

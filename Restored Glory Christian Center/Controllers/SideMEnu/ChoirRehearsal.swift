@@ -94,7 +94,7 @@ class ChoirRehearsal: UIViewController {
                         for obj in allData{
                             let dateValue = obj["created_at"] as? String ?? ""
                             let dateVal = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0
-                            self.ChoirRehearsalDataArray.append(ChoirRehearsalData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: self.convertTimeStampToDate(dateVal: dateVal), link: obj["link"] as? String ?? ""))
+                            self.ChoirRehearsalDataArray.append(ChoirRehearsalData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: obj["servercreated_at"] as? String ?? "", link: obj["link"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.ChoirRehearsalDataArray
@@ -149,7 +149,7 @@ extension ChoirRehearsal : UITableViewDelegate ,UITableViewDataSource {
         cell.nameLbl.text = searchDataArray[indexPath.row].name
         cell.dateLbl.text = searchDataArray[indexPath.row].date
 //        cell.showImage.image = UIImage(named: searchDataArray[indexPath.row].image)
-        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "ic_ph_home"))
         
         cell.dataView.layer.cornerRadius = 10
         cell.dataView.layer.masksToBounds = false

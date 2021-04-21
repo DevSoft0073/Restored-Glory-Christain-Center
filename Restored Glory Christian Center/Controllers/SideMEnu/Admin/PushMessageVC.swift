@@ -58,8 +58,6 @@ class PushMessageVC: UIViewController,UITextViewDelegate {
             self.sendPush()
             
         }
-        
-        sendPush()
     }
     
     func sendPush() {
@@ -77,7 +75,9 @@ class PushMessageVC: UIViewController,UITextViewDelegate {
                 self.message = response["message"] as? String ?? ""
                 let status = response["status"] as? Int
                 if status == 1{
-                    self.navigationController?.popViewController(animated: true)
+                    showAlertMessage(title: Constant.shared.appTitle, message: self.message, okButton: "Ok", controller: self) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }else{
                     
                     IJProgressView.shared.hideProgressView()

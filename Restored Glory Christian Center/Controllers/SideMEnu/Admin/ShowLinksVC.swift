@@ -7,6 +7,7 @@
 
 import UIKit
 import LGSideMenuController
+import SDWebImage
 
 class ShowLinksVC: UIViewController {
 
@@ -100,7 +101,7 @@ class ShowLinksVC: UIViewController {
                 if status == 1{
                     if let allData = response["category_details"] as? [[String:Any]]{
                         for obj in allData{
-                            self.showLinksDataArray.append(ShowLinksData(image: obj[""] as? String ?? "", name: obj["name"] as? String ?? "", catId: obj["c_id"] as? String ?? ""))
+                            self.showLinksDataArray.append(ShowLinksData(image: obj["image"] as? String ?? "", name: obj["name"] as? String ?? "", catId: obj["c_id"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.showLinksDataArray
@@ -148,7 +149,7 @@ extension ShowLinksVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShowLinksTbViewCell", for: indexPath) as! ShowLinksTbViewCell
         cell.titleLbl.text = searchDataArray[indexPath.row].name
-        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "ic_ph_home"), options: SDWebImageOptions.continueInBackground, completed: nil)
         return cell
     }
     

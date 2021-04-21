@@ -16,7 +16,7 @@ class AboutUSVC: UIViewController ,WKNavigationDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "http://restoredglory.org/about-us/")!
+        let url = URL(string: "http://privacy.restoredglory.org")!
         let urlRequest = URLRequest(url: url)
         openUrl.load(urlRequest)
         openUrl.autoresizingMask = [.flexibleWidth,.flexibleHeight]

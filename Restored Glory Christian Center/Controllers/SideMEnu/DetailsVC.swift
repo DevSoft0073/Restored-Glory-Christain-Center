@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import LGSideMenuController
 
 
 class DetailsVC: UIViewController {
@@ -30,6 +31,7 @@ class DetailsVC: UIViewController {
         searchDataView.isHidden = true
         titleLbl.text = catName
         // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func searchButton(_ sender: Any) {
@@ -56,7 +58,14 @@ class DetailsVC: UIViewController {
     
     
     @IBAction func backButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
+        let comesFrom = UserDefaults.standard.value(forKey: "comesFromSideMenu") as? Bool
+        if comesFrom == true{
+            sideMenuController?.showLeftViewAnimated()
+        }else{
+            self.navigationController?.popViewController(animated: true)
+
+        }
     }
     
     
@@ -100,7 +109,7 @@ class DetailsVC: UIViewController {
                         for obj in allData{
                             let dateValue = obj["created_at"] as? String ?? ""
                             let dateVal = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0
-                            self.detailsDataArray.append(DetailsData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: self.convertTimeStampToDate(dateVal: dateVal), link: obj["link"] as? String ?? ""))
+                            self.detailsDataArray.append(DetailsData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: obj["servercreated_at"] as? String ?? "", link: obj["link"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.detailsDataArray
@@ -160,7 +169,7 @@ extension DetailsVC : UITableViewDelegate , UITableViewDataSource {
             cell.detailsLbl.text = searchDataArray[indexPath.row].details
         }
         cell.dateLbl.text = searchDataArray[indexPath.row].date
-        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "ic_ph_home"))
                 
         cell.openLinkButton.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
         cell.openLinkButton.tag = indexPath.row

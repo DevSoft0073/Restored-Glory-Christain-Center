@@ -19,6 +19,8 @@ class SignInVC: UIViewController , UITextFieldDelegate{
 
     }
     
+    
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == emailTxtFld{
             
@@ -32,6 +34,7 @@ class SignInVC: UIViewController , UITextFieldDelegate{
             
         }
     }
+    
     
     @IBAction func forgotPasswordButton(_ sender: Any) {
 
@@ -84,8 +87,6 @@ class SignInVC: UIViewController , UITextFieldDelegate{
                         UserDefaults.standard.set(1, forKey: "tokenFString")
                         UserDefaults.standard.set(data["user_id"], forKey: "id")
                         UserDefaults.standard.setValue(data["role"], forKey: "checkRole")
-//                        UserDefaults.standard.set(data["role"], forKey: "checkRole")
-//                        print(data)
                     }
                     let story = UIStoryboard(name: "Main", bundle: nil)
                     let rootViewController:UIViewController = story.instantiateViewController(withIdentifier: "SideMenuControllerID")

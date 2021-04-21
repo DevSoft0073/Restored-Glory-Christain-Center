@@ -189,7 +189,7 @@ extension HomeVC : UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShowAllDataTbViewCell", for: indexPath) as! ShowAllDataTbViewCell
         cell.titleLbl.text = searchDataArray[indexPath.row].title
         cell.images.image = UIImage(named: searchDataArray[indexPath.row].image)
-        cell.images.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"), options: SDWebImageOptions.continueInBackground, completed: nil)
+        cell.images.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "ic_ph_home"), options: SDWebImageOptions.continueInBackground, completed: nil)
         return cell
     }
     
@@ -203,6 +203,7 @@ extension HomeVC : UITableViewDelegate , UITableViewDataSource {
             let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
             vc.catId = searchDataArray[indexPath.row].catId
             vc.catName = searchDataArray[indexPath.row].title
+            UserDefaults.standard.setValue(false, forKey: "comesFromSideMenu")
             searchView.isHidden = true
             self.navigationController?.pushViewController(vc, animated: true)
         }

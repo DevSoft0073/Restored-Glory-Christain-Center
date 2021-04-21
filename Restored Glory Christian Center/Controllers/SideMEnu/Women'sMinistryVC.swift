@@ -83,7 +83,7 @@ class Women_sMinistryVC: UIViewController {
                         for obj in allData{
                             let dateValue = obj["created_at"] as? String ?? ""
                             let dateVal = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0
-                            self.womenDataArray.append(WomensData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: self.convertTimeStampToDate(dateVal: dateVal), link: obj["link"] as? String ?? ""))
+                            self.womenDataArray.append(WomensData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: obj["servercreated_at"] as? String ?? "", link: obj["link"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.womenDataArray
@@ -114,9 +114,6 @@ class Women_sMinistryVC: UIViewController {
 //        dateFormater.dateFormat = "dd-MM-YYYY"
 //        return dateFormater.string(from: dateFromServer)
 //    }
-    
-    
-    
 }
 
 class WomensDataTBVIewCell: UITableViewCell {
@@ -145,7 +142,7 @@ extension Women_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WomensDataTBVIewCell", for: indexPath) as! WomensDataTBVIewCell
-        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "img1"))
+        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "ic_ph_home"))
         cell.titleLbl.text = searchDataArray[indexPath.row].details
         cell.nameLbl.text = searchDataArray[indexPath.row].name
         cell.dateLbl.text = searchDataArray[indexPath.row].date
@@ -191,9 +188,8 @@ extension UIViewController {
         let dateFromServer = Date(timeIntervalSince1970:timeinterval)
         print(dateFromServer)
         let dateFormater = DateFormatter()
-        dateFormater.timeZone = .current
+        dateFormater.timeZone = TimeZone(abbreviation: "UTC")
         dateFormater.dateFormat = "dd MMMM"
-        
         return dateFormater.string(from: dateFromServer)
     }
 }

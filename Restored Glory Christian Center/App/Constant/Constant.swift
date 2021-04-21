@@ -13,7 +13,8 @@ class Constant: NSObject {
     static let shared = Constant()
     let appTitle  = "Restored Glory Christian Center"
     
-    let baseUrl = "https://www.dharmani.com/Candaceyoung7/webservice/"
+//    let baseUrl = "https://www.dharmani.com/Candaceyoung7/webservice/"
+    let baseUrl = "http://mobile.restoredglory.org/RestoredGloryChristianCenter/webservice/"
     let SignUp = "SignUp.php"
     let SignIn = "Login.php"
     let ForgotPassword = "ForgetPassword.php"

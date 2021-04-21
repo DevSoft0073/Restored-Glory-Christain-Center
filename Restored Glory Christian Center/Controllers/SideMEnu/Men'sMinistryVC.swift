@@ -64,14 +64,6 @@ class Men_sMinistryVC: UIViewController {
         mensTbView.reloadData()
     }
     
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        self.searchDataView.isHidden = true
-//        isSearch = false
-//
-//    }
-//
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.searchDataView.isHidden = true
@@ -96,7 +88,7 @@ class Men_sMinistryVC: UIViewController {
                         for obj in allData{
                             let dateValue = obj["created_at"] as? String ?? ""
                             let dateVal = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0
-                            self.mensMinistryDataArray.append(MensMinistryData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: self.convertTimeStampToDate(dateVal: dateVal), link: obj["link"] as? String ?? ""))
+                            self.mensMinistryDataArray.append(MensMinistryData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: obj["servercreated_at"] as? String ?? "", link: obj["link"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.mensMinistryDataArray
@@ -146,7 +138,7 @@ extension Men_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MensTbViewCell", for: indexPath) as! MensTbViewCell
-        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "youth"))
+        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "ic_ph_home"))
         cell.titleLbl.text = searchDataArray[indexPath.row].details
         cell.nameLbl.text = searchDataArray[indexPath.row].name
         cell.dateLbl.text = searchDataArray[indexPath.row].date
