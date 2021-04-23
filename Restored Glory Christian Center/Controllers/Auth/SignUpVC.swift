@@ -147,6 +147,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func termsAndConditionBUtton(_ sender: Any) {
+        guard let url = URL(string: "http://privacy.restoredglory.org") else {
+          return //be safe
+        }
+
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @IBAction func gotoSignInButoon(_ sender: Any) {

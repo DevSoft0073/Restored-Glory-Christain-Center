@@ -10,11 +10,11 @@ PODS:
   - SVProgressHUD-0.8.1 (0.8)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.2)
+  - Alamofire
   - IQKeyboardManagerSwift
   - LGSideMenuController
   - SCLAlertView
-  - SDWebImage (~> 4.0)
+  - SDWebImage
   - SKCountryPicker
   - SVProgressHUD-0.8.1
 
@@ -37,6 +37,6 @@ SPEC CHECKSUMS:
   SKCountryPicker: 7ad1e7dfb482cfb26855e33c2d70dbf1eaf218fe
   SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
 
-PODFILE CHECKSUM: fe80ed1879054216a6587819bfc40b29e59cabf2
+PODFILE CHECKSUM: d702b74990ee82b6fbef5678d1adb785e9e570c7
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1
