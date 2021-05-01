@@ -59,13 +59,13 @@ class DetailsVC: UIViewController {
     
     @IBAction func backButton(_ sender: Any) {
         
-        let comesFrom = UserDefaults.standard.value(forKey: "comesFromSideMenu") as? Bool
-        if comesFrom == true{
-            sideMenuController?.showLeftViewAnimated()
-        }else{
+//        let comesFrom = UserDefaults.standard.value(forKey: "comesFromSideMenu") as? Bool
+//        if comesFrom == true{
+//
+//            sideMenuController?.showLeftViewAnimated()
+//        }else{
             self.navigationController?.popViewController(animated: true)
-
-        }
+//        }
     }
     
     
@@ -129,9 +129,7 @@ class DetailsVC: UIViewController {
             alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
         }
 
-    }
-
-    
+    }    
 }
 
 class DetailsTbViewCell: UITableViewCell {

@@ -31,24 +31,24 @@ class SideMenuVC: UIViewController {
         let role = (UserDefaults.standard.value(forKey: "checkRole") as? String ?? "")
         if role == "0" {
             sideMenuArray.append(SideMenuData(name: "Home", selected: true))
-            sideMenuArray.append(SideMenuData(name: "Encouraging Words", selected: false))
+//            sideMenuArray.append(SideMenuData(name: "Encouraging Words", selected: false))
             sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
-            sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
-            sideMenuArray.append(SideMenuData(name: "Men's Ministry", selected: false))
-            sideMenuArray.append(SideMenuData(name: "Glory Kids", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Mens Ministry", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Womens Ministry", selected: false))
             sideMenuArray.append(SideMenuData(name: "Teen Ministry", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Glory Kids ", selected: false))
             sideMenuArray.append(SideMenuData(name: "About Us", selected: false))
             sideMenuArray.append(SideMenuData(name: "Contact Us", selected: false))
             sideMenuArray.append(SideMenuData(name: "Logout", selected: false))
         }else{
             sideMenuArray.append(SideMenuData(name: "Home", selected: true))
-            sideMenuArray.append(SideMenuData(name: "Encouraging Words", selected: false))
-            sideMenuArray.append(SideMenuData(name: "Upcoming Events", selected: false))
+//            sideMenuArray.append(SideMenuData(name: "Encouraging Words", selected: false))
+//            sideMenuArray.append(SideMenuData(name: "Upcoming Events", selected: false))
             sideMenuArray.append(SideMenuData(name: "Choir Rehearsal", selected: false))
-            sideMenuArray.append(SideMenuData(name: "Women's Ministry", selected: false))
-            sideMenuArray.append(SideMenuData(name: "Men's Ministry", selected: false))
-            sideMenuArray.append(SideMenuData(name: "Glory Kids", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Mens Ministry", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Womens Ministry", selected: false))
             sideMenuArray.append(SideMenuData(name: "Teen Ministry", selected: false))
+            sideMenuArray.append(SideMenuData(name: "Glory Kids ", selected: false))
             sideMenuArray.append(SideMenuData(name: "About Us", selected: false))
             sideMenuArray.append(SideMenuData(name: "Contact Us", selected: false))
             sideMenuArray.append(SideMenuData(name: "Logout", selected: false))
@@ -150,6 +150,9 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        
         let cell  = tableView.dequeueReusableCell(withIdentifier: "SideMenuTbViewCell", for: indexPath) as! SideMenuTbViewCell
         cell.titleLbl.text = sideMenuArray[indexPath.row].name
         if sideMenuArray[indexPath.row].selected == true{
@@ -174,7 +177,7 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
         })
         sideMenuArray[indexPath.row].selected = true
         sideMenuController?.hideLeftViewAnimated()
-        
+        UserDefaults.standard.setValue(true, forKey: "sideMenu")
         let role = (UserDefaults.standard.value(forKey: "checkRole") as? String ?? "")
         if role == "0" {
             
@@ -183,57 +186,61 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             }
                 
+//            else if(indexPath.row == 1) {
+//                let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
+//                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+//            }
             else if(indexPath.row == 1) {
-                let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
-                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
-            }
-            else if(indexPath.row == 2) {
 //                let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
 //                vc.catName = "Upcoming Events"
 //                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
                 
-                let vc = ChoirRehearsal.instantiate(fromAppStoryboard: .Main)
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "2"
+                vc.catTitle = "Choir Rehearsal"
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+            }
+                
+            else if(indexPath.row == 2) {
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "4"
+                vc.catTitle = "Men's Ministry"
+                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+                
             }
                 
             else if(indexPath.row == 3) {
-                let vc = Women_sMinistryVC.instantiate(fromAppStoryboard: .Main)
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "3"
+                vc.catTitle = "Women's Ministry "
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
-                
             }
                 
             else if(indexPath.row == 4) {
-                let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
-                vc.id = "4"
-                vc.titleName = "Men's Ministry"
+                
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "5"
+                vc.catTitle = "Teen Ministry"
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
-            }
                 
-            else if(indexPath.row == 5) {
+            }else if(indexPath.row == 5) {
                 
-                let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
-                vc.id = "6"
-                vc.titleName = "Glory Kids"
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "6"
+                vc.catTitle = "Glory Kids"
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
                 
             }else if(indexPath.row == 6) {
                 
-                let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
-                vc.id = "5"
-                vc.titleName = "Teen Ministry"
-                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
-                
-            }else if(indexPath.row == 7) {
-                
                 let vc = AboutUSVC.instantiate(fromAppStoryboard: .Main)
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
                 
-            } else if(indexPath.row == 8) {
+            } else if(indexPath.row == 7) {
                 
                 let vc = ContactUSVC.instantiate(fromAppStoryboard: .Main)
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
                 
-            }else if(indexPath.row == 9) {
+            }else if(indexPath.row == 8) {
                 
                 let dialogMessage = UIAlertController(title: Constant.shared.appTitle, message: "Are you sure you want to Logout?", preferredStyle: .alert)
                 
@@ -263,61 +270,66 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             }
                 
+//            else if(indexPath.row == 1) {
+//                let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
+//                vc.catTitle = "Encouraging Words"
+//                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+//            }
+//            else if(indexPath.row == 2) {
+//                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+//                vc.catTitle = "Upcoming Events"
+//                UserDefaults.standard.setValue(true, forKey: "comesFromSideMenu")
+//                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+//            }
+//
             else if(indexPath.row == 1) {
-                let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "2"
+                vc.catTitle = "Choir Rehearsal"
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
+                
             }
+                
             else if(indexPath.row == 2) {
-                let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
-                vc.catName = "Upcoming Events"
-                UserDefaults.standard.setValue(true, forKey: "comesFromSideMenu")
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "4"
+                vc.catTitle = "Men's Ministry"
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             }
                 
             else if(indexPath.row == 3) {
-                let vc = ChoirRehearsal.instantiate(fromAppStoryboard: .Main)
+                
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "3"
+                vc.catTitle = "Women's Ministry"
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
                 
-            }
+            }else if(indexPath.row == 4) {
                 
-            else if(indexPath.row == 4) {
-                let vc = Women_sMinistryVC.instantiate(fromAppStoryboard: .Main)
-                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
-            }
-                
-            else if(indexPath.row == 5) {
-                
-                let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
-                vc.id = "4"
-                vc.titleName = "Men's Ministry"
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "5"
+                vc.catTitle = "Teen Ministry"
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
                 
-            }else if(indexPath.row == 6) {
+            }else if(indexPath.row == 5) {
                 
-                let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
-                vc.id = "6"
-                vc.titleName = "Glory Kids"
+                let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+                vc.catID = "6"
+                vc.catTitle = "Glory Kids"
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
                 
-            }else if(indexPath.row == 7) {
-                
-                let vc = Men_sMinistryVC.instantiate(fromAppStoryboard: .Main)
-                vc.id = "5"
-                vc.titleName = "Teen Ministry"
-                (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
-                
-            } else if(indexPath.row == 8) {
+            } else if(indexPath.row == 6) {
                 
                 let vc = AboutUSVC.instantiate(fromAppStoryboard: .Main)
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
                 
-            }else if(indexPath.row == 9) {
+            }else if(indexPath.row == 7) {
                 
                 let vc = ContactUSVC.instantiate(fromAppStoryboard: .Main)
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
             }
             
-            else if(indexPath.row == 10) {
+            else if(indexPath.row == 8) {
                 
                 let dialogMessage = UIAlertController(title: Constant.shared.appTitle, message: "Are you sure you want to Logout?", preferredStyle: .alert)
                 
@@ -340,7 +352,7 @@ extension SideMenuVC : UITableViewDataSource , UITableViewDelegate {
                 self.present(dialogMessage, animated: true, completion: nil)
                 
             }
-            else if(indexPath.row == 11) {
+            else if(indexPath.row == 9) {
                 
                 let vc = AdminVC.instantiate(fromAppStoryboard: .Main)
                 (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)

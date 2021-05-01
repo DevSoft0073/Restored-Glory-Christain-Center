@@ -58,6 +58,7 @@
 		18C5BD1C25D282A400F77E80 /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BD1B25D282A400F77E80 /* AnnouncementsVC.swift */; };
 		18C5BD2125D2830600F77E80 /* Men'sMinistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BD2025D2830600F77E80 /* Men'sMinistryVC.swift */; };
 		18C5BD2625D2831B00F77E80 /* Women'sMinistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5BD2525D2831B00F77E80 /* Women'sMinistryVC.swift */; };
+		18C8B601263D275C00B7039C /* ShowDescriptioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C8B600263D275C00B7039C /* ShowDescriptioVC.swift */; };
 		18CBC05825CE74DB00264243 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC05725CE74DB00264243 /* SignInVC.swift */; };
 		18CBC05D25CE74EA00264243 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC05C25CE74EA00264243 /* SignUpVC.swift */; };
 		18CBC06225CE750100264243 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBC06125CE750100264243 /* ForgotPasswordVC.swift */; };
@@ -149,6 +150,7 @@
 		18C5BD1B25D282A400F77E80 /* AnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsVC.swift; sourceTree = "<group>"; };
 		18C5BD2025D2830600F77E80 /* Men'sMinistryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Men'sMinistryVC.swift"; sourceTree = "<group>"; };
 		18C5BD2525D2831B00F77E80 /* Women'sMinistryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Women'sMinistryVC.swift"; sourceTree = "<group>"; };
+		18C8B600263D275C00B7039C /* ShowDescriptioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDescriptioVC.swift; sourceTree = "<group>"; };
 		18CBC05725CE74DB00264243 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		18CBC05C25CE74EA00264243 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		18CBC06125CE750100264243 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				189B361525D5673000ABAA31 /* ChangePasswordVC.swift */,
 				18F736572609AFC600C31214 /* AboutUSVC.swift */,
 				18F7365F2609D23700C31214 /* ContactUSVC.swift */,
+				18C8B600263D275C00B7039C /* ShowDescriptioVC.swift */,
 			);
 			path = SideMEnu;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				184B11B025E371B1003007A2 /* AppExtensions.swift in Sources */,
 				18E9781825CE8522000D1F8D /* SideMenuVC.swift in Sources */,
 				188C9AD025CE5E3D009AC9C8 /* Reachability.swift in Sources */,
+				18C8B601263D275C00B7039C /* ShowDescriptioVC.swift in Sources */,
 				188C9ACE25CE5E3D009AC9C8 /* AFWrapperClass.swift in Sources */,
 				18E9781025CE7E6C000D1F8D /* HomeVC.swift in Sources */,
 				18CBC05825CE74DB00264243 /* SignInVC.swift in Sources */,
@@ -934,7 +938,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2.1;
+				CURRENT_PROJECT_VERSION = 2.3;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -959,7 +963,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2.1;
+				CURRENT_PROJECT_VERSION = 2.3;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

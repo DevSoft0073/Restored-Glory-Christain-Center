@@ -198,13 +198,20 @@ extension HomeVC : UITableViewDelegate , UITableViewDataSource {
         if searchDataArray[indexPath.row].title == "Encouraging Words"{
             let vc = AnnouncementsVC.instantiate(fromAppStoryboard: .Main)
             searchView.isHidden = true
+            vc.catTitle = searchDataArray[indexPath.row].title
             self.navigationController?.pushViewController(vc, animated: true)
-        }else{
+        }else if searchDataArray[indexPath.row].title == "Live Stream" || searchDataArray[indexPath.row].title == "Bible Study"{
             let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
             vc.catId = searchDataArray[indexPath.row].catId
             vc.catName = searchDataArray[indexPath.row].title
             UserDefaults.standard.setValue(false, forKey: "comesFromSideMenu")
             searchView.isHidden = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if searchDataArray[indexPath.row].title == "Upcoming Events" {
+            let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+            searchView.isHidden = true
+            vc.catTitle = searchDataArray[indexPath.row].title
+            UserDefaults.standard.setValue(false, forKey: "sideMenu")
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

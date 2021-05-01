@@ -9,6 +9,7 @@ import UIKit
 
 class AddEventVC: UIViewController ,UITextFieldDelegate,UITextViewDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
+    @IBOutlet weak var detailsTxtView: UITextView!
     @IBOutlet weak var addLinkTxtFld: UITextField!
     @IBOutlet weak var uploadedImnnage: UIImageView!
     var message = String()
@@ -62,7 +63,7 @@ class AddEventVC: UIViewController ,UITextFieldDelegate,UITextViewDelegate ,UIIm
             IJProgressView.shared.showProgressView()
             let signInUrl = Constant.shared.baseUrl + Constant.shared.AddEvent
             print(signInUrl)
-            let parms : [String:Any] = ["user_id" : id,"title" : eventNameTxtFld.text ?? "","eventImage" : base64String , "link" : addLinkTxtFld.text ?? ""]
+            let parms : [String:Any] = ["user_id" : id,"title" : eventNameTxtFld.text ?? "","eventImage" : base64String , "link" : addLinkTxtFld.text ?? "" ,"description" : detailsTxtView.text ?? ""]
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.message = response["message"] as? String ?? ""

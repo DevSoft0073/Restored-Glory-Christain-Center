@@ -10,7 +10,7 @@ import LGSideMenuController
 import SDWebImage
 
 class ShowLinksVC: UIViewController {
-
+    
     var showLinksDataArray = [ShowLinksData]()
     var searchDataArray = [ShowLinksData]()
     @IBOutlet weak var searchTxtFld: UITextField!
@@ -54,7 +54,7 @@ class ShowLinksVC: UIViewController {
             isSearch = false
             categoryListing()
             searchTxtFld.text = ""
-
+            
         }else{
             
             searchView.isHidden = false
@@ -139,11 +139,11 @@ extension ShowLinksVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if searchDataArray.count == 0 {
-                self.showLinksTbView.setEmptyMessage("No data")
-            } else {
-                self.showLinksTbView.restore()
-            }
-            return searchDataArray.count
+            self.showLinksTbView.setEmptyMessage("No data")
+        } else {
+            self.showLinksTbView.restore()
+        }
+        return searchDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,17 +154,28 @@ extension ShowLinksVC : UITableViewDelegate , UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
-        vc.catId = searchDataArray[indexPath.row].catId
-        vc.catName = searchDataArray[indexPath.row].name
-        searchView.isHidden = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+        if searchDataArray[indexPath.row].name == "Live Stream" || searchDataArray[indexPath.row].name == "Bible Study"{
+            let vc = DetailsVC.instantiate(fromAppStoryboard: .Main)
+            vc.catId = searchDataArray[indexPath.row].catId
+            vc.catName = searchDataArray[indexPath.row].name
+            UserDefaults.standard.setValue(false, forKey: "comesFromSideMenu")
+            searchView.isHidden = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let vc = ShowDescriptioVC.instantiate(fromAppStoryboard: .Main)
+            searchView.isHidden = true
+            vc.catID = searchDataArray[indexPath.row].catId
+            UserDefaults.standard.setValue(false, forKey: "sideMenu")
+            vc.catTitle = searchDataArray[indexPath.row].name
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
-    
 }
 
 
