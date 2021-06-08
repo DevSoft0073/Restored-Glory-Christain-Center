@@ -22,13 +22,8 @@ class AnnouncementsVC: UIViewController {
         super.viewDidLoad()
         self.adminTBView.separatorStyle = .none
         adminTBView.separatorStyle = .none
-        
         titlelbl.text = catTitle
-        if catTitle == "Encouraging Words" {
-            categoryListing()
-        }else{
-            categoryDetails()
-        }
+        categoryDetails()
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -83,14 +78,8 @@ class AnnouncementsVC: UIViewController {
             
             var signInUrl = String()
             var parms = [String:Any]()
-            let id = UserDefaults.standard.value(forKey: "id") ?? ""
-            if catTitle == "Upcoming Events"{
-                signInUrl = Constant.shared.baseUrl + Constant.shared.GetAllUncomingEvents
-                parms = ["user_id" : id ]
-            }else{
-                signInUrl = Constant.shared.baseUrl + Constant.shared.DetailsByCat
-                parms = ["c_id" : catID , "search" : ""]
-            }
+            signInUrl = Constant.shared.baseUrl + Constant.shared.allPushData
+            parms = ["c_id" : "8"]
             print(signInUrl)
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()

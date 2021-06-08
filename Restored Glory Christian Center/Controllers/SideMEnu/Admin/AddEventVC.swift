@@ -10,7 +10,6 @@ import UIKit
 class AddEventVC: UIViewController ,UITextFieldDelegate,UITextViewDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var detailsTxtView: UITextView!
-    @IBOutlet weak var addLinkTxtFld: UITextField!
     @IBOutlet weak var uploadedImnnage: UIImageView!
     var message = String()
     var imagePickers = UIImagePickerController()
@@ -37,20 +36,11 @@ class AddEventVC: UIViewController ,UITextFieldDelegate,UITextViewDelegate ,UIIm
     }
     
     @IBAction func submitButtonAction(_ sender: Any) {
-        if addLinkTxtFld.text?.isEmpty == true{
+        if eventNameTxtFld.text?.isEmpty == true{
             
-            ValidateData(strMessage: "Link should not be empty")
-        }else if isValidUrl(url: (addLinkTxtFld.text)!) == false{
-            
-            ValidateData(strMessage: "Enter valid url")
-            
-        }
-        else if eventNameTxtFld.text?.isEmpty == true {
             ValidateData(strMessage: "Event name should not be empty")
             
-        }
-        
-        else{
+        }else{
             addEvent()
         }
     }
@@ -63,7 +53,7 @@ class AddEventVC: UIViewController ,UITextFieldDelegate,UITextViewDelegate ,UIIm
             IJProgressView.shared.showProgressView()
             let signInUrl = Constant.shared.baseUrl + Constant.shared.AddEvent
             print(signInUrl)
-            let parms : [String:Any] = ["user_id" : id,"title" : eventNameTxtFld.text ?? "","eventImage" : base64String , "link" : addLinkTxtFld.text ?? "" ,"description" : detailsTxtView.text ?? ""]
+            let parms : [String:Any] = ["user_id" : id,"title" : eventNameTxtFld.text ?? "","eventImage" : base64String , "link" : "" ,"description" : detailsTxtView.text ?? ""]
             AFWrapperClass.requestPOSTURL(signInUrl, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.message = response["message"] as? String ?? ""

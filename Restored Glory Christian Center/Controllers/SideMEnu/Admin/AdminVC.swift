@@ -10,8 +10,8 @@ import UIKit
 class AdminVC: UIViewController, CAAnimationDelegate {
 
     @IBOutlet weak var adminTBView: UITableView!
-    var iconImgArray = ["send-push","links","links"]
-    var titleArray = ["Send Push","Links","Upcoming Event"]
+    var iconImgArray = ["send-push","links"]
+    var titleArray = ["Send Push","Links"]
     var currentIndex = Int()
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,6 +9,8 @@ import UIKit
 
 class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate,UIPickerViewDataSource{
     
+    @IBOutlet weak var linkViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var linkView: UIView!
     @IBOutlet weak var descriptionTxtView: UITextView!
     @IBOutlet weak var addlinkTxtFld: UITextField!
     @IBOutlet weak var titleTxtFld: UITextField!
@@ -53,26 +55,42 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
     }
     @IBAction func submitButtonAction(_ sender: Any) {
         
-        if (selectTypeTxtFld.text?.isEmpty)!{
-            
-            ValidateData(strMessage: "Select type field should not be empty")
-        }
-        else if (titleTxtFld.text?.isEmpty)!{
-            
-            ValidateData(strMessage: "Title field should not be empty")
-            
-        }else if (addlinkTxtFld.text?.isEmpty)!{
-            
-            ValidateData(strMessage: "Add link field should not be empty")
-            
-        }else if isValidUrl(url: (addlinkTxtFld.text)!) == false{
-            
-            ValidateData(strMessage: "Enter valid url")
-            
+        
+        if selectTypeTxtFld.text == "Live Stream" || selectTypeTxtFld.text == "Bible Study" {
+            if (selectTypeTxtFld.text?.isEmpty)!{
+                
+                ValidateData(strMessage: "Select type field should not be empty")
+            }
+            else if (titleTxtFld.text?.isEmpty)!{
+                
+                ValidateData(strMessage: "Title field should not be empty")
+                
+            }else if (addlinkTxtFld.text?.isEmpty)!{
+                
+                ValidateData(strMessage: "Add link field should not be empty")
+                
+            }else if isValidUrl(url: (addlinkTxtFld.text)!) == false{
+                
+                ValidateData(strMessage: "Enter valid url")
+                
+            }else{
+                
+                addLink()
+            }
         }else{
-            
-            addLink()
-            
+            if (selectTypeTxtFld.text?.isEmpty)!{
+                
+                ValidateData(strMessage: "Select type field should not be empty")
+            }
+            else if (titleTxtFld.text?.isEmpty)!{
+                
+                ValidateData(strMessage: "Title field should not be empty")
+                
+            }else{
+                
+                addLink()
+                
+            }
         }
     }
     
@@ -111,6 +129,11 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
         selectTypeTxtFld.text = listingArray[row].title
         selectedValue = listingArray[row].catId
         print(selectedValue)
+        if selectTypeTxtFld.text == "Live Stream" || selectTypeTxtFld.text == "Bible Study" {
+            linkViewHeight.constant = 70
+        }else{
+            linkViewHeight.constant = 0
+        }
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = (view as? UILabel) ?? UILabel()
@@ -175,9 +198,14 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
             IJProgressView.shared.showProgressView()
             let url = Constant.shared.baseUrl + Constant.shared.Addlink
             print(url)
-            let countryName = UserDefaults.standard.value(forKey: "name")
-            let parms : [String:Any] = ["user_id" : id,"title" : titleTxtFld.text ?? "","selectType" : selectedValue ?? "" ,"link" : addlinkTxtFld.text ?? "", "description" : descriptionTxtView.text ?? "","image" : base64]
-            print(parms)
+            var parms = [String:Any]()
+            if selectTypeTxtFld.text == "Live Stream" || selectTypeTxtFld.text == "Bible Study" {
+                parms = ["user_id" : id,"title" : titleTxtFld.text ?? "","selectType" : selectedValue ,"link" : addlinkTxtFld.text ?? "", "description" : descriptionTxtView.text ?? "","image" : base64]
+                print(parms)
+            }else{
+                parms = ["user_id" : id,"title" : titleTxtFld.text ?? "","selectType" : selectedValue , "description" : descriptionTxtView.text ?? "","image" : base64]
+                print(parms)
+            }
             AFWrapperClass.requestPOSTURL(url, params: parms, success: { (response) in
                 IJProgressView.shared.hideProgressView()
                 self.message = response["message"] as? String ?? ""

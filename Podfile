@@ -14,7 +14,9 @@ target 'Restored Glory Christian Center' do
     pod 'SDWebImage'
     pod 'SKCountryPicker'
     pod 'LGSideMenuController'
-
+    pod ‘SwiftGifOrigin’
+    pod 'ReadMoreTextView'
+    pod "ExpandableLabel"
 
   target 'Restored Glory Christian CenterTests' do
     inherit! :search_paths

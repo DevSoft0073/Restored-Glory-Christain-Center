@@ -21,7 +21,7 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         emailTxtFld.isUserInteractionEnabled = false
         addressTxtFld.isUserInteractionEnabled = false
-        emailTxtFld.isUserInteractionEnabled = false
+//        emailTxtFld.isUserInteractionEnabled = false
 
         // Do any additional setup after loading the view.
     }
@@ -114,6 +114,7 @@ class ProfileVC: UIViewController {
     @IBAction func gotoEditVc(_ sender: Any) {
         let vc = EditProfileVC.instantiate(fromAppStoryboard: .Main)
         self.navigationController?.pushViewController(vc, animated: true)
+    
     }
     
 }

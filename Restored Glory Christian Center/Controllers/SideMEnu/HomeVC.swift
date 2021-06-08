@@ -157,8 +157,8 @@ class HomeVC: UIViewController , UITextFieldDelegate{
             print("Internet connection FAILED")
             alert(Constant.shared.appTitle, message: "Check internet connection", view: self)
         }
-        
     }
+    
 }
 
 class ShowAllDataTbViewCell: UITableViewCell {
@@ -268,3 +268,4 @@ extension UITableView {
         self.separatorStyle = .singleLine
     }
 }
+

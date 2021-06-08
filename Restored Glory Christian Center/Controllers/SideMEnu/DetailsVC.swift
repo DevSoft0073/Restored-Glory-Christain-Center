@@ -109,7 +109,9 @@ class DetailsVC: UIViewController {
                         for obj in allData{
                             let dateValue = obj["created_at"] as? String ?? ""
                             let dateVal = NumberFormatter().number(from: dateValue)?.doubleValue ?? 0.0
-                            self.detailsDataArray.append(DetailsData(image: obj["image"] as? String ?? "", details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "", date: obj["servercreated_at"] as? String ?? "", link: obj["link"] as? String ?? ""))
+                            self.detailsDataArray.append(DetailsData(image: obj["image"] as? String ?? "",
+                                                                     details: obj["description"] as? String ?? "", name: obj["title"] as? String ?? "",
+                                                                     date: obj["servercreated_at"] as? String ?? "", link: obj["link"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.detailsDataArray
