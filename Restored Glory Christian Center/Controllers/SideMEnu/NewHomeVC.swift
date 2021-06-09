@@ -102,7 +102,7 @@ class NewHomeVC : UIViewController {
                                   
                                     else if self.catId  == "9" {
                                         print(i)
-                                        self.studyCLDataArray.append(StudyCLData(image: i["image"] as? String ?? "", link: i["link"] as? String ?? ""))
+                                        self.studyCLDataArray.append(StudyCLData(image: i["image"] as? String ?? "", link: i["link"] as? String ?? "", title: i["title"] as? String ?? ""))
                                     }
                                     else if self.catId == "7"{
                                         print(i)

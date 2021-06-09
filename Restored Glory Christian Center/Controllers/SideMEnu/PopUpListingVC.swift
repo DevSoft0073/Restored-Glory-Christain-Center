@@ -28,7 +28,14 @@ class PopUpListingVC: UIViewController,UITextViewDelegate {
     
 //    var expandedCells = Set<Int>()
     @IBAction func dropDownButton(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
+        let transition:CATransition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.reveal
+        transition.subtype = CATransitionSubtype.fromBottom
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction func readMoreBtn(_ sender: Any) {

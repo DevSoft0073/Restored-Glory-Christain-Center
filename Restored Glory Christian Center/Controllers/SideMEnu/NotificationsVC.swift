@@ -12,6 +12,7 @@ class NotificationsVC: UIViewController {
     @IBOutlet weak var notificationsTableView:
         UITableView!
     var message = String()
+    var timeArray = [String]()
     var notificationsTBDataArray = [NotificationsTBData]()
     var searchDataArray = [NotificationsTBData]()
     override func viewDidLoad() {
@@ -48,6 +49,7 @@ class NotificationsVC: UIViewController {
                         for obj in getData{
 
                             self.notificationsTBDataArray.append(NotificationsTBData(image: obj["image"] as? String ?? "", title: obj["title"] as? String ?? "", content: obj["description"] as? String ?? "", time: "\(obj["notification_date "] as? String ?? "")" + "\("ago")"))
+                            self.timeArray.append(obj["notification_date"] as? String ?? "")
                         }
                     }
                     self.searchDataArray = self.notificationsTBDataArray
@@ -100,22 +102,18 @@ extension NotificationsVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationsTableView", for: indexPath) as! notificationsTableView
-//        cell.notifyImg.image = UIImage(named: notificationsTBDataArray[indexPath.row].image)
-//        cell.notifyImg.layer.cornerRadius = cell.notifyImg.frame.size.width/2
-//        cell.notifyImg.layer.masksToBounds = true
-        cell.notifyImg.sd_setImage(with: URL(string: notificationsTBDataArray[indexPath.row].image), placeholderImage : UIImage(named: "placehlder"))
+        cell.notifyImg.image = UIImage(named: "admin")
         cell.notifyTitleLbl.text = notificationsTBDataArray[indexPath.row].title
         cell.notifyContentLbl.text = notificationsTBDataArray[indexPath.row].content
-        cell.notifyTimeLbl.text = notificationsTBDataArray[indexPath.row].time
+        cell.notifyTimeLbl.text = "\(timeArray[indexPath.row]) Ago"
         cell.notifyImg.setRounded()
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
-    
-    
 }
+
 struct  NotificationsTBData {
     var image : String
     var title : String

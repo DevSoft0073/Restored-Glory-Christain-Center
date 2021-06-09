@@ -71,12 +71,21 @@ class HomeScreenVC: UIViewController {
     }
     
     @IBAction func notificationButton(_ sender: Any) {
-        
+        let vc = NotificationsVC.instantiate(fromAppStoryboard: .Main)
+        (sideMenuController?.rootViewController as! UINavigationController).pushViewController(vc, animated: true)
     }
     
     @IBAction func mainBttn(_ sender: Any) {
+        
         let vc = PopUpListingVC.instantiate(fromAppStoryboard: .Main)
-        self.navigationController?.pushViewController(vc, animated: true)
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromTop
+        self.navigationController?.view.layer.add(transition, forKey: nil)
+        self.navigationController?.pushViewController(vc, animated: false)
+        
     }
     
     
@@ -110,7 +119,7 @@ class HomeScreenVC: UIViewController {
             bibleSeeButton.isUserInteractionEnabled = true
             let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
             vc.catId = "9"
-            vc.titleName = "Teens Ministry"
+            vc.titleName = "Bible Study"
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -121,7 +130,7 @@ class HomeScreenVC: UIViewController {
         }else{
             btnMen.isUserInteractionEnabled = true
             let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
-            vc.catId = "6"
+            vc.catId = "4"
             vc.titleName = "Mens Ministry"
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -133,7 +142,7 @@ class HomeScreenVC: UIViewController {
         }else{
             btnWomen.isUserInteractionEnabled = true
             let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
-            vc.catId = "5"
+            vc.catId = "3"
             vc.titleName = "Womens Ministry"
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -145,7 +154,7 @@ class HomeScreenVC: UIViewController {
         }else{
             btnTeen.isUserInteractionEnabled = true
             let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
-            vc.catId = "4"
+            vc.catId = "5"
             vc.titleName = "Teens Ministry"
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -156,7 +165,7 @@ class HomeScreenVC: UIViewController {
         }else{
             btnGlory.isUserInteractionEnabled = true
             let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
-            vc.catId = "3"
+            vc.catId = "6"
             vc.titleName = "Glory Kids"
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -203,7 +212,7 @@ class HomeScreenVC: UIViewController {
                                     
                                     else if self.catId  == "9" {
                                         print(i)
-                                        self.studyCLDataArray.append(StudyCLData(image: i["image"] as? String ?? "", link: i["link"] as? String ?? ""))
+                                        self.studyCLDataArray.append(StudyCLData(image: i["image"] as? String ?? "", link: i["link"] as? String ?? "", title: i["title"] as? String ?? ""))
                                     }
                                     else if self.catId == "7"{
                                         print(i)
@@ -217,19 +226,19 @@ class HomeScreenVC: UIViewController {
                                         
                                         self.ChoirCLDataArray.append(ChoirCLData(image: i["image"] as? String ?? "", name: i["title"] as? String ?? ""))
                                         
-                                    } else if self.catId == "6" {
+                                    } else if self.catId == "4" {
                                         
                                         self.mensDataArray.append(MensData(image: i["image"] as? String ?? "", name: i["title"] as? String ?? ""))
                                         
-                                    } else if self.catId == "5" {
+                                    } else if self.catId == "3" {
                                         
                                         self.womensDataArray.append(WomenData(image: i["image"] as? String ?? "", name: i["title"] as? String ?? ""))
                                         
-                                    } else if self.catId == "4" {
+                                    } else if self.catId == "5" {
                                         
                                         self.teenDataArray.append(TeenData(image: i["image"] as? String ?? "", name: i["title"] as? String ?? ""))
                                         
-                                    } else if self.catId == "3" {
+                                    } else if self.catId == "6" {
                                         
                                         self.gloryDataArray.append(GloryData(image: i["image"] as? String ?? "", name: i["title"] as? String ?? ""))
                                         
@@ -283,6 +292,7 @@ class choirCollectionView : UICollectionViewCell {
 }
 class studyCollectionView : UICollectionViewCell {
     
+    @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var mainImage: UIImageView!
     override class func awakeFromNib() {
         super.awakeFromNib()
@@ -415,6 +425,7 @@ extension HomeScreenVC : UICollectionViewDelegate , UICollectionViewDataSource ,
             }else{
                 cell.mainImage.sd_setImage(with: URL(string: studyCLDataArray[indexPath.row].image),placeholderImage: UIImage(named: "pl"))
             }
+            cell.nameLbl.text = studyCLDataArray[indexPath.row].title
             return cell
             
         } else if collectionView == tblMens{
@@ -596,9 +607,11 @@ struct UpcomingData {
 struct StudyCLData {
     var image : String
     var link : String
-    init(image : String , link :String) {
+    var title : String
+    init(image : String , link :String,title : String) {
         self.image = image
         self.link  = link
+        self.title = title
     }
 }
 extension UICollectionView {

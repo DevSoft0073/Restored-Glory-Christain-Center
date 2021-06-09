@@ -52,7 +52,7 @@ class SideMenuVC: UIViewController {
 //            sideMenuArray.append(SideMenuData(name: "About Us", selected: false))
             sideMenuArray.append(SideMenuData(name: "Term of use",image: "user-13" , selected: false))
             sideMenuArray.append(SideMenuData(name: "Logout",image: "user-17" , selected: false))
-            sideMenuArray.append(SideMenuData(name: "Admin", image: "" , selected: false))
+            sideMenuArray.append(SideMenuData(name: "Admin", image: "unauthorized-person" , selected: false))
         }
         
     
