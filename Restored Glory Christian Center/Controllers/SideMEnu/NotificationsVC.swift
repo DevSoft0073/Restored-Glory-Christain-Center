@@ -102,7 +102,7 @@ extension NotificationsVC : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationsTableView", for: indexPath) as! notificationsTableView
-        cell.notifyImg.image = UIImage(named: "admin")
+        cell.notifyImg.image = UIImage(named: "icon")
         cell.notifyTitleLbl.text = notificationsTBDataArray[indexPath.row].title
         cell.notifyContentLbl.text = notificationsTBDataArray[indexPath.row].content
         cell.notifyTimeLbl.text = "\(timeArray[indexPath.row]) Ago"
