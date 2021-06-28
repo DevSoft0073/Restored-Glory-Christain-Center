@@ -1138,7 +1138,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="54y-Ej-Sge">
-                                                                <rect key="frame" x="47.5" y="4.5" width="230" height="20.5"/>
+                                                                <rect key="frame" x="47.5" y="4" width="230" height="21.5"/>
                                                                 <color key="textColor" red="0.34507030249999998" green="0.3451142311" blue="0.34505009650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -1209,7 +1209,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kBN-e5-fDc">
-                                                                <rect key="frame" x="47.5" y="4.5" width="230" height="20.5"/>
+                                                                <rect key="frame" x="47.5" y="4" width="230" height="21.5"/>
                                                                 <color key="textColor" red="0.34507030249999998" green="0.3451142311" blue="0.34505009650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1814,7 +1814,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hoX-ct-GYi">
-                                                                <rect key="frame" x="47.5" y="4.5" width="230" height="20.5"/>
+                                                                <rect key="frame" x="47.5" y="4" width="230" height="21.5"/>
                                                                 <color key="textColor" red="0.34507030249999998" green="0.3451142311" blue="0.34505009650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -1888,7 +1888,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p8p-gu-GFH">
-                                                                <rect key="frame" x="47.5" y="4.5" width="230" height="20.5"/>
+                                                                <rect key="frame" x="47.5" y="4" width="230" height="21.5"/>
                                                                 <color key="textColor" red="0.34507030249999998" green="0.3451142311" blue="0.34505009650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -1947,7 +1947,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="thm-YN-7G2">
-                                <rect key="frame" x="147.5" y="167.5" width="5" height="23.5"/>
+                                <rect key="frame" x="147.5" y="167.5" width="5" height="24"/>
                                 <color key="textColor" red="0.059410005809999999" green="0.28774788979999999" blue="0.70472031830000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -3432,7 +3432,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VLL-ou-xzW">
-                                                                <rect key="frame" x="47.5" y="4.5" width="230" height="20.5"/>
+                                                                <rect key="frame" x="47.5" y="4" width="230" height="21.5"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -3503,7 +3503,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j2F-wb-Zas">
-                                                                <rect key="frame" x="47.5" y="4.5" width="230" height="20.5"/>
+                                                                <rect key="frame" x="47.5" y="4" width="230" height="21.5"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -3574,7 +3574,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter confirm password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PPu-Yl-9xe">
-                                                                <rect key="frame" x="47.5" y="5" width="230" height="20.5"/>
+                                                                <rect key="frame" x="47.5" y="4.5" width="230" height="21.5"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -5008,13 +5008,13 @@
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Tsj-Jd-XL3">
                                                                             <rect key="frame" x="83" y="34" width="232" height="34.5"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDY-Ue-LoC">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDY-Ue-LoC">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="232" height="19"/>
                                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTd-xS-ipH">
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTd-xS-ipH">
                                                                                     <rect key="frame" x="0.0" y="19" width="232" height="15.5"/>
                                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                                                                                     <color key="textColor" red="0.42740145330000001" green="0.4274794757" blue="0.42739653589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5642,6 +5642,7 @@
                     <navigationItem key="navigationItem" id="mvD-A7-GZi"/>
                     <connections>
                         <outlet property="bibleSeeButton" destination="dLr-UH-gBb" id="5cC-KR-KBY"/>
+                        <outlet property="bibleView" destination="wJk-dV-ohQ" id="Jcm-u9-mWy"/>
                         <outlet property="btnGlory" destination="ik7-xu-nIG" id="dOb-Hp-uDW"/>
                         <outlet property="btnMen" destination="z8V-wg-Jzy" id="ZwO-w6-nWr"/>
                         <outlet property="btnTeen" destination="eg7-4G-RyJ" id="Dnp-Vx-TOH"/>
@@ -5649,6 +5650,8 @@
                         <outlet property="choirCollectionHeight" destination="AB0-Qv-1W7" id="eTp-Ai-3AH"/>
                         <outlet property="choirCollectionView" destination="erp-Mr-7Y7" id="bmQ-ta-Qfp"/>
                         <outlet property="choirSeeButton" destination="Sd0-5Y-met" id="uvi-E7-OhK"/>
+                        <outlet property="choirView" destination="mE8-zO-oOC" id="36S-xf-w3f"/>
+                        <outlet property="gloryView" destination="vGE-z5-9K7" id="qJl-yE-0hg"/>
                         <outlet property="lblGlory" destination="w1Q-xv-lF6" id="X6W-ab-x50"/>
                         <outlet property="lblMens" destination="hVf-qk-alc" id="p0q-9J-8Mw"/>
                         <outlet property="lblTeens" destination="b8S-ed-403" id="Fh8-7b-UYd"/>
@@ -5656,6 +5659,7 @@
                         <outlet property="liveIcon" destination="qGa-h8-brI" id="IBr-fh-jyA"/>
                         <outlet property="mainButton" destination="LHc-A8-4Db" id="Cm8-s1-HNQ"/>
                         <outlet property="mainImg" destination="rMG-wr-kPI" id="gIt-1d-HgV"/>
+                        <outlet property="mensView" destination="VwQ-Ke-sKA" id="Oou-mI-iFX"/>
                         <outlet property="noDataChoirLbl" destination="C8X-Uc-NSb" id="NIe-E8-FHi"/>
                         <outlet property="noDataStudyLbl" destination="dUW-DT-pE9" id="cSv-Td-Csw"/>
                         <outlet property="noDataUpcomingLbl" destination="N7p-fM-1PY" id="LxO-jI-toM"/>
@@ -5664,8 +5668,11 @@
                         <outlet property="tblMens" destination="rWE-TX-12r" id="g8l-bf-Bcv"/>
                         <outlet property="tblTeens" destination="Oga-BF-B4N" id="BBs-oR-Cs7"/>
                         <outlet property="tblWomens" destination="aGO-y8-wv2" id="TDJ-p7-Ff5"/>
+                        <outlet property="teensView" destination="t6a-ra-WWe" id="Gtx-iy-Vx3"/>
                         <outlet property="upcomingSeeButton" destination="xxi-Pv-zjW" id="L7t-Lq-hNF"/>
                         <outlet property="upcomingTableView" destination="Jch-by-vFS" id="XrC-df-JnN"/>
+                        <outlet property="upcommingView" destination="giE-zc-oIF" id="i6C-FC-d1O"/>
+                        <outlet property="womensView" destination="2x8-ts-iyG" id="90W-CU-8m9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7bI-7z-pHV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

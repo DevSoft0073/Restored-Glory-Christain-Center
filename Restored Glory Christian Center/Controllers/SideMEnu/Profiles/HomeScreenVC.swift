@@ -38,6 +38,14 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var lblTeens: UILabel!
     @IBOutlet weak var lblGlory: UILabel!
     
+    @IBOutlet weak var upcommingView: UIView!
+    @IBOutlet weak var choirView: UIView!
+    @IBOutlet weak var gloryView: UIView!
+    @IBOutlet weak var bibleView: UIView!
+    @IBOutlet weak var womensView: UIView!
+    @IBOutlet weak var mensView: UIView!
+    @IBOutlet weak var teensView: UIView!
+    
     var message = String()
     var ChoirCLDataArray = [ChoirCLData]()
     var studyCLDataArray = [StudyCLData]()
@@ -218,6 +226,7 @@ class HomeScreenVC: UIViewController {
                                         print(i)
                                         self.mainImg.sd_setImage(with: URL(string: i["image"] as? String ?? ""), placeholderImage: UIImage(named: "pl"), options: SDWebImageOptions.continueInBackground, completed: nil)
                                         self.liveIcon.loadGif(name: "tower")
+                                        self.mainImg.contentMode = .scaleAspectFill
                                         self.bibleDataArray.append(BibleData(mimage: i["image"] as? String ?? "", gimage: i["image"] as? String ?? ""))
                                         
                                     }
@@ -264,10 +273,50 @@ class HomeScreenVC: UIViewController {
                         self.lblTeens.isHidden = self.teenDataArray.count == 0 ? false : true
                         self.lblGlory.isHidden = self.gloryDataArray.count == 0 ? false : true
                         
+                        if ChoirCLDataArray.count <= 3 {
+                            choirView.isHidden = true
+                        }else{
+                            choirView.isHidden = false
+                        }
+                        
+                        if upcomingDataArray.count < 3 {
+                            upcommingView.isHidden = true
+                        }else{
+                            upcommingView.isHidden = false
+                        }
+                        
+                        if studyCLDataArray.count <= 3 {
+                            bibleView.isHidden = true
+                        }else{
+                            bibleView.isHidden = false
+                        }
+                        
+                        if mensDataArray.count <= 3 {
+                            mensView.isHidden = true
+                        }else{
+                            mensView.isHidden = false
+                        }
+                        
+                        if womensDataArray.count <= 3 {
+                            womensView.isHidden = true
+                        }else{
+                            womensView.isHidden = false
+                        }
+                        
+                        if teenDataArray.count <= 3 {
+                            teensView.isHidden = true
+                        }else{
+                            teensView.isHidden = false
+                        }
+                        
+                        if gloryDataArray.count <= 3 {
+                            gloryView.isHidden = true
+                        }else{
+                            gloryView.isHidden = false
+                        }
+                        
                     }else {
                         IJProgressView.shared.hideProgressView()
-                        alert(Constant.shared.appTitle, message: self.message, view: self)
-                        
                     }
                 }
             }){(error) in
