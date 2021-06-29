@@ -31,6 +31,7 @@ class Constant: NSObject {
     let NewHomeCat = "GetHomeCategory.php"
     let allPushData = "GetMasspush.php"
     let homeData = "GetAllCategoryListing.php"
+    let detailsData = "GetEventDetailsById.php"
     
 }
 

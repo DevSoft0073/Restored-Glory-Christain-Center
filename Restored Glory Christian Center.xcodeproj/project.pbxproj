@@ -1045,7 +1045,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.0;
+				CURRENT_PROJECT_VERSION = 4.1;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1070,7 +1070,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.0;
+				CURRENT_PROJECT_VERSION = 4.1;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

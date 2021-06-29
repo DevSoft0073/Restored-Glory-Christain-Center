@@ -321,7 +321,7 @@ class HomeScreenVC: UIViewController {
                 }
             }){(error) in
                 IJProgressView.shared.hideProgressView()
-                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
+//                alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
                 print(error)
                 
             }
@@ -348,6 +348,9 @@ class studyCollectionView : UICollectionViewCell {
     }
 }
 class upcomingTableView : UITableViewCell{
+    
+    
+    @IBOutlet weak var btnTap: UIButton!
     @IBOutlet weak var upcomingImg: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
@@ -540,7 +543,47 @@ extension HomeScreenVC : UICollectionViewDelegate , UICollectionViewDataSource ,
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == studyCollectionView {
-            UIApplication.shared.open(URL(string: studyCLDataArray[indexPath.row].link)!, options: [:], completionHandler: nil)
+            
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+            vc.catId = "9"
+            vc.titleName = "Bible Study"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if collectionView == choirCollectionView {
+            
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+            vc.catId = "2"
+            vc.titleName = "Choir Reharsal"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if collectionView == tblMens {
+            
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+            vc.catId = "4"
+            vc.titleName = "Mens Ministry"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if collectionView == tblWomens {
+            
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+            vc.catId = "3"
+            vc.titleName = "Womens Ministry"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if collectionView == tblTeens {
+            
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+            vc.catId = "5"
+            vc.titleName = "Teens Ministry"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        } else if collectionView == tblGlory {
+            
+            let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+            vc.catId = "6"
+            vc.titleName = "Glory Kids"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
     }
 }
@@ -566,10 +609,20 @@ extension HomeScreenVC : UITableViewDataSource, UITableViewDelegate{
             cell.upcomingImg.sd_setImage(with: URL(string: upcomingDataArray [indexPath.row].image),placeholderImage: UIImage(named: "pl"))
             cell.titleLabel.text = upcomingDataArray[indexPath.row].title
             cell.detailLabel.text = upcomingDataArray[indexPath.row].detail
+            cell.btnTap.tag = indexPath.row
+            cell.btnTap.addTarget(self, action: #selector(gotoListingVC(sender:)), for: .touchUpInside)
         }
         
         return cell
     }
+    
+    
+    @objc func gotoListingVC(sender: UIButton){
+        let vc = ListingVC.instantiate(fromAppStoryboard: .Main)
+        vc.catId = "10"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }

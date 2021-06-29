@@ -44,7 +44,7 @@ class ListingVC: UIViewController {
                 if status == 1 {
                     if let allData = response["data"] as? [[String:Any]] {
                         for obj in allData{
-                            self.listCLDataArray.append(ListCLData(image: obj["image"] as? String ?? "", name: obj["title"] as? String ?? "", type: obj["description"] as? String ?? "", link: obj["link"] as? String ?? "")
+                            self.listCLDataArray.append(ListCLData(image: obj["image"] as? String ?? "", name: obj["title"] as? String ?? "", type: obj["description"] as? String ?? "", link: obj["link"] as? String ?? "", id: obj["link_id"] as? String ?? "")
                             )
                         }
                     }
@@ -108,8 +108,57 @@ extension ListingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if catId == "9"{
         UIApplication.shared.open(URL(string: listCLDataArray[indexPath.row].link)!, options: [:], completionHandler: nil)
-        }else{
             
+        } else {
+            
+            let vc = DetailsDataVC.instantiate(fromAppStoryboard: .Main)
+            vc.catID = self.catId
+            vc.linkID = listCLDataArray[indexPath.row].id
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+//        } else if catId == "8"{
+//
+//            let vc = DetailsDataVC.instantiate(fromAppStoryboard: .Main)
+//            vc.catID = self.catId
+//            vc.linkID = listCLDataArray[indexPath.row].id
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        } else if catId == "7"{
+//
+//            let vc = DetailsDataVC.instantiate(fromAppStoryboard: .Main)
+//            vc.catID = self.catId
+//            vc.linkID = listCLDataArray[indexPath.row].id
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        } else if catId == "6"{
+//
+//            let vc = DetailsDataVC.instantiate(fromAppStoryboard: .Main)
+//            vc.catID = self.catId
+//            vc.linkID = listCLDataArray[indexPath.row].id
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        } else if catId == "5"{
+//
+//            let vc = DetailsDataVC.instantiate(fromAppStoryboard: .Main)
+//            vc.catID = self.catId
+//            vc.linkID = listCLDataArray[indexPath.row].id
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        } else if catId == "4"{
+//
+//            let vc = DetailsDataVC.instantiate(fromAppStoryboard: .Main)
+//            vc.catID = self.catId
+//            vc.linkID = listCLDataArray[indexPath.row].id
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        } else if catId == "3"{
+//
+//            let vc = DetailsDataVC.instantiate(fromAppStoryboard: .Main)
+//            vc.catID = self.catId
+//            vc.linkID = listCLDataArray[indexPath.row].id
+//            self.navigationController?.pushViewController(vc, animated: true)
+//
+//        }
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -126,10 +175,12 @@ struct ListCLData {
     var name : String
     var type : String
     var link : String
-    init(image : String , name : String , type : String , link : String) {
+    var id : String
+    init(image : String , name : String , type : String , link : String ,id : String) {
         self.image = image
         self.name = name
         self.type = type
         self.link = link
+        self.id = id
     }
 }
