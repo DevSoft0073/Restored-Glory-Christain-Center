@@ -149,7 +149,12 @@ extension ShowLinksVC : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShowLinksTbViewCell", for: indexPath) as! ShowLinksTbViewCell
         cell.titleLbl.text = searchDataArray[indexPath.row].name
-        cell.showImage.sd_setImage(with: URL(string:searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "ic_ph_home"), options: SDWebImageOptions.continueInBackground, completed: nil)
+        if #available(iOS 13.0, *) {
+            cell.showImage.sd_setIndicatorStyle(.large)
+        } else {
+            // Fallback on earlier versions
+        }
+        cell.showImage.sd_setImage(with: URL(string: searchDataArray[indexPath.row].image), placeholderImage: UIImage(named: "pl"), options: SDWebImageOptions.continueInBackground, completed: nil)
         return cell
     }
     

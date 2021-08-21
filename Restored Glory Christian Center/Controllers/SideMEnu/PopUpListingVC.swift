@@ -7,12 +7,13 @@
 
 import UIKit
 import ReadMoreTextView
+import youtube_ios_player_helper
 
-
-class PopUpListingVC: UIViewController,UITextViewDelegate {
+class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate {
     
     @IBOutlet weak var PopUpListingTableView: UITableView!
     
+    @IBOutlet weak var otherPlayer: YTPlayerView!
     var message = String()
     var popListingTBDataArray = [PopListingTBData]()
     var searchDataArray = [PopListingTBData]()
@@ -20,7 +21,7 @@ class PopUpListingVC: UIViewController,UITextViewDelegate {
     var catName = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        otherPlayer.delegate = self
         popUpDetails()
 //        let attributedString = NSMutableAttributedString(string: "Want to learn ios get it will be best for you")
     
@@ -30,11 +31,11 @@ class PopUpListingVC: UIViewController,UITextViewDelegate {
     @IBAction func dropDownButton(_ sender: Any) {
         
         let transition:CATransition = CATransition()
-        transition.duration = 0.3
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.reveal
-        transition.subtype = CATransitionSubtype.fromBottom
-        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+//        transition.duration = 0.3
+//        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+//        transition.type = CATransitionType.reveal
+//        transition.subtype = CATransitionSubtype.fromBottom
+//        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
     }
     
@@ -91,11 +92,14 @@ class PopUpListingTableView : UITableViewCell {
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var contentLbl: UILabel!
     @IBOutlet weak var readMoreTextView: UITextView!
-    
 //    @IBOutlet weak var readMoreLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+     
+       
     }
+    //Wait for youtube player to to get ready or proceed if it is ready.
+
 //    override func prepareForReuse() {
 //        super.prepareForReuse()
 //
@@ -112,27 +116,28 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PopUpListingTableView", for: indexPath) as! PopUpListingTableView
-
+        
         cell.mainImg.sd_setImage(with: URL(string: popListingTBDataArray [indexPath.row].image), placeholderImage: UIImage(named: "pl"))
         cell.nameLbl.text = popListingTBDataArray[indexPath.row].name
         cell.timeLbl.text = popListingTBDataArray[indexPath.row].time
-//        cell.contentLbl.text = popListingTBDataArray[indexPath.row].content
+        //        cell.contentLbl.text = popListingTBDataArray[indexPath.row].content
         cell.readMoreTextView.text = popListingTBDataArray[indexPath.row].content
         
-//        var bhikmangaTextlbl:UITextView?
+        //        var bhikmangaTextlbl:UITextView?
         if cell.readMoreTextView!.text!.count >= 120
-                 {
+        {
             cell.readMoreTextView.delegate = self
             var abc : String =  (cell.readMoreTextView!.text! as NSString).substring(with: NSRange(location: 0, length: 120))
-                         abc += " ...ReadMore"
-        cell.readMoreTextView!.text = abc
+            abc += " ...ReadMore"
+            cell.readMoreTextView!.text = abc
             var attribs = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)]
-                     var attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
-        attributedString.addAttribute(NSAttributedString.Key.link, value: "...ReadMore", range: NSRange(location: 120, length: 11))
-        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 120, length: 11))
-        cell.readMoreTextView!.attributedText = attributedString
-                 }
-
+            var attributedString: NSMutableAttributedString = NSMutableAttributedString(string: abc, attributes: attribs)
+            attributedString.addAttribute(NSAttributedString.Key.link, value: "...ReadMore", range: NSRange(location: 120, length: 11))
+            attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 120, length: 11))
+            cell.readMoreTextView!.attributedText = attributedString
+        }
+        
+        
         return cell
     }
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool
@@ -147,12 +152,24 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell:PopUpListingTableView = tableView.cellForRow(at: indexPath) as! PopUpListingTableView
+        if let theURL = URL(string: popListingTBDataArray[indexPath.row].link){
+           let lastPath = theURL.lastPathComponent
+            IJProgressView.shared.showProgressView()
+        otherPlayer.load(withVideoId: "\(lastPath)",playerVars: ["playsinline" : 0])
         
-        UIApplication.shared.open(URL(string: popListingTBDataArray[0].link)!, options: [:], completionHandler: nil)
+        }
+//        UIApplication.shared.open(URL(string: popListingTBDataArray[0].link)!, options: [:], completionHandler: nil)
+    }
+    func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
+        print(error)
+    }
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        IJProgressView.shared.hideProgressView()
+        playerView.playVideo()
     }
     
-    
-    
+   
 }
 struct PopListingTBData {
     var image : String

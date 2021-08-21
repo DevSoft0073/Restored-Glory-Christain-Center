@@ -8,9 +8,12 @@
 import UIKit
 import SwiftGifOrigin
 import SDWebImage
+import youtube_ios_player_helper
 
-class HomeScreenVC: UIViewController {
+class HomeScreenVC: UIViewController, YTPlayerViewDelegate {
     
+    @IBOutlet weak var playVIdeo: YTPlayerView!
+    @IBOutlet weak var btnLive: UIButton!
     @IBOutlet weak var btnGlory: UIButton!
     @IBOutlet weak var btnTeen: UIButton!
     @IBOutlet weak var btnWomen: UIButton!
@@ -70,6 +73,7 @@ class HomeScreenVC: UIViewController {
         self.noDataStudyLbl.isHidden = true
         self.noDataChoirLbl.isHidden = true
         self.noDataUpcomingLbl.isHidden = true
+        playVIdeo.delegate = self
         homeDetails()
         
     }
@@ -85,15 +89,33 @@ class HomeScreenVC: UIViewController {
     
     @IBAction func mainBttn(_ sender: Any) {
         
+        if let theURL = URL(string: bibleDataArray[0].url){
+           let lastPath = theURL.lastPathComponent
+            IJProgressView.shared.showProgressView()
+            playVIdeo.load(withVideoId: "\(lastPath)",playerVars: ["playsinline" : 0])
+
+        }
+    }
+    
+    func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
+        print(error)
+    }
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        IJProgressView.shared.hideProgressView()
+        playerView.playVideo()
+    }
+    
+    
+    
+    @IBAction func btnLiveSteream(_ sender: Any) {
         let vc = PopUpListingVC.instantiate(fromAppStoryboard: .Main)
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromTop
-        self.navigationController?.view.layer.add(transition, forKey: nil)
+//        let transition = CATransition()
+//        transition.duration = 0.3
+//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        transition.type = CATransitionType.push
+//        transition.subtype = CATransitionSubtype.fromTop
+//        self.navigationController?.view.layer.add(transition, forKey: nil)
         self.navigationController?.pushViewController(vc, animated: false)
-        
     }
     
     
@@ -227,7 +249,7 @@ class HomeScreenVC: UIViewController {
                                         self.mainImg.sd_setImage(with: URL(string: i["image"] as? String ?? ""), placeholderImage: UIImage(named: "pl"), options: SDWebImageOptions.continueInBackground, completed: nil)
                                         self.liveIcon.loadGif(name: "tower")
                                         self.mainImg.contentMode = .scaleAspectFill
-                                        self.bibleDataArray.append(BibleData(mimage: i["image"] as? String ?? "", gimage: i["image"] as? String ?? ""))
+                                        self.bibleDataArray.append(BibleData(mimage: i["image"] as? String ?? "", gimage: i["image"] as? String ?? "", url: i["link"] as? String ?? ""))
                                         
                                     }
                                     else if self.catId == "2" {
@@ -645,9 +667,11 @@ struct AllHome {
 struct BibleData{
     var mimage : String
     var gimage : String
-    init(mimage : String, gimage : String) {
+    var url : String
+    init(mimage : String, gimage : String ,url : String) {
         self.mimage = mimage
         self.gimage = gimage
+        self.url = url
     }
 }
 

@@ -11,6 +11,7 @@ PODS:
   - SKCountryPicker (1.2.9)
   - SVProgressHUD-0.8.1 (0.8)
   - SwiftGifOrigin (1.7.0)
+  - youtube-ios-player-helper (1.0.3)
 
 DEPENDENCIES:
   - Alamofire
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - SKCountryPicker
   - SVProgressHUD-0.8.1
   - SwiftGifOrigin
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
@@ -36,6 +38,7 @@ SPEC REPOS:
     - SKCountryPicker
     - SVProgressHUD-0.8.1
     - SwiftGifOrigin
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
@@ -48,7 +51,8 @@ SPEC CHECKSUMS:
   SKCountryPicker: 7ad1e7dfb482cfb26855e33c2d70dbf1eaf218fe
   SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
   SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
+  youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: efcdd89562ff88daa82bf04d0140b998285f2efd
+PODFILE CHECKSUM: bfb6521a0faaa9b157e99b80272ebac31acde928
 
 COCOAPODS: 1.10.1

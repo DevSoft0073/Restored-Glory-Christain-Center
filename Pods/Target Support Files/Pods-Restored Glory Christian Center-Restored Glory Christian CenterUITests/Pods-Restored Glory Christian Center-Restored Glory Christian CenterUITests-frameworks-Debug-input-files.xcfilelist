@@ -9,3 +9,4 @@ ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/SKCountryPicker/SKCountryPicker.framework
 ${BUILT_PRODUCTS_DIR}/SVProgressHUD-0.8.1/SVProgressHUD_0_8_1.framework
 ${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework
+${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework

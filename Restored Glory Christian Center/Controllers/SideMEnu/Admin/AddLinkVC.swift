@@ -108,6 +108,10 @@ class AddLinkVC : UIViewController , UITextFieldDelegate ,UITextViewDelegate ,UI
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == selectTypeTxtFld {
 //            categoryListing()
+        } else if textField == addlinkTxtFld {
+            if addlinkTxtFld.text!.isEmpty{
+                addlinkTxtFld.text = "https://"
+            }
         }
     }
     

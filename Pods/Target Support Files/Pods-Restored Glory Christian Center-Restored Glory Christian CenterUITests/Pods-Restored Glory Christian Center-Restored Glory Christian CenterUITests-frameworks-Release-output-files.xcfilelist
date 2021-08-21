@@ -8,3 +8,4 @@ ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKCountryPicker.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD_0_8_1.framework
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework

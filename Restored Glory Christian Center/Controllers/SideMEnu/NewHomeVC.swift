@@ -108,7 +108,7 @@ class NewHomeVC : UIViewController {
                                         print(i)
 //                                        self.mainImg.sd_setImage(with: URL(string: i["image"] as? String ?? ""), placeholderImage: UIImage(named: "pl"), options: SDWebImageOptions.continueInBackground, completed: nil)
 //                                        self.liveIcon.loadGif(name: "tower")
-                                        self.bibleDataArray.append(BibleData(mimage: i["image"] as? String ?? "", gimage: i["image"] as? String ?? ""))
+                                        self.bibleDataArray.append(BibleData(mimage: i["image"] as? String ?? "", gimage: i["image"] as? String ?? "", url: ""))
                                         
                                     }
                                     else if self.catId == "2" {

@@ -17,7 +17,8 @@ target 'Restored Glory Christian Center' do
     pod ‘SwiftGifOrigin’
     pod 'ReadMoreTextView'
     pod "ExpandableLabel"
-
+    pod 'youtube-ios-player-helper'
+    
   target 'Restored Glory Christian CenterTests' do
     inherit! :search_paths
     # Pods for testing

@@ -541,8 +541,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188C9A9425CE5BD3009AC9C8 /* Build configuration list for PBXNativeTarget "Restored Glory Christian Center" */;
 			buildPhases = (
-				E08AD94B71E77E0B1E6D902C /* [CP] Build Pods Frameworks */,
 				EF3246B658E8D6BF0DA9A44E /* [CP] Check Pods Manifest.lock */,
+				E08AD94B71E77E0B1E6D902C /* [CP] Build Pods Frameworks */,
 				188C9A6625CE5BD2009AC9C8 /* Sources */,
 				188C9A6725CE5BD2009AC9C8 /* Frameworks */,
 				188C9A6825CE5BD2009AC9C8 /* Resources */,
@@ -1045,7 +1045,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.1;
+				CURRENT_PROJECT_VERSION = 4.3;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1070,7 +1070,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Restored Glory Christian Center/Restored Glory Christian Center.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4.1;
+				CURRENT_PROJECT_VERSION = 4.3;
 				DEVELOPMENT_TEAM = T5AAKPB89X;
 				INFOPLIST_FILE = "Restored Glory Christian Center/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
