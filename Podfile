@@ -18,6 +18,7 @@ target 'Restored Glory Christian Center' do
     pod 'ReadMoreTextView'
     pod "ExpandableLabel"
     pod 'youtube-ios-player-helper'
+    pod 'Branch'
     
   target 'Restored Glory Christian CenterTests' do
     inherit! :search_paths

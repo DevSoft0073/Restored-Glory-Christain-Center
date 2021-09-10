@@ -79,6 +79,8 @@
 		18F736582609AFC600C31214 /* AboutUSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F736572609AFC600C31214 /* AboutUSVC.swift */; };
 		18F736602609D23700C31214 /* ContactUSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F7365F2609D23700C31214 /* ContactUSVC.swift */; };
 		18F736682609D7CB00C31214 /* AddEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F736672609D7CB00C31214 /* AddEventVC.swift */; };
+		1FB18F5F26EB23DB00F95A61 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB18F5E26EB23DB00F95A61 /* CommentVC.swift */; };
+		1FB18F6126EB60B400F95A61 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB18F6026EB60B400F95A61 /* ReportVC.swift */; };
 		58A4554EE0D39E337EAE6C02 /* Pods_Restored_Glory_Christian_CenterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D6E1F6ECC36C25C63FAAED4 /* Pods_Restored_Glory_Christian_CenterTests.framework */; };
 		8CCFF29A63ECA0314F87267A /* Pods_Restored_Glory_Christian_Center.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76297625A537C9D5E8B0B7AB /* Pods_Restored_Glory_Christian_Center.framework */; };
 		B3225C7026579E29008FA3A7 /* TermUseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3225C6F26579E28008FA3A7 /* TermUseVC.swift */; };
@@ -191,6 +193,8 @@
 		18F7365F2609D23700C31214 /* ContactUSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUSVC.swift; sourceTree = "<group>"; };
 		18F736672609D7CB00C31214 /* AddEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventVC.swift; sourceTree = "<group>"; };
 		1D6E1F6ECC36C25C63FAAED4 /* Pods_Restored_Glory_Christian_CenterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restored_Glory_Christian_CenterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FB18F5E26EB23DB00F95A61 /* CommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
+		1FB18F6026EB60B400F95A61 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		27BA2699F42BF596E7600F40 /* Pods-Restored Glory Christian CenterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restored Glory Christian CenterTests.debug.xcconfig"; path = "Target Support Files/Pods-Restored Glory Christian CenterTests/Pods-Restored Glory Christian CenterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		40C4EA74E5E62CA3E4824A2B /* Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restored_Glory_Christian_Center_Restored_Glory_Christian_CenterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E193DCF2BB9B6F21C9A5E52 /* Pods-Restored Glory Christian Center-Restored Glory Christian CenterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restored Glory Christian Center-Restored Glory Christian CenterUITests.release.xcconfig"; path = "Target Support Files/Pods-Restored Glory Christian Center-Restored Glory Christian CenterUITests/Pods-Restored Glory Christian Center-Restored Glory Christian CenterUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,6 +428,8 @@
 				B3D6995C265503B20023F3C9 /* NotificationsVC.swift */,
 				B338D34026561E3B00804B42 /* PopUpListingVC.swift */,
 				B3225C6F26579E28008FA3A7 /* TermUseVC.swift */,
+				1FB18F5E26EB23DB00F95A61 /* CommentVC.swift */,
+				1FB18F6026EB60B400F95A61 /* ReportVC.swift */,
 			);
 			path = SideMEnu;
 			sourceTree = "<group>";
@@ -825,6 +831,7 @@
 				1860BC04266F2BC20034E63A /* UpcommingCellTableViewCell.swift in Sources */,
 				18C4092625F355F0004786D9 /* SplashVC.swift in Sources */,
 				B338D34126561E3B00804B42 /* PopUpListingVC.swift in Sources */,
+				1FB18F5F26EB23DB00F95A61 /* CommentVC.swift in Sources */,
 				184B11AF25E371B1003007A2 /* SceneDelegate.swift in Sources */,
 				188C9ACF25CE5E3D009AC9C8 /* Constant.swift in Sources */,
 				B3FB514E26537B9E004D45D3 /* HomeScreenVC.swift in Sources */,
@@ -857,6 +864,7 @@
 				18F49E6E25D407B600604C69 /* DetailsVC.swift in Sources */,
 				18C5BD1725D26AA100F77E80 /* AddLinkVC.swift in Sources */,
 				18E9780B25CE7DEF000D1F8D /* SideMenuController.swift in Sources */,
+				1FB18F6126EB60B400F95A61 /* ReportVC.swift in Sources */,
 				1860BC16266F30C30034E63A /* LiveStreamCell.swift in Sources */,
 				184B11B025E371B1003007A2 /* AppExtensions.swift in Sources */,
 				18E9781825CE8522000D1F8D /* SideMenuVC.swift in Sources */,

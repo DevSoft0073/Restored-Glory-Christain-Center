@@ -32,6 +32,11 @@ class Constant: NSObject {
     let allPushData = "GetMasspush.php"
     let homeData = "GetAllCategoryListing.php"
     let detailsData = "GetEventDetailsById.php"
+    let likeUnlike = "LikeAndUnlike.php"
+    let resnData = "GetAllReportReasonListing.php"
+    let addReport = "report.php"
+    let addComment = "addcomment.php"
+    let allComment = "GetAllComment.php"
     
 }
 

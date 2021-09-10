@@ -89,12 +89,23 @@ class HomeScreenVC: UIViewController, YTPlayerViewDelegate {
     
     @IBAction func mainBttn(_ sender: Any) {
         
-        if let theURL = URL(string: bibleDataArray[0].url){
-           let lastPath = theURL.lastPathComponent
+        playVIdeo.isHidden = false
+        if bibleDataArray[0].url.contains("v="){
+            let lastPath = getYoutubeId(youtubeUrl: bibleDataArray[0].url)
             IJProgressView.shared.showProgressView()
-            playVIdeo.load(withVideoId: "\(lastPath)",playerVars: ["playsinline" : 0])
-
+            playVIdeo.load(withVideoId: "\(lastPath ?? "")",playerVars: ["playsinline" : 0])
+        }else{
+            if let theURL = URL(string: bibleDataArray[0].url){
+                let lastPath = theURL.lastPathComponent
+                IJProgressView.shared.showProgressView()
+                playVIdeo.load(withVideoId: "\(lastPath)",playerVars: ["playsinline" : 0])
+                
+            }
         }
+    }
+    
+    func getYoutubeId(youtubeUrl: String) -> String? {
+        return URLComponents(string: youtubeUrl)?.queryItems?.first(where: { $0.name == "v" })?.value
     }
     
     func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
@@ -109,12 +120,6 @@ class HomeScreenVC: UIViewController, YTPlayerViewDelegate {
     
     @IBAction func btnLiveSteream(_ sender: Any) {
         let vc = PopUpListingVC.instantiate(fromAppStoryboard: .Main)
-//        let transition = CATransition()
-//        transition.duration = 0.3
-//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//        transition.type = CATransitionType.push
-//        transition.subtype = CATransitionSubtype.fromTop
-//        self.navigationController?.view.layer.add(transition, forKey: nil)
         self.navigationController?.pushViewController(vc, animated: false)
     }
     

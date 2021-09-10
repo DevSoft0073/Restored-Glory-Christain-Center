@@ -22,29 +22,18 @@ class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         otherPlayer.delegate = self
-        popUpDetails()
-//        let attributedString = NSMutableAttributedString(string: "Want to learn ios get it will be best for you")
-    
     }
     
-//    var expandedCells = Set<Int>()
+    override func viewWillAppear(_ animated: Bool) {
+        popUpDetails()
+    }
+    
     @IBAction func dropDownButton(_ sender: Any) {
-        
-        let transition:CATransition = CATransition()
-//        transition.duration = 0.3
-//        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-//        transition.type = CATransitionType.reveal
-//        transition.subtype = CATransitionSubtype.fromBottom
-//        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
         self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction func readMoreBtn(_ sender: Any) {
-//        let vc = DetailsDataVC.instantiate(fromAppStoryboard: .Main)
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-   
     
     func popUpDetails(){
         if Reachability.isConnectedToNetwork() == true{
@@ -63,7 +52,7 @@ class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate 
                 if status == 1{
                     if let allData = response ["data"] as? [[String:Any]]{
                         for obj in allData {
-                            self.popListingTBDataArray.append(PopListingTBData(image: obj["image"] as? String ?? "", name: obj["title"] as? String ?? "", time: obj["servercreated_at"] as? String ?? "", content: obj["description"] as? String ?? "", link: obj["link"] as? String ?? ""))
+                            self.popListingTBDataArray.append(PopListingTBData(image: obj["image"] as? String ?? "", name: obj["title"] as? String ?? "", time: obj["servercreated_at"] as? String ?? "", content: obj["description"] as? String ?? "", link: obj["link"] as? String ?? "", id: obj["link_id"] as? String ?? "",likeCount: obj["total_likes"] as? String ?? "",commentCount: obj["total_comments"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.popListingTBDataArray
@@ -76,7 +65,7 @@ class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate 
                 IJProgressView.shared.hideProgressView()
                 alert(Constant.shared.appTitle, message: error.localizedDescription, view: self)
                 print(error)
-               
+                
             }
         }else {
             print("Internet Connection Failed")
@@ -84,29 +73,26 @@ class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate 
         }
     }
     
+    
 }
 class PopUpListingTableView : UITableViewCell {
-
+    
+    @IBOutlet weak var btnShare: UIButton!
+    @IBOutlet weak var imgLike: UIImageView!
+    @IBOutlet weak var lblLikes: UILabel!
+    @IBOutlet weak var lblComment: UILabel!
+    @IBOutlet weak var btnlike: UIButton!
+    @IBOutlet weak var btnComment: UIButton!
     @IBOutlet weak var mainImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var contentLbl: UILabel!
     @IBOutlet weak var readMoreTextView: UITextView!
-//    @IBOutlet weak var readMoreLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-     
-       
+        
+        
     }
-    //Wait for youtube player to to get ready or proceed if it is ready.
-
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//
-//        readMoreTextView.onSizeChange = { _ in }
-//        readMoreTextView.shouldTrim = true
-//    }
-    
     
 }
 extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
@@ -120,10 +106,15 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
         cell.mainImg.sd_setImage(with: URL(string: popListingTBDataArray [indexPath.row].image), placeholderImage: UIImage(named: "pl"))
         cell.nameLbl.text = popListingTBDataArray[indexPath.row].name
         cell.timeLbl.text = popListingTBDataArray[indexPath.row].time
-        //        cell.contentLbl.text = popListingTBDataArray[indexPath.row].content
         cell.readMoreTextView.text = popListingTBDataArray[indexPath.row].content
-        
-        //        var bhikmangaTextlbl:UITextView?
+        cell.lblLikes.text = popListingTBDataArray[indexPath.row].likeCount
+        cell.lblComment.text = popListingTBDataArray[indexPath.row].commentCount
+        cell.btnComment.tag = indexPath.row
+        cell.btnComment.addTarget(self, action: #selector(btnComment(sender:)), for: .touchUpInside)
+        cell.btnShare.tag = indexPath.row
+        cell.btnShare.addTarget(self, action: #selector(shareBtnAction(sender:)), for: .touchUpInside)
+        cell.btnlike.tag = indexPath.row
+        cell.btnlike.addTarget(self, action: #selector(likeUnlikeBtnAction(sender:)), for: .touchUpInside)
         if cell.readMoreTextView!.text!.count >= 120
         {
             cell.readMoreTextView.delegate = self
@@ -135,32 +126,74 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
             attributedString.addAttribute(NSAttributedString.Key.link, value: "...ReadMore", range: NSRange(location: 120, length: 11))
             attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 120, length: 11))
             cell.readMoreTextView!.attributedText = attributedString
+            
         }
-        
-        
         return cell
     }
+    
+    @objc func likeUnlikeBtnAction(sender : UIButton) {
+        let id = UserDefaults.standard.value(forKey: "id") ?? ""
+        IJProgressView.shared.showProgressView()
+        let CategoryData = Constant.shared.baseUrl + Constant.shared.likeUnlike
+        let parms : [String:Any] = ["user_id":id, "link_id": popListingTBDataArray[sender.tag].id]
+        AFWrapperClass.requestPOSTURL(CategoryData, params: parms, success: { (response) in
+            print(response)
+            IJProgressView.shared.hideProgressView()
+            let status = response["status"] as? Int ?? 0
+            let msg = response["message"] as? String ?? ""
+            print(status)
+            if status == 1{
+                //                self.popListingTBDataArray[sender.tag].isLike = self.postArr[sender.tag].isLike == "0" ? "1" : "0"
+                //                var likeCount = NumberFormatter().number(from: self.postArr[sender.tag].likeCount)?.intValue ?? 0
+                //                likeCount =  self.postArr[sender.tag].isLike == "1" ? likeCount+1 : likeCount-1
+                //                self.postArr[sender.tag].likeCount = "\(likeCount)"
+            }else{
+                alert(Constant.shared.appTitle, message: msg, view: self)
+            }
+        })
+        { (error) in
+            IJProgressView.shared.hideProgressView()
+            print(error)
+        }
+    }
+    
+    @objc func btnComment(sender : UIButton) {
+        let vc = CommentVC.instantiate(fromAppStoryboard: .Main)
+        vc.postID = popListingTBDataArray[sender.tag].id
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
+    
     func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool
-              {
+    {
         print("readmore")
-                  return true
-              }
+        return true
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 320
         
     }
-
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell:PopUpListingTableView = tableView.cellForRow(at: indexPath) as! PopUpListingTableView
-        if let theURL = URL(string: popListingTBDataArray[indexPath.row].link){
-           let lastPath = theURL.lastPathComponent
-            IJProgressView.shared.showProgressView()
-        otherPlayer.load(withVideoId: "\(lastPath)",playerVars: ["playsinline" : 0])
-        
-        }
-//        UIApplication.shared.open(URL(string: popListingTBDataArray[0].link)!, options: [:], completionHandler: nil)
+        //        otherPlayer.isHidden = false
+        //     //   if let theURL = URL(string: popListingTBDataArray[indexPath.row].link){
+        //        if popListingTBDataArray[indexPath.row].link.contains("v="){
+        //            let lastPath = getYoutubeId(youtubeUrl: popListingTBDataArray[indexPath.row].link)
+        //            IJProgressView.shared.showProgressView()
+        //            otherPlayer.load(withVideoId: "\(lastPath ?? "")",playerVars: ["playsinline" : 0])
+        //        }else{
+        //            if let theURL = URL(string: popListingTBDataArray[indexPath.row].link){
+        //                let lastPath = theURL.lastPathComponent
+        //                IJProgressView.shared.showProgressView()
+        //                otherPlayer.load(withVideoId: "\(lastPath)",playerVars: ["playsinline" : 0])
+        //            }
+        //        }
     }
+    
+    func getYoutubeId(youtubeUrl: String) -> String? {
+        return URLComponents(string: youtubeUrl)?.queryItems?.first(where: { $0.name == "v" })?.value
+    }
+    
     func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
         print(error)
     }
@@ -169,7 +202,18 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
         playerView.playVideo()
     }
     
-   
+    @objc func shareBtnAction(sender : UIButton) {
+        IJProgressView.shared.showProgressView()
+        AFWrapperClass.createContentDeepLink(title: Constant.shared.appTitle, type: "Post", OtherId: popListingTBDataArray[sender.tag].id, description: "Hey, look at this post.", image: nil, link: popListingTBDataArray[sender.tag].link == "" ? popListingTBDataArray[sender.tag].image : popListingTBDataArray[sender.tag].link) { urlStr in
+            IJProgressView.shared.hideProgressView()
+            if let url = URL(string: urlStr ?? "") {
+                print(urlStr)
+                let objectsToShare = ["Hey, look at this post.", self.popListingTBDataArray[sender.tag].image == "" ? self.popListingTBDataArray[sender.tag].link : self.popListingTBDataArray[sender.tag].image] as [Any]
+                AFWrapperClass.presentShare(objectsToShare: objectsToShare, vc: self)
+            }
+        }
+    }
+    
 }
 struct PopListingTBData {
     var image : String
@@ -177,58 +221,19 @@ struct PopListingTBData {
     var time : String
     var content : String
     var link : String
+    var id : String
+    var likeCount : String
+    var commentCount : String
     init(image : String ,name :  String
-         , time : String , content : String, link : String) {
+         , time : String , content : String, link : String,id : String,likeCount : String,commentCount : String) {
         self.image = image
         self.name = name
         self.time = time
         self.content = content
         self.link = link
+        self.id = id
+        self.likeCount = likeCount
+        self.commentCount = commentCount
     }
 }
-//extension UILabel {
-//
-//    func addTrailing(with trailingText: String, moreText: String) {
-//        let readMoreText: String = trailingText + moreText
-//
-//        let lengthForVisibleString: Int = self.visibleTextLength
-//        let mutableString: String = self.text!
-//        let trimmedString: String? = (mutableString as NSString).replacingCharacters(in: NSRange(location: lengthForVisibleString, length: ((self.text?.count)! - lengthForVisibleString)), with: "")
-//        let readMoreLength: Int = (readMoreText.count)
-//        let trimmedForReadMore: String = (trimmedString! as NSString).replacingCharacters(in: NSRange(location: ((trimmedString?.count ?? 0) - readMoreLength), length: readMoreLength), with: "") + trailingText
-//        let answerAttributed = NSMutableAttributedString(string: trimmedForReadMore, attributes: [NSAttributedString.Key.font: self.font])
-////        let readMoreAttributed = NSMutableAttributedString(string: moreText, attributes: [NSAttributedString.Key.font: moreTextFont, NSAttributedString.Key.foregroundColor: moreTextColor])
-////        answerAttributed.append(readMoreAttributed)
-//        self.attributedText = answerAttributed
-//    }
-//
-//    var visibleTextLength: Int {
-//        let font: UIFont = self.font
-//        let mode: NSLineBreakMode = self.lineBreakMode
-//        let labelWidth: CGFloat = self.frame.size.width
-//        let labelHeight: CGFloat = self.frame.size.height
-//        let sizeConstraint = CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)
-//
-//        let attributes: [AnyHashable: Any] = [NSAttributedString.Key.font: font]
-//        let attributedText = NSAttributedString(string: self.text!, attributes: attributes as? [NSAttributedString.Key : Any])
-//        let boundingRect: CGRect = attributedText.boundingRect(with: sizeConstraint, options: .usesLineFragmentOrigin, context: nil)
-//
-//        if boundingRect.size.height > labelHeight {
-//            var index: Int = 0
-//            var prev: Int = 0
-//            let characterSet = CharacterSet.whitespacesAndNewlines
-//            repeat {
-//                prev = index
-//                if mode == NSLineBreakMode.byCharWrapping {
-//                    index += 1
-//                } else {
-//                    index = (self.text! as NSString).rangeOfCharacter(from: characterSet, options: [], range: NSRange(location: index + 1, length: self.text!.count - index - 1)).location
-//                }
-//            } while index != NSNotFound && index < self.text!.count && (self.text! as NSString).substring(to: index).boundingRect(with: sizeConstraint, options: .usesLineFragmentOrigin, attributes: attributes as? [NSAttributedString.Key : Any], context: nil).size.height <= labelHeight
-//            return prev
-//        }
-//        return self.text!.count
-//    }
-//}
-
 

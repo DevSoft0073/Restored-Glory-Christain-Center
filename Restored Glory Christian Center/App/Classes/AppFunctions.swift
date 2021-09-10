@@ -53,3 +53,16 @@ extension UIImageView {
         self.clipsToBounds = true
     }
 }
+
+
+extension String {
+    var doubleValue: Double {
+        return (self as NSString).doubleValue
+    }
+    func removeHTMLTag() -> String {
+        let str = self.replacingOccurrences(of: "<[^>]+>", with: "", options: String.CompareOptions.regularExpression, range: nil)
+        let replacedStr  = str.replacingOccurrences(of: "&nbsp;", with: "")
+        return replacedStr
+        
+    }
+}

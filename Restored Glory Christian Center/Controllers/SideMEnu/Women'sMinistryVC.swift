@@ -104,16 +104,6 @@ class Women_sMinistryVC: UIViewController {
         }
 
     }
-    
-//    func convertTimeStampToDate(dateVal : Double) -> String{
-//        let timeinterval = TimeInterval(dateVal)
-//        let dateFromServer = Date(timeIntervalSince1970:timeinterval)
-//        print(dateFromServer)
-//        let dateFormater = DateFormatter()
-//        dateFormater.timeZone = .current
-//        dateFormater.dateFormat = "dd-MM-YYYY"
-//        return dateFormater.string(from: dateFromServer)
-//    }
 }
 
 class WomensDataTBVIewCell: UITableViewCell {
@@ -152,6 +142,7 @@ extension Women_sMinistryVC : UITableViewDelegate , UITableViewDataSource {
         cell.dataView?.layer.shadowOffset =  CGSize.zero
         cell.dataView?.layer.shadowOpacity = 0.5
         cell.dataView?.layer.shadowRadius = 5
+        
         return cell
     }
     
@@ -189,7 +180,7 @@ extension UIViewController {
         print(dateFromServer)
         let dateFormater = DateFormatter()
         dateFormater.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormater.dateFormat = "dd MMMM"
+        dateFormater.dateFormat = "d MMM, YYYY"
         return dateFormater.string(from: dateFromServer)
     }
 }

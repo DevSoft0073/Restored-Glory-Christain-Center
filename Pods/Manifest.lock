@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.2.2)
+  - Branch (1.39.4)
   - ExpandableLabel (0.5.2)
   - IQKeyboardManagerSwift (6.5.6)
   - LGSideMenuController (2.1.1)
@@ -15,6 +16,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Branch
   - ExpandableLabel
   - IQKeyboardManagerSwift
   - LGSideMenuController
@@ -29,6 +31,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Branch
     - ExpandableLabel
     - IQKeyboardManagerSwift
     - LGSideMenuController
@@ -42,6 +45,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Branch: d21c40c47b5c15c6ab709cdf7d965a50059e0546
   ExpandableLabel: c2fab6d27860c572d67134b30522a5917746171d
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   LGSideMenuController: ae40c80983ab8b8801c7cef0a6804d43aaa72d45
@@ -53,6 +57,6 @@ SPEC CHECKSUMS:
   SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: bfb6521a0faaa9b157e99b80272ebac31acde928
+PODFILE CHECKSUM: 841e7adb84cfcf1ed1da3cd2d40b311bc57414dd
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2
