@@ -40,7 +40,7 @@ class CommentVC : UIViewController , UITableViewDelegate , UITableViewDataSource
         let id = UserDefaults.standard.value(forKey: "id") ?? ""
         IJProgressView.shared.showProgressView()
         let CategoryData = Constant.shared.baseUrl + Constant.shared.addComment
-        let parms : [String:Any] = ["comment_by":id,"link_id":postID,"comment":txtComment.text ?? ""]
+        let parms : [String:Any] = ["user_id":id,"link_id":postID,"comment":txtComment.text ?? ""]
         AFWrapperClass.requestPOSTURL(CategoryData, params: parms, success: { (response) in
             IJProgressView.shared.hideProgressView()
             print(response)

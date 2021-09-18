@@ -6125,6 +6125,13 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="170" height="253"/>
                                         <connections>
+                                            <outlet property="btnComment" destination="R6q-9j-xS9" id="JPu-eR-eHA"/>
+                                            <outlet property="btnLike" destination="Iph-gj-bze" id="rG5-3l-6oa"/>
+                                            <outlet property="btnShare" destination="R12-q1-Dc7" id="wS2-VG-CJC"/>
+                                            <outlet property="imgLike" destination="WLv-WB-gKV" id="61t-57-EoS"/>
+                                            <outlet property="imgShare" destination="Nlo-TH-Na7" id="Nuw-uA-pUO"/>
+                                            <outlet property="lblComment" destination="D6u-gy-waR" id="EU5-f7-Z70"/>
+                                            <outlet property="lblLike" destination="60c-zu-tq0" id="F95-1K-6wL"/>
                                             <outlet property="mainImg" destination="QwQ-vs-W9K" id="Un0-Ea-Jzg"/>
                                             <outlet property="nameLbl" destination="MTI-Xi-LwB" id="yZc-UP-A4U"/>
                                             <outlet property="typeLbl" destination="SNV-af-vk1" id="NOf-ZE-zbS"/>

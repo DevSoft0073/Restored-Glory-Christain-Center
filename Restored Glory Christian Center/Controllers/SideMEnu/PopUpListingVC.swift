@@ -41,7 +41,7 @@ class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate 
             IJProgressView.shared.showProgressView()
             let id = UserDefaults.standard.value(forKey: "id") ?? ""
             let  signUrl = Constant.shared.baseUrl + Constant.shared.DetailsByCat
-            let  parms : [String:Any] = ["c_id" : "7" , "search" : ""]
+            let  parms : [String:Any] = ["c_id" : "7" , "search" : "", "user_id" : id]
             print("parms")
             AFWrapperClass.requestPOSTURL(signUrl, params: parms, success: {(response) in
                 print(response)
@@ -52,7 +52,7 @@ class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate 
                 if status == 1{
                     if let allData = response ["data"] as? [[String:Any]]{
                         for obj in allData {
-                            self.popListingTBDataArray.append(PopListingTBData(image: obj["image"] as? String ?? "", name: obj["title"] as? String ?? "", time: obj["servercreated_at"] as? String ?? "", content: obj["description"] as? String ?? "", link: obj["link"] as? String ?? "", id: obj["link_id"] as? String ?? "",likeCount: obj["total_likes"] as? String ?? "",commentCount: obj["total_comments"] as? String ?? ""))
+                            self.popListingTBDataArray.append(PopListingTBData(image: obj["image"] as? String ?? "", name: obj["title"] as? String ?? "", time: obj["servercreated_at"] as? String ?? "", content: obj["description"] as? String ?? "", link: obj["link"] as? String ?? "", id: obj["link_id"] as? String ?? "",likeCount: obj["total_likes"] as? String ?? "",commentCount: obj["total_comments"] as? String ?? "", isLike: obj["isLike"] as? String ?? ""))
                         }
                     }
                     self.searchDataArray = self.popListingTBDataArray
@@ -110,9 +110,18 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
         cell.lblLikes.text = popListingTBDataArray[indexPath.row].likeCount
         cell.lblComment.text = popListingTBDataArray[indexPath.row].commentCount
         cell.btnComment.tag = indexPath.row
+        
+        if popListingTBDataArray[indexPath.row].isLike == "1" {
+            cell.imgLike.image = UIImage(named: "like1")
+        } else if popListingTBDataArray[indexPath.row].isLike == "0" {
+            cell.imgLike.image = UIImage(named: "like")
+        } else if popListingTBDataArray[indexPath.row].isLike == "" {
+            cell.imgLike.image = UIImage(named: "like")
+        }
+        
         cell.btnComment.addTarget(self, action: #selector(btnComment(sender:)), for: .touchUpInside)
         cell.btnShare.tag = indexPath.row
-        cell.btnShare.addTarget(self, action: #selector(shareBtnAction(sender:)), for: .touchUpInside)
+//        cell.btnShare.addTarget(self, action: #selector(shareBtnAction(sender:)), for: .touchUpInside)
         cell.btnlike.tag = indexPath.row
         cell.btnlike.addTarget(self, action: #selector(likeUnlikeBtnAction(sender:)), for: .touchUpInside)
         if cell.readMoreTextView!.text!.count >= 120
@@ -143,10 +152,12 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
             let msg = response["message"] as? String ?? ""
             print(status)
             if status == 1{
-                //                self.popListingTBDataArray[sender.tag].isLike = self.postArr[sender.tag].isLike == "0" ? "1" : "0"
-                //                var likeCount = NumberFormatter().number(from: self.postArr[sender.tag].likeCount)?.intValue ?? 0
-                //                likeCount =  self.postArr[sender.tag].isLike == "1" ? likeCount+1 : likeCount-1
-                //                self.postArr[sender.tag].likeCount = "\(likeCount)"
+                self.popListingTBDataArray[sender.tag].isLike = self.popListingTBDataArray[sender.tag].isLike == "0" ? "1" : "0"
+                var likeCount = NumberFormatter().number(from: self.popListingTBDataArray[sender.tag].likeCount)?.intValue ?? 0
+                likeCount =  self.popListingTBDataArray[sender.tag].isLike == "1" ? likeCount+1 : likeCount-1
+                self.popListingTBDataArray[sender.tag].isLike = "\(likeCount)"
+                self.popUpDetails()
+                
             }else{
                 alert(Constant.shared.appTitle, message: msg, view: self)
             }
@@ -202,19 +213,19 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
         playerView.playVideo()
     }
     
-    @objc func shareBtnAction(sender : UIButton) {
-        IJProgressView.shared.showProgressView()
-        AFWrapperClass.createContentDeepLink(title: Constant.shared.appTitle, type: "Post", OtherId: popListingTBDataArray[sender.tag].id, description: "Hey, look at this post.", image: nil, link: popListingTBDataArray[sender.tag].link == "" ? popListingTBDataArray[sender.tag].image : popListingTBDataArray[sender.tag].link) { urlStr in
-            IJProgressView.shared.hideProgressView()
-            if let url = URL(string: urlStr ?? "") {
-                print(urlStr)
-                let objectsToShare = ["Hey, look at this post.", self.popListingTBDataArray[sender.tag].image == "" ? self.popListingTBDataArray[sender.tag].link : self.popListingTBDataArray[sender.tag].image] as [Any]
-                AFWrapperClass.presentShare(objectsToShare: objectsToShare, vc: self)
-            }
-        }
-    }
-    
+//    @objc func shareBtnAction(sender : UIButton) {
+//        IJProgressView.shared.showProgressView()
+//        AFWrapperClass.createContentDeepLink(title: Constant.shared.appTitle, type: "Post", OtherId: popListingTBDataArray[sender.tag].id, description: "Hey, look at this post.", image: nil, link: popListingTBDataArray[sender.tag].link == "" ? popListingTBDataArray[sender.tag].image : popListingTBDataArray[sender.tag].link) { urlStr in
+//            IJProgressView.shared.hideProgressView()
+//            if let url = URL(string: urlStr ?? "") {
+//                print(urlStr)
+//                let objectsToShare = ["Hey, look at this post.", self.popListingTBDataArray[sender.tag].image == "" ? self.popListingTBDataArray[sender.tag].link : self.popListingTBDataArray[sender.tag].image] as [Any]
+//                AFWrapperClass.presentShare(objectsToShare: objectsToShare, vc: self)
+//            }
+//        }
+//    }
 }
+
 struct PopListingTBData {
     var image : String
     var name : String
@@ -224,8 +235,9 @@ struct PopListingTBData {
     var id : String
     var likeCount : String
     var commentCount : String
+    var isLike: String
     init(image : String ,name :  String
-         , time : String , content : String, link : String,id : String,likeCount : String,commentCount : String) {
+         , time : String , content : String, link : String,id : String,likeCount : String,commentCount : String, isLike: String) {
         self.image = image
         self.name = name
         self.time = time
@@ -234,6 +246,7 @@ struct PopListingTBData {
         self.id = id
         self.likeCount = likeCount
         self.commentCount = commentCount
+        self.isLike = isLike
     }
 }
 
