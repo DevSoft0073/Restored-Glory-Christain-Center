@@ -69,7 +69,7 @@ class AFWrapperClass{
     
     class func createContentDeepLink(title: String,type: String,OtherId: String, description: String, image: String?,link: String,completion: @escaping (String?) -> ()) {
         let buo = BranchUniversalObject(canonicalIdentifier: UUID().uuidString)
-        buo.canonicalUrl = "https://nutshell.app/"
+        buo.canonicalUrl = "http://mobile.restoredglory.org/RestoredGloryChristianCenter/"
         buo.publiclyIndex = false
         buo.locallyIndex = false
         buo.title = title

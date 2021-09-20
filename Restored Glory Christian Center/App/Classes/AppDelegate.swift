@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Branch
 import IQKeyboardManagerSwift
 import UserNotifications
 
@@ -22,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
-    //    setUpRootScreen()
+        branchForAdvancedOrLowerVersions(launchOptions: launchOptions)
         guard #available(iOS 13.0, *) else {
             setUpInitialScreen()
             return true
@@ -44,6 +45,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func branchForAdvancedOrLowerVersions(launchOptions: [UIApplication.LaunchOptionsKey: Any]?){
+        if #available(iOS 13.0, *) {
+            BranchScene.shared().initSession(launchOptions: launchOptions) { (params, error, scene) in
+                if error != nil{
+                    print(error?.localizedDescription ?? "")
+                }
+                if let dict = params as? [String:Any],let uid: String = dict["OtherID"] as? String {
+                    print(uid,"Wow")
+                    let env = dict["environment"] as? String ?? ""
+                    if env == AFWrapperClass.returnEnv().rawValue && uid != "" &&  AFWrapperClass.returnCurrentUserId() != ""{
+                        print("valid redirect")
+//                       self.checkAndNavigateToProfileDetails(OtherId:uid)
+                    }else{
+                        print("invalid redirect")
+                    }
+                }
+            }
+            
+        }else{
+            Branch.getInstance().initSession(launchOptions: launchOptions, andRegisterDeepLinkHandler: {params, error in
+                if error != nil{
+                    print(error?.localizedDescription ?? "")
+                }
+                if let dict = params as? [String:Any],let uid: String = dict["OtherID"] as? String {
+                    print(uid)
+                    let env = dict["environment"] as? String ?? ""
+                    if env == AFWrapperClass.returnEnv().rawValue && uid != "" &&  AFWrapperClass.returnCurrentUserId() != ""{
+                        print("valid redirect")
+//                       self.checkAndNavigateToProfileDetails(OtherId:uid)
+                    }else{
+                        print("invalid redirect")
+                    }
+                }
+            })
+        }
+    }
     
     func setUpInitialScreen(){
         let appdelegate = UIApplication.shared.delegate as! AppDelegate

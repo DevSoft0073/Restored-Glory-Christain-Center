@@ -6227,14 +6227,14 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ImV-El-FrU">
-                                <rect key="frame" x="0.0" y="62.5" width="320" height="528"/>
+                                <rect key="frame" x="0.0" y="62.5" width="320" height="505.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PopUpListingTableView" rowHeight="320" id="IFw-fS-OQA" customClass="PopUpListingTableView" customModule="Restored_Glory_Christian_Center" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="320" height="320"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PopUpListingTableView" rowHeight="335" id="IFw-fS-OQA" customClass="PopUpListingTableView" customModule="Restored_Glory_Christian_Center" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="320" height="335"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IFw-fS-OQA" id="LbX-X9-6Kr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="335"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Qc-Nq-owv">
@@ -6286,7 +6286,7 @@
                                                     </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h2d-CG-u0h">
-                                                    <rect key="frame" x="13" y="270" width="294" height="39"/>
+                                                    <rect key="frame" x="13" y="270" width="294" height="54"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -6370,6 +6370,9 @@
                                                         <constraint firstItem="fWB-gD-6ua" firstAttribute="leading" secondItem="pQp-1i-l2D" secondAttribute="trailing" constant="15" id="v3a-wd-hVP"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMD-Uv-5eQ">
+                                                    <rect key="frame" x="13" y="0.0" width="294" height="165.5"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aIT-Ca-BPU" firstAttribute="leading" secondItem="1Qc-Nq-owv" secondAttribute="leading" id="3Go-Bu-Vcu"/>
@@ -6381,8 +6384,10 @@
                                                 <constraint firstItem="hqk-X2-199" firstAttribute="top" secondItem="aIT-Ca-BPU" secondAttribute="bottom" constant="2" id="LDO-31-4CW"/>
                                                 <constraint firstItem="h2d-CG-u0h" firstAttribute="bottom" secondItem="LbX-X9-6Kr" secondAttribute="bottomMargin" id="Z1i-4s-t3G"/>
                                                 <constraint firstItem="h2d-CG-u0h" firstAttribute="trailing" secondItem="aIT-Ca-BPU" secondAttribute="trailing" id="aHK-32-iAo"/>
+                                                <constraint firstItem="wMD-Uv-5eQ" firstAttribute="width" secondItem="1Qc-Nq-owv" secondAttribute="width" id="gUE-qE-691"/>
                                                 <constraint firstItem="1Qc-Nq-owv" firstAttribute="width" secondItem="LbX-X9-6Kr" secondAttribute="width" multiplier="0.92" id="gUM-w6-buc"/>
                                                 <constraint firstItem="zjQ-cM-ybm" firstAttribute="leading" secondItem="1Qc-Nq-owv" secondAttribute="leading" id="h39-Oe-hI8"/>
+                                                <constraint firstItem="wMD-Uv-5eQ" firstAttribute="centerX" secondItem="1Qc-Nq-owv" secondAttribute="centerX" id="jYU-WW-mrD"/>
                                                 <constraint firstItem="h2d-CG-u0h" firstAttribute="leading" secondItem="aIT-Ca-BPU" secondAttribute="leading" id="k3l-Bc-ShH"/>
                                                 <constraint firstItem="1Qc-Nq-owv" firstAttribute="top" secondItem="LbX-X9-6Kr" secondAttribute="top" id="kdU-m8-jbx"/>
                                                 <constraint firstItem="efj-W1-8pm" firstAttribute="trailing" secondItem="hqk-X2-199" secondAttribute="trailing" id="m45-hs-vIB"/>
@@ -6390,10 +6395,13 @@
                                                 <constraint firstItem="zjQ-cM-ybm" firstAttribute="trailing" secondItem="1Qc-Nq-owv" secondAttribute="trailing" id="r1E-7T-w9T"/>
                                                 <constraint firstItem="efj-W1-8pm" firstAttribute="bottom" secondItem="hqk-X2-199" secondAttribute="bottom" id="rZ7-7i-uX1"/>
                                                 <constraint firstItem="h2d-CG-u0h" firstAttribute="top" secondItem="aIT-Ca-BPU" secondAttribute="bottom" id="sof-eh-oWP"/>
+                                                <constraint firstItem="wMD-Uv-5eQ" firstAttribute="centerY" secondItem="1Qc-Nq-owv" secondAttribute="centerY" id="vng-jY-wYG"/>
+                                                <constraint firstItem="wMD-Uv-5eQ" firstAttribute="height" secondItem="1Qc-Nq-owv" secondAttribute="height" id="z3q-Rd-Bh1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="btnComment" destination="C1p-v4-BsR" id="dko-ph-Jan"/>
+                                            <outlet property="btnPlayVideo" destination="wMD-Uv-5eQ" id="7RS-PK-nZT"/>
                                             <outlet property="btnShare" destination="21y-Cr-Hgx" id="G3y-Hp-J9F"/>
                                             <outlet property="btnlike" destination="L7b-WR-Q6H" id="hKy-05-kil"/>
                                             <outlet property="contentLbl" destination="hqk-X2-199" id="h5z-f9-66J"/>
@@ -6420,7 +6428,6 @@
                             <constraint firstItem="6WD-lE-DWt" firstAttribute="height" secondItem="cxP-CX-aVH" secondAttribute="height" multiplier="0.07" id="3VB-Ze-HiS"/>
                             <constraint firstItem="6WD-lE-DWt" firstAttribute="width" secondItem="cxP-CX-aVH" secondAttribute="width" id="9zM-FE-cdT"/>
                             <constraint firstItem="PC4-y2-MNG" firstAttribute="centerX" secondItem="cxP-CX-aVH" secondAttribute="centerX" id="AJz-lg-5BS"/>
-                            <constraint firstItem="ImV-El-FrU" firstAttribute="height" secondItem="cxP-CX-aVH" secondAttribute="height" multiplier="0.93" id="Bue-Dd-8Oy"/>
                             <constraint firstItem="ImV-El-FrU" firstAttribute="width" secondItem="cxP-CX-aVH" secondAttribute="width" id="FSa-qc-pQf"/>
                             <constraint firstItem="mam-nV-dPU" firstAttribute="width" secondItem="cxP-CX-aVH" secondAttribute="width" id="GzL-Zg-6Vs"/>
                             <constraint firstItem="mam-nV-dPU" firstAttribute="height" secondItem="cxP-CX-aVH" secondAttribute="height" multiplier="0.04" id="Pzh-Mp-gnz"/>
@@ -6430,6 +6437,7 @@
                             <constraint firstItem="PC4-y2-MNG" firstAttribute="centerY" secondItem="cxP-CX-aVH" secondAttribute="centerY" id="pGo-wz-90e"/>
                             <constraint firstItem="6WD-lE-DWt" firstAttribute="centerX" secondItem="paO-NE-paR" secondAttribute="centerX" id="r82-Vq-cMG"/>
                             <constraint firstItem="PC4-y2-MNG" firstAttribute="width" secondItem="cxP-CX-aVH" secondAttribute="width" id="wA5-9X-sIQ"/>
+                            <constraint firstAttribute="bottom" secondItem="ImV-El-FrU" secondAttribute="bottom" id="zC0-Dc-bcw"/>
                             <constraint firstItem="mam-nV-dPU" firstAttribute="centerX" secondItem="paO-NE-paR" secondAttribute="centerX" id="zOa-d6-FPV"/>
                         </constraints>
                     </view>
@@ -6440,7 +6448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzG-UK-WRH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8183" y="-94"/>
+            <point key="canvasLocation" x="8182.5" y="-94.014084507042256"/>
         </scene>
         <!--Term UseVC-->
         <scene sceneID="ria-oD-pIo">

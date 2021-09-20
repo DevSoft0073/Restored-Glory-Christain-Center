@@ -30,6 +30,7 @@ class ListingVC: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     func listingDetails(){
         if Reachability.isConnectedToNetwork() == true {
             print("Internet Connection OK")
@@ -110,6 +111,7 @@ extension ListingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
         cell.btnComment.addTarget(self, action: #selector(btnComment(sender:)), for: .touchUpInside)
         cell.btnShare.tag = indexPath.row
         cell.btnLike.tag = indexPath.row
+        cell.btnShare.addTarget(self, action: #selector(shareBtnAction(sender:)), for: .touchUpInside)
         cell.btnLike.addTarget(self, action: #selector(likeUnlikeBtnAction(sender:)), for: .touchUpInside)
         return cell
     }
@@ -131,7 +133,6 @@ extension ListingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
                 likeCount =  self.listCLDataArray[sender.tag].isLike == "1" ? likeCount+1 : likeCount-1
                 self.listCLDataArray[sender.tag].isLike = "\(likeCount)"
                 self.listingDetails()
-                
             }else{
                 alert(Constant.shared.appTitle, message: msg, view: self)
             }
@@ -141,6 +142,19 @@ extension ListingVC : UICollectionViewDelegate,UICollectionViewDataSource,UIColl
             print(error)
         }
     }
+    
+    @objc func shareBtnAction(sender : UIButton) {
+        IJProgressView.shared.showProgressView()
+        AFWrapperClass.createContentDeepLink(title: Constant.shared.appTitle, type: "Post", OtherId: listCLDataArray[sender.tag].id, description: "Hey, look at this post.", image: listCLDataArray[sender.tag].link == "" ? listCLDataArray[sender.tag].link : listCLDataArray[sender.tag].id, link: listCLDataArray[sender.tag].link == "" ? listCLDataArray[sender.tag].link : listCLDataArray[sender.tag].link) { urlStr in
+            IJProgressView.shared.hideProgressView()
+            if let url = URL(string: urlStr ?? "") {
+                print(urlStr)
+                let objectsToShare = ["Hey, look at this post.",url] as [Any]
+                AFWrapperClass.presentShare(objectsToShare: objectsToShare, vc: self)
+            }
+        }
+    }
+
     
     @objc func btnComment(sender : UIButton) {
         let vc = CommentVC.instantiate(fromAppStoryboard: .Main)

@@ -12,8 +12,8 @@ import youtube_ios_player_helper
 class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate {
     
     @IBOutlet weak var PopUpListingTableView: UITableView!
-    
     @IBOutlet weak var otherPlayer: YTPlayerView!
+    
     var message = String()
     var popListingTBDataArray = [PopListingTBData]()
     var searchDataArray = [PopListingTBData]()
@@ -72,11 +72,11 @@ class PopUpListingVC: UIViewController,UITextViewDelegate, YTPlayerViewDelegate 
             alert(Constant.shared.appTitle, message: "Check Internet Connection", view: self)
         }
     }
-    
-    
 }
+
 class PopUpListingTableView : UITableViewCell {
     
+    @IBOutlet weak var btnPlayVideo: UIButton!
     @IBOutlet weak var btnShare: UIButton!
     @IBOutlet weak var imgLike: UIImageView!
     @IBOutlet weak var lblLikes: UILabel!
@@ -90,11 +90,9 @@ class PopUpListingTableView : UITableViewCell {
     @IBOutlet weak var readMoreTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
     }
-    
 }
+
 extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return popListingTBDataArray.count
@@ -121,9 +119,10 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
         
         cell.btnComment.addTarget(self, action: #selector(btnComment(sender:)), for: .touchUpInside)
         cell.btnShare.tag = indexPath.row
-//        cell.btnShare.addTarget(self, action: #selector(shareBtnAction(sender:)), for: .touchUpInside)
+        cell.btnShare.addTarget(self, action: #selector(shareBtnAction(sender:)), for: .touchUpInside)
         cell.btnlike.tag = indexPath.row
         cell.btnlike.addTarget(self, action: #selector(likeUnlikeBtnAction(sender:)), for: .touchUpInside)
+        cell.btnPlayVideo.addTarget(self, action: #selector(playVideos(sender:)), for: .touchUpInside)
         if cell.readMoreTextView!.text!.count >= 120
         {
             cell.readMoreTextView.delegate = self
@@ -138,6 +137,23 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
             
         }
         return cell
+    }
+    
+    @objc func playVideos(sender : UIButton) {
+        otherPlayer.isHidden = false
+        if let theURL = URL(string: popListingTBDataArray[sender.tag].link){
+            if popListingTBDataArray[sender.tag].link.contains("v="){
+                let lastPath = getYoutubeId(youtubeUrl: popListingTBDataArray[sender.tag].link)
+                IJProgressView.shared.showProgressView()
+                otherPlayer.load(withVideoId: "\(lastPath ?? "")",playerVars: ["playsinline" : 0])
+            }else{
+                if let theURL = URL(string: popListingTBDataArray[sender.tag].link){
+                    let lastPath = theURL.lastPathComponent
+                    IJProgressView.shared.showProgressView()
+                    otherPlayer.load(withVideoId: "\(lastPath)",playerVars: ["playsinline" : 0])
+                }
+            }
+        }
     }
     
     @objc func likeUnlikeBtnAction(sender : UIButton) {
@@ -180,25 +196,12 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
         return true
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 320
+        return UITableView.automaticDimension
         
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        otherPlayer.isHidden = false
-        //     //   if let theURL = URL(string: popListingTBDataArray[indexPath.row].link){
-        //        if popListingTBDataArray[indexPath.row].link.contains("v="){
-        //            let lastPath = getYoutubeId(youtubeUrl: popListingTBDataArray[indexPath.row].link)
-        //            IJProgressView.shared.showProgressView()
-        //            otherPlayer.load(withVideoId: "\(lastPath ?? "")",playerVars: ["playsinline" : 0])
-        //        }else{
-        //            if let theURL = URL(string: popListingTBDataArray[indexPath.row].link){
-        //                let lastPath = theURL.lastPathComponent
-        //                IJProgressView.shared.showProgressView()
-        //                otherPlayer.load(withVideoId: "\(lastPath)",playerVars: ["playsinline" : 0])
-        //            }
-        //        }
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func getYoutubeId(youtubeUrl: String) -> String? {
@@ -213,17 +216,17 @@ extension PopUpListingVC : UITableViewDataSource,UITableViewDelegate{
         playerView.playVideo()
     }
     
-//    @objc func shareBtnAction(sender : UIButton) {
-//        IJProgressView.shared.showProgressView()
-//        AFWrapperClass.createContentDeepLink(title: Constant.shared.appTitle, type: "Post", OtherId: popListingTBDataArray[sender.tag].id, description: "Hey, look at this post.", image: nil, link: popListingTBDataArray[sender.tag].link == "" ? popListingTBDataArray[sender.tag].image : popListingTBDataArray[sender.tag].link) { urlStr in
-//            IJProgressView.shared.hideProgressView()
-//            if let url = URL(string: urlStr ?? "") {
-//                print(urlStr)
-//                let objectsToShare = ["Hey, look at this post.", self.popListingTBDataArray[sender.tag].image == "" ? self.popListingTBDataArray[sender.tag].link : self.popListingTBDataArray[sender.tag].image] as [Any]
-//                AFWrapperClass.presentShare(objectsToShare: objectsToShare, vc: self)
-//            }
-//        }
-//    }
+    @objc func shareBtnAction(sender : UIButton) {
+        IJProgressView.shared.showProgressView()
+        AFWrapperClass.createContentDeepLink(title: Constant.shared.appTitle, type: "Post", OtherId: popListingTBDataArray[sender.tag].id, description: "Hey, look at this post.", image: popListingTBDataArray[sender.tag].link == "" ? popListingTBDataArray[sender.tag].link : popListingTBDataArray[sender.tag].id, link: popListingTBDataArray[sender.tag].link == "" ? popListingTBDataArray[sender.tag].link : popListingTBDataArray[sender.tag].link) { urlStr in
+            IJProgressView.shared.hideProgressView()
+            if let url = URL(string: urlStr ?? "") {
+                print(urlStr)
+                let objectsToShare = ["Hey, look at this post.",url] as [Any]
+                AFWrapperClass.presentShare(objectsToShare: objectsToShare, vc: self)
+            }
+        }
+    }
 }
 
 struct PopListingTBData {
